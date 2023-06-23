@@ -1,9 +1,10 @@
 main:
   - title: "ELE306"
-    url: /asd
+    url: /pages/ele306
   - title: "DAT160"
-    url: /categories/
+    url: /pages/dat160
   - title: "ADA526"
     url: /tags/
   - title: "ADA527"
     url: /about/
+    
