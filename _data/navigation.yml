@@ -1,9 +1,9 @@
 main:
-  - title: "Posts"
-    url: /posts/
-  - title: "Categories"
+  - title: "ELE306"
+    url: /asd
+  - title: "DAT160"
     url: /categories/
-  - title: "Tags"
+  - title: "ADA526"
     url: /tags/
-  - title: "About"
+  - title: "ADA527"
     url: /about/
