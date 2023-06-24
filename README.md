@@ -1,5 +1,5 @@
 # HVL ROBOTICS WEBSITE
-HVL Robotics is a research group located in Førde, Norway. This is the source of the HVL Robotics website. For more info, please contact us.
+HVL Robotics is a research group located in Førde, Norway. This is the source of the [HVL Robotics website](https://fjnn.github.io/hvl_robotics_website/). For more info, please contact us.
 
 
 **_NOTE:_**  This website is created using [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mistakes/).
