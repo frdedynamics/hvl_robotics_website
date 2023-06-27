@@ -10,25 +10,22 @@ Lunr is distributed under the terms of the [MIT License](http://opensource.org/l
 
 ## How to modify the website
 
-> Only one thing is impossible for God: To find any sense in any copyright law on the planet.
-> <cite><a href="http://www.brainyquote.com/quotes/quotes/m/marktwain163473.html">Mark Twain</a></cite>
-
-# Info
+### Info
 This website is created using [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/). The guide on how to use this theme is well explained in the [Quick-Start Guide](https://mmistakes.github.io/minimal-mistakes/). The purpose of this page is to have a quick reference on some features which are mainly used in this website.
 
-# Important folders and files
+### Important folders and files
 1. **_pages/:** is the folder where the lecture content is stored.
 2. **_posts/:** is the folder where the HOME page is stored.
 3. **_data/navigation.yaml:** is the file where the left-bar (navigation bar for the website/selected content) is customized.
 
-# How to modify an existing page
+### How to modify an existing page
 The sources of this website are written in markdown syntax. There are **3 steps** in modifying an existing page:
 
 1. Find the respective file under `_pages/COURSENAME`.
 1. Do necessary modifications either [locally](#local-edit) or [via github.com](#via-githubcom)
 1. Save and push to GitHub. The changes will be automatically applied. You can follow the status at: [GitHub Actions](https://github.com/frdedynamics/hvl_robotics_website/actions)
 
-# How to add a new page
+### How to add a new page
 There are **5 steps** in adding a page:
 
 1. Find the respective folder under `_pages`.
@@ -58,10 +55,10 @@ taxonomy: markup
   ```
 
 
-# Where to edit files
+### Where to edit files
 You can edit files either locally or via github.com.
 
-## Local Edit
+#### Local Edit
 1. You need `jekyll` installation. The steps are in the [link](https://jekyllrb.com/docs/installation/windows/).
 1. You need to clone the [source codes of this website](https://github.com/frdedynamics/hvl_robotics_website).
   - if it is the first time, you need to run `bundle install` via CMD terminal under the downloaded folder. (Your local directory for the website `/hvl_robotics_website`)
@@ -69,7 +66,7 @@ You can edit files either locally or via github.com.
 1. If you want to see the changes before pushing to the cloud, you need to run `bundle exec jekyll serve`. The changes will immediately apply at **http://127.0.0.1:4000/** or **http://localhost:4000/**.
 
 
-## via github.com
+#### via github.com
 You don't need any installation for this method.
 1. Browse to the page that you want to edit on [GitHub](https://github.com/frdedynamics/hvl_robotics_website).
 1. Click *edit this file* button on the right-top corner.
@@ -77,7 +74,7 @@ You don't need any installation for this method.
 1. Save and push changes.
 
 
-# Important files
+### Important files
 
 {: .notice--info} 
 This section is for advanced users.
@@ -88,13 +85,13 @@ This section is for advanced users.
 - The **_config.yml** file and **Gemfile** are responsible in all kind of dependencies and settings. The details can be found [here](https://jekyllrb.com/docs/structure/).
 
 
-# Useful links
+### Useful links
 
 - Markdown cheat-sheet.
 - Minimal mistakes theme source code: https://github.com/mmistakes/minimal-mistakes
 - Tags and formatting: https://mmistakes.github.io/minimal-mistakes/markup/markup-html-tags-and-formatting/
 
 
-# TODO:
+### TODO:
 - ROS submodule.
 - Most used markdown features in this website.
