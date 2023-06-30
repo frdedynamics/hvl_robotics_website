@@ -11,6 +11,8 @@ sidebar:
     text: "Some text here."
   - title: "Another Title"
     text: "More text here."
+sidebar:
+  nav: "dat160"
 taxonomy: markup
 ---
 
