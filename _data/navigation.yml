@@ -18,6 +18,8 @@ ele306:
         url: /courses/ele306/l2
       - title: "ELE306 Lesson-3"
         url: /courses/ele306/l3
+      - title: "ROS test"
+        url: /install-vm
   - title: "Assignments"
     children:
       - title: "ELE306 Assignment-1"
@@ -45,6 +47,8 @@ dat160:
         url: /courses/dat160/l2
       - title: "DAT160 Lesson-3"
         url: /courses/dat160/l3
+      - title: "ROS test"
+        url: /install-vm
   - title: "Assignments"
     children:
       - title: "DAT160 Assignment-1"
@@ -61,3 +65,12 @@ dat160:
         url: /courses/dat160/lab2
       - title: "DAT160 Lab-3"
         url: /courses/dat160/lab3
+
+
+ros:
+    - title: "ROS test"
+      url: /install-vm
+    - title: "Main Courses"
+      children:
+        - title: "DAT160"
+          url: /courses/dat160/l1

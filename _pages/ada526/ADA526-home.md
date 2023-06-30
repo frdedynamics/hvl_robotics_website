@@ -19,6 +19,6 @@ taxonomy: markup
 
 - [Home](/)
 - [About](/about)
-- [ROS test](/ros/install-vm)
+- [ROS test](/install-vm)
 - [Courses](/courses/ada526/l1)
 
