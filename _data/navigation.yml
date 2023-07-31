@@ -10,6 +10,12 @@ main:
 
 
 ele306:
+  - title: "Useful Tutorials"
+    children:
+      - title: "Python Tutorial"
+        url: /python
+      - title: "Linux Tutorial"
+        url: /linux
   - title: "Lecture Notes"
     children:
       - title: "ELE306 Lesson-1"
@@ -32,12 +38,12 @@ ele306:
         url: /courses/ele306/a3
   - title: "Lab Exercises"
     children:
-      - title: "ELE306 Lab-1"
-        url: /courses/ele306/lab1
-      - title: "ELE306 Lab-2"
-        url: /courses/ele306/lab2
-      - title: "ELE306 Lab-3"
-        url: /courses/ele306/lab3
+      - title: "Lab-1: UR Basics"
+        url: /courses/ele306/ur1
+      - title: "Lab-2: UR Features and Safety Planes"
+        url: /courses/ele306/ur2
+      - title: "Lab-3: UR Machine Tending"
+        url: /courses/ele306/ur3
 
 
 dat160:

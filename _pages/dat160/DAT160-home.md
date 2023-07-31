@@ -2,6 +2,8 @@
 layout: single
 title: "DAT160 Home"
 permalink: /courses/dat160
+redirect_from:
+  - /dat160
 toc: true
 breadcrumbs: true
 sidebar:
@@ -16,7 +18,6 @@ sidebar:
 taxonomy: markup
 ---
 
-- [Home](/)
-- [About](/about)
-- [Courses](/courses/dat160/l1)
+![image-center](/assets/images/dat160-logo-eng.png){: .align-center}
+Welcome to DAT160 page. Please refer to Canvas while using the content in this category. Here is the [course plan](https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/dat160). 
 

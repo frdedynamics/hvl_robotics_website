@@ -2,6 +2,8 @@
 layout: single
 title: "ADA526 Home"
 permalink: /courses/ada526
+redirect_from:
+  - /ada526
 toc: false
 breadcrumbs: true
 sidebar:
@@ -16,9 +18,8 @@ sidebar:
 taxonomy: markup
 ---
 
+![image-center](/assets/images/ada526-logo-eng.png){: .align-center}
+Welcome to ADA526 page. Please refer to Canvas while using the content in this category. Here is the [course plan](https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/2023/ADA526). 
 
-- [Home](/)
-- [About](/about)
-- [ROS test](/install-vm)
-- [Courses](/courses/ada526/l1)
+
 

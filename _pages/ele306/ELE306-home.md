@@ -17,11 +17,5 @@ sidebar:
   nav: "ele306"
 taxonomy: markup
 ---
-
-# ROS Content
-- [(temp) Lesson-1](/courses/ele306/l1)
-- [(temp) Lesson-2](/courses/ele306/l2)
-- [(temp) Lesson-3](/courses/ele306/l3)
-
-# Lab Exercises
-- [UR Basics](/courses/ele306/l1)
+![image-center](/assets/images/ele306-logo-eng.png){: .align-center}
+Welcome to ELE306 page. Please refer to Canvas while using the content in this category. Here is the [course plan](https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/2022/ele306).
