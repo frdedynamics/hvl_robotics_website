@@ -1,0 +1,3 @@
+- What is in ~/ros2_ws
+- Where to place the code: /src
+- What to do when things got wrong: delete the respective package in /install.

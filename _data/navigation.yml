@@ -16,34 +16,40 @@ ele306:
         url: /python
       - title: "Linux Tutorial"
         url: /linux
-  - title: "Lecture Notes"
+  - title: "ROS Lecture Notes"
     children:
-      - title: "ELE306 Lesson-1"
-        url: /courses/ele306/l1
-      - title: "ELE306 Lesson-2"
-        url: /courses/ele306/l2
-      - title: "ELE306 Lesson-3"
-        url: /courses/ele306/l3
       - title: "Install VM"
         url: /courses/ele306/install_vm
+      - title: "ROS Introduction"
+        url: /courses/ele306/ros-intro
+      - title: "ROS Filesystem"
+        url: /courses/ele306/ros-filesystem
+      - title: "Create a Package"
+        url: /courses/ele306/create-a-package
+      - title: "Publisher/Subscriber"
+        url: /courses/ele306/pub-sub
+      - title: "Launch"
+        url: /courses/ele306/launch
+      - title: "Visualization (URDF and RViz)"
+        url: /courses/ele306/rviz
+      - title: "Simulation (Gazebo)"
+        url: /courses/ele306/gazebo
+      - title: "Controllers and Sensors"
+        url: /courses/ele306/ros2control
       - title: "Build a Custom Robot"
         url: /courses/ele306/build_custom_robot
-  - title: "Assignments"
-    children:
-      - title: "ELE306 Assignment-1"
-        url: /courses/ele306/a1
-      - title: "ELE306 Assignment-2"
-        url: /courses/ele306/a2
-      - title: "ELE306 Assignment-3"
-        url: /courses/ele306/a3
   - title: "Lab Exercises"
     children:
+      - title: "UR Intro"
+        url: /courses/ele306/ur0
       - title: "Lab-1: UR Basics"
         url: /courses/ele306/ur1
       - title: "Lab-2: UR Features and Safety Planes"
         url: /courses/ele306/ur2
       - title: "Lab-3: UR Machine Tending"
         url: /courses/ele306/ur3
+      - title: "Lab-4: Wall Follower with TB3"
+        url: /courses/ele306/tb1
 
 
 dat160:
@@ -57,6 +63,8 @@ dat160:
         url: /courses/dat160/l3
       - title: "Install VM"
         url: /courses/dat160/install_vm
+      - title: "Camera and AR"
+        url: /courses/dat160/camera-ar
   - title: "Assignments"
     children:
       - title: "DAT160 Assignment-1"
@@ -67,8 +75,8 @@ dat160:
         url: /courses/dat160/a3
   - title: "Lab Exercises"
     children:
-      - title: "DAT160 Lab-1"
-        url: /courses/dat160/lab1
+      - title: "Lab-1: Wall Follower with TB3"
+        url: /courses/dat160/tb1
       - title: "DAT160 Lab-2"
         url: /courses/dat160/lab2
       - title: "DAT160 Lab-3"

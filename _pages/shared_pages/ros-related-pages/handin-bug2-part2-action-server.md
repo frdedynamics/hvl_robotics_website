@@ -1,0 +1,1 @@
+Bug2 part2 (wall follower/go to point with action/server).
