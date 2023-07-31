@@ -7,3 +7,14 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+
+.greedy-nav .visible-links a:before {
+    background-color: red;
+    }
+
+.sidebar-link:hover {
+    background-color: yellow;
+    color: rgb(107, 38, 38);
+    }
+      
