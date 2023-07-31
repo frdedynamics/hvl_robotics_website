@@ -1,7 +1,7 @@
 ---
 layout: single
-title: "Home"
-permalink: /courses/ele306/home
+title: "ELE306 Home"
+permalink: /courses/ele306
 toc: false
 breadcrumbs: true
 sidebar:
@@ -17,7 +17,7 @@ taxonomy: markup
 ---
 
 
-- [Home](/)
-- [About](/about)
-- [Courses](/courses/ele306/l1)
+- [(temp) Lesson-1](/courses/ele306/l1)
+- [(temp) Lesson-2](/courses/ele306/l2)
+- [(temp) Lesson-3](/courses/ele306/l3)
 
