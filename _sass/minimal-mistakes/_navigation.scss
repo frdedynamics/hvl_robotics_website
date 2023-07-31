@@ -384,7 +384,7 @@
       }
 
       &:hover {
-        color: #fff;
+        color: #6b1111;
         border-color: $gray;
         background-color: mix(white, #000, 20%);
 
@@ -447,13 +447,15 @@
     color: inherit;
   }
 
+
   .active {
     margin-left: -0.5em;
     padding-left: 0.5em;
     padding-right: 0.5em;
     font-weight: bold;
-    color: rgb(131, 44, 44)
+    color:#6b1111
   }
+
 
   @include breakpoint(max-width $large - 1px) {
     position: relative;
@@ -489,6 +491,7 @@
   font-family: $sans-serif-narrow;
   font-size: $type-size-5;
   font-weight: bold;
+  
 }
 
 .nav__sub-title {
@@ -500,6 +503,7 @@
   font-weight: bold;
   text-transform: uppercase;
   border-bottom: 1px solid $border-color;
+  color: rgb(68, 23, 23)
 }
 
 /*
@@ -516,9 +520,9 @@
   box-shadow: $box-shadow;
 
   .nav__title {
-    color: #fff;
+    color: #350d0dd0;
     font-size: $type-size-8;
-    background: $primary-color;
+    background: rgba(68, 23, 23, 0.082);
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
   }
@@ -549,9 +553,10 @@
     border-bottom: 1px solid $border-color;
 
     &:hover {
-      color: $text-color;
+      color: rgb(68, 23, 23);
     }
   }
+
 
   li ul > li a {
     padding-left: 1.25rem;
@@ -574,3 +579,5 @@
     padding-left: 3.25rem
   }
 }
+
+

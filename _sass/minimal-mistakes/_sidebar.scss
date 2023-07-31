@@ -59,7 +59,19 @@
       font-family: $sans-serif;
       font-size: $type-size-6;
       line-height: 1.5;
+      padding-left: 1.25rem; // this has an effect on nav__list indentation
+
+      li {
+        &:hover {
+          background-color: rgba(68, 23, 23, 0.082); // Apply the desired highlight color
+        }
+      }
     }
+
+    li ul > li a { // this has an effect on nav__list indentation
+      font-weight: normal;
+    }
+
   
     img {
       width: 100%;
