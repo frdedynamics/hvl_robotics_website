@@ -53,25 +53,45 @@ ele306:
 
 
 dat160:
+  - title: "Useful Tutorials"
+    children:
+      - title: "Python Tutorial"
+        url: /python
+      - title: "Linux Tutorial"
+        url: /linux
   - title: "Lecture Notes"
     children:
-      - title: "DAT160 Lesson-1"
-        url: /courses/dat160/l1
-      - title: "DAT160 Lesson-2"
-        url: /courses/dat160/l2
-      - title: "DAT160 Lesson-3"
-        url: /courses/dat160/l3
       - title: "Install VM"
         url: /courses/dat160/install_vm
+      - title: "ROS Introduction"
+        url: /courses/dat160/ros-intro
+      - title: "ROS Filesystem"
+        url: /courses/dat160/ros-filesystem
+      - title: "Create a Package"
+        url: /courses/dat160/create-a-package
+      - title: "Publisher/Subscriber"
+        url: /courses/dat160/pub-sub
+      - title: "Launch"
+        url: /courses/dat160/launch
+      - title: "Visualization (URDF and RViz)"
+        url: /courses/dat160/rviz
+      - title: "Simulation (Gazebo)"
+        url: /courses/dat160/gazebo
+      - title: "Controllers and Sensors"
+        url: /courses/dat160/ros2control
+      - title: "Build a Custom Robot"
+        url: /courses/dat160/build_custom_robot
       - title: "Camera and AR"
         url: /courses/dat160/camera-ar
   - title: "Assignments"
     children:
-      - title: "DAT160 Assignment-1"
+      - title: "ROS Publisher/Subscriber (Braitenberg)"
         url: /courses/dat160/a1
-      - title: "DAT160 Assignment-2"
+      - title: "Bug2 part-1 (wall follower)"
         url: /courses/dat160/a2
-      - title: "DAT160 Assignment-3"
+      - title: "Bug2 part-2 (wall follower/go to point with action/server)"
+        url: /courses/dat160/a3
+      - title: "Robot Teams"
         url: /courses/dat160/a3
   - title: "Lab Exercises"
     children:
