@@ -20,6 +20,8 @@ ele306:
         url: /courses/ele306/l3
       - title: "Install VM"
         url: /courses/ele306/install_vm
+      - title: "Build a Custom Robot"
+        url: /courses/ele306/build_custom_robot
   - title: "Assignments"
     children:
       - title: "ELE306 Assignment-1"
