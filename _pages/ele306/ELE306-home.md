@@ -2,6 +2,8 @@
 layout: single
 title: "ELE306 Home"
 permalink: /courses/ele306
+redirect_from:
+  - /ele306
 toc: false
 breadcrumbs: true
 sidebar:
