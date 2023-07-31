@@ -1,7 +1,7 @@
 ---
 layout: single
-title: "Home"
-permalink: /courses/ada526/home
+title: "ADA526 Home"
+permalink: /courses/ada526
 toc: false
 breadcrumbs: true
 sidebar:

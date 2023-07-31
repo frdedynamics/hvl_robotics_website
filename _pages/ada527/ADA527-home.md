@@ -1,8 +1,8 @@
 ---
 layout: single
-title: "DAT160 Home"
-permalink: /courses/dat160
-toc: true
+title: "ADA527 Home"
+permalink: /courses/ada527
+toc: false
 breadcrumbs: true
 sidebar:
   - title: "Title"
@@ -12,11 +12,9 @@ sidebar:
   - title: "Another Title"
     text: "More text here."
 sidebar:
-  nav: "dat160"
+  nav: "ada527"
 taxonomy: markup
 ---
 
-- [Home](/)
-- [About](/about)
-- [Courses](/courses/dat160/l1)
+
 

@@ -2,9 +2,9 @@ main:
   - title: "ELE306"
     url: /courses/ele306
   - title: "DAT160"
-    url: /courses/dat160/home
+    url: /courses/dat160
   - title: "ADA526"
-    url: /courses/ada526/home
+    url: /courses/ada526
   - title: "ADA527"
     url: /courses/ada527
 
