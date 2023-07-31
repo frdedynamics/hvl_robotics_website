@@ -83,6 +83,7 @@
       padding-left: 1em;
       z-index: 10;
       float: right;
+      font-size: $type-size-3;
   
       &.sticky {
         @include clearfix();
