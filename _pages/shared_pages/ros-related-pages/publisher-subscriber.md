@@ -1,10 +1,9 @@
-
-
 ## How does publisher/subscriber work?
+
 - Make a schematic
 - explain topics, services, parameters.
 
-# Publisher/Subscriber
+## Publisher/Subscriber
 
 ~/ros2_ws/src/my_package/my_package/my_node.py
 
@@ -67,7 +66,7 @@ Normally, you wouldn’t need to `catkin_make` after you make a change in a Pyth
 
 But there is a tweak around. After you create your ROS2 node in the package, compiled it once (or not), you can run `colcon build --symlink-install`and source bashrc, then the changes in this node will be affected immediately.
 
-### ************************Create timer************************
+### Create timer
 
 Create a timer function, call it in the init() and spin in the main()
 
@@ -166,9 +165,9 @@ Log the position of the turtlesim:
     if __name__ == '__main__':
         main()
 
-* It is nice to check out the **********************leaf topics********************** in `rqt_graph` to see unpublished/unsubscribed topics also.
+* It is nice to check out the *leaf topics* in `rqt_graph` to see unpublished/unsubscribed topics also.
 
-### Finally the setup.py:
+## Finally the setup.py:
 
     from setuptools import setup
     
@@ -198,3 +197,9 @@ Log the position of the turtlesim:
             ],
         },
     )
+
+```sequence
+Alice->Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob-->Alice: I am good thanks!
+```

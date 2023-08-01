@@ -19,7 +19,7 @@ ele306:
   - title: "ROS Lecture Notes"
     children:
       - title: "Install VM"
-        url: /courses/ele306/install_vm
+        url: /courses/ele306/install-vm
       - title: "ROS Introduction"
         url: /courses/ele306/ros-intro
       - title: "ROS Filesystem"
@@ -37,7 +37,7 @@ ele306:
       - title: "Controllers and Sensors"
         url: /courses/ele306/ros2control
       - title: "Build a Custom Robot"
-        url: /courses/ele306/build_custom_robot
+        url: /courses/ele306/build-custom-robot
   - title: "Lab Exercises"
     children:
       - title: "UR Intro"
