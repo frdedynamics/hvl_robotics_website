@@ -18,7 +18,7 @@ sidebar:
 taxonomy: markup
 ---
 
-![image-center](/assets/images/ada526-logo-eng.png){: .align-center}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/home/ada526-logo-eng.png)
 Welcome to ADA526 page. Please refer to Canvas while using the content in this category. Here is the [course plan](https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/2023/ADA526). 
 
 
