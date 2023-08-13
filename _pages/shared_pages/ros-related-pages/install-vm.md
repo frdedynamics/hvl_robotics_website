@@ -1,15 +1,4 @@
----
-layout: single
-title: "Install VM"
-permalink: /ros/install-vm
-toc: true # The right side bar "on this page"
-breadcrumbs: true  # the directory-of-documents type of header navigation
-sidebar:
-  nav: "ada526"  # the left navigation bar. Choose which category you want.
-taxonomy: markup
----
-
-# Install VM {#Install-VM}
+In this course, we are using Ubuntu 20.04 LTS and ROS2 Foxy as development tools. We will talk about what these *tools* mean later but for now you just need to know that these are not regular programs which you simply write the name in Microsoft Store (or App Store) and get. Therefore, we are using virtual machines.
 
 Virtual machines are basically some software which run just like a
 regular PC but without any physical components. They use the *host*\'s
@@ -19,8 +8,8 @@ this ready-to-use solution for you to start ROS as smooth as possible.
 
 There will be two components:
 
-1.  The virtual appliance
-2.  A software to run the virtual appliance (VMware)
+1. The virtual appliance
+2. A software to run the virtual appliance (VMware)
 
 The admin password inside the virtual appliance is: **ros**
 
@@ -54,9 +43,7 @@ machine settings** and in Display settings enable **Accelerate 3D
 graphics** and choose recommended Graphics Memory from the dropdown box
 as shown in the pictures.
 
-> ![VM-settings](VM-settings.png){.align-center}
->
-> ![](../../_static/images/ros/VM-settings2.png){.align-center}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/VM-settings.png)
 
 Also make sure, that in the **Network Adapter** settings, under
 **Network connection**, **NAT** is selected, as shown in the pictures
