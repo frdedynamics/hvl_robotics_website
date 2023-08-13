@@ -1,9 +1,19 @@
-
 Welcome to the ROS section of the course. The purpose of these pages isto give you a compact ROS introduction where you can use in your courseproject. The documentation in this chapter is a target-based collectionof mainly the following very nice ROS tutorials.
 
 ::: seealsoFor a deeper understanding, they are highly recommended to be checkedout (OPTIONAL).
 
-* [Official ROS Documentation](https://docs.ros.org/en/foxy/)
+
+
+| Tables   | Are           | Cool  |
+| -------- |:-------------:| -----:|
+| col 1 is | left-aligned  | $1600 |
+| col 2 is | centered      | $12   |
+| col 3 is | right-aligned | $1    |
+
+
+
+[Official ROS Documentation](https://docs.ros.org/en/foxy/)
+
 * [TheConstructSim](https://www.theconstructsim.com/robotigniteacademy_learnros/ros-courses-library/)
 * [A Concise Introduction to Robot Programming with ROS2](https://github.com/fmrico/book_ros2)
 
@@ -19,17 +29,18 @@ This page serves as a look-up page where you can find process andcommands easily
 
 * ROS versions
   
-  <figure><img src="../_static/images/rosVersions.jpg" class="align-center"alt="../_static/images/rosVersions.jpg" /><figcaption>Source: <ahref="https://twitter.com/_theconstruct_/status/1168418352802516992">ROSVersions</a></figcaption></figure>
   
+  
+  <figure><img src="../_static/images/rosVersions.jpg" class="align-center"alt="../_static/images/rosVersions.jpg" /><figcaption>Source: <ahref="https://twitter.com/_theconstruct_/status/1168418352802516992">ROSVersions</a></figcaption></figure>
 
-## Important Shortcuts
+### Important Shortcuts
 
 * Open a new terminal: `Ctrl+Alt+T`
 * Copy Paste: `Ctrl+Shit+C` and `Ctrl+Shit+V` (regular Ctrl+C andCtrl+V does not work in terminals)
 * `Tab` for auto-complete
 * Recursive search `Ctrl+R`
 
-## Important Commands
+### Important Commands
 
 * `roscore`: Start ROS master
 * `rosrun my_pkg my_node`: Start a node (a .py or .cpp file)
@@ -44,7 +55,7 @@ This page serves as a look-up page where you can find process andcommands easily
 * `roscd`: Change directory in ROS packages
 * `rosparam list/load/get/set`: Commands for parameter server
 
-## Dictionary
+### Dictionary
 
 * **ROS master**: The main node enables other nodes to communicate
 * **node**: ROS executable
@@ -69,15 +80,15 @@ These are extra notes.
 
 [ROS CheatSheet](https://w3.cs.jmu.edu/spragunr/CS354_S19/handouts/ROSCheatsheet.pdf)
 
-### ROS Ternimology
+### ROS Terminology
 
 This section explains the most frequently used ROS terms. Use thissection as a ROS glossary.
 
-#### ROS
+**ROS**
 
 ROS provides standard operating system services such as hardwareabstraction, device drivers, implementation of commonly used featuresincluding sensing, recognizing, mapping, motion planning, messagepassing between processes, package management, visualizers and librariesfor development as well as debugging tools.
 
-#### Master
+**Master**
 
 The master acts as a name server for node-to-node connections andmessage communication. The command roscore is used to run the master,and if you run the master, you can register the name of each node andget information when needed. The connection between nodes and messagecommunication such as topics and services are impossible without themaster.
 

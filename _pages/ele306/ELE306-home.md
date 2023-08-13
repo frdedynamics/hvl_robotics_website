@@ -15,3 +15,4 @@ taxonomy: markup
 Welcome to ELE306 page. Please refer to Canvas while using the content in this category. Here is the [course plan](https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/2022/ele306).
 
 {% include_absolute '_includes/search/search_form.html' %}
+
