@@ -1,5 +1,7 @@
 ## How does publisher/subscriber work?
 
+![image-center](https://docs.ros.org/en/humble/_images/Nodes-TopicandService.gif)
+
 - Make a schematic
 - explain topics, services, parameters.
 

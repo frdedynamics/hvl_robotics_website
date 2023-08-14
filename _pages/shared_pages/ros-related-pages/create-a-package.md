@@ -21,7 +21,7 @@ In the above command, you can replace **my_package** with the desired name for y
 After running the command, you will see a new directory named my_package created in your current working directory. Inside this  directory, you will find the basic structure of a ROS 2 Python package, including the **setup.py** file, **package.xml** file, and a **src** directory.
 You can then navigate into the **~/ros2_ws/src/my_package/** directory and start developing your Python code for the package. You can create Python scripts, modules, or any other necessary files within this directory to implement the functionality of your package.
 
-## Source Your Package
+## Source Your Workspace
 `source ~ros2_ws/install/setup.bash`
 
 or if you are already in **~/ros2_ws** directory in your terminal:
@@ -32,9 +32,9 @@ or if you are already in **~/ros2_ws** directory in your terminal:
 
 The reason is that, after you run `colcon build`, you compile all the source code under your workspace, and do little or much changes in your ROS system. To tell the Linux system what you have changed in the *ROS side*, you source the necessary **.bash** (or **.sh**) file in your terminal.
 
-Therefore you HAVE TO source your **setup.bash** after *every time* you create a package or a file in your workspace and *most of the time* you do changes on an existing file. We will talk about when it is not needed later.
+Therefore you HAVE TO source your **setup.bash** after *every time* you create a package or a file in your workspace and *most of the time* you do changes on an existing file. We will talk about when it is relevant later.
 
 <!-- https://www.youtube.com/watch?v=Gg25GfA456o&ab_channel=RoboticsBack-End -->
 
 
-{% include video id="Y-0OyxoN4xU" provider="youtube" %}
+<!-- {% include video id="Y-0OyxoN4xU" provider="youtube" %} -->

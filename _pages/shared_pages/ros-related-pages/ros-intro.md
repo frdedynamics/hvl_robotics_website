@@ -79,8 +79,6 @@ At any time, if you need help with a specific command, you can add -h to see a h
 
 ### Dictionary
 
-![image-center](https://docs.ros.org/en/humble/_images/Nodes-TopicandService.gif)
-
 * **node**: ROS executable
 * **launch**: Multiple ROS executables as well as parameters andarguments
 * **publisher**: An executable providing data to the ROS system
@@ -91,6 +89,6 @@ At any time, if you need help with a specific command, you can add -h to see a h
 * **gazebo**: A powerful simulator with physical properties (gravity,collision, lights/shadows etc)
 * **rviz**: A visualization software without physical properties
 * **rqt**: Many useful ROS-Qt packages like rqt_graph, rqt_publisher,rqt_controller_manager, rqt_plot etc.
-* **urdf/sdf**: File formats to define a robot
+* **urdf/sdf/xacro**: File formats to define a robot
 * **parameter server**: A shared dictionary of parameters that nodesstore and retrieve at runtime
 * **tf**: Stands for *Transform* and it is a powerful ROS packagebuilds relationships of multiple frames from a given robot model.
