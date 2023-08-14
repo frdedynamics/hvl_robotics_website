@@ -1,53 +1,84 @@
-Welcome to the ROS section of the course. The purpose of these pages isto give you a compact ROS introduction where you can use in your courseproject. The documentation in this chapter is a target-based collectionof mainly the following very nice ROS tutorials.
-
-::: seealsoFor a deeper understanding, they are highly recommended to be checkedout (OPTIONAL).
-
-
-
-| Tables   | Are           | Cool  |
-| -------- |:-------------:| -----:|
-| col 1 is | left-aligned  | $1600 |
-| col 2 is | centered      | $12   |
-| col 3 is | right-aligned | $1    |
-
-
-
-[Official ROS Documentation](https://docs.ros.org/en/foxy/)
-
-* [TheConstructSim](https://www.theconstructsim.com/robotigniteacademy_learnros/ros-courses-library/)
-* [A Concise Introduction to Robot Programming with ROS2](https://github.com/fmrico/book_ros2)
-
-This page serves as a look-up page where you can find process andcommands easily.
+Welcome to the ROS section of the course. The purpose of these pages are to give you a compact ROS introduction where you can use in your course project.
 
 ## What is ROS?
 
-* **ROS**: \"(Robot Operating System) is an open-source,meta-operating system for your robot. It provides the services you would expect from an operating system, including hardwareabstraction, low-level device control, implementation ofcommonly-used functionality, message-passing between processes, andpackage management. It also provides tools and libraries forobtaining, building, writing, and running code across multiplecomputers.\" [Follow this link for ros.org](https://www.ros.org)
-  * Meta operating system
-  * Fundamental components
+This section serves as a look-up page where you can find processes and commands easily.
 
-<figure><img src="../_static/images/rosComponents.png" class="align-center"alt="../_static/images/rosComponents.png" /><figcaption>Source: <ahref="https://www.pishrobot.com/wp-content/uploads/2018/02/ROS-robot-programming-book-by-turtlebo3-developers-EN.pdf">ROSRobot Programming</a></figcaption></figure>
+### Robot Operating System
 
-* ROS versions
-  
-  
-  
-  <figure><img src="../_static/images/rosVersions.jpg" class="align-center"alt="../_static/images/rosVersions.jpg" /><figcaption>Source: <ahref="https://twitter.com/_theconstruct_/status/1168418352802516992">ROSVersions</a></figcaption></figure>
+(Robot Operating System) is an open-source,meta-operating system for your robot. It provides the services you would expect from an operating system, including hardware abstraction, low-level device control, implementation of commonly used functionality, message-passing between processes, and package management. It also provides tools and libraries for obtaining, building, writing, and running code across multiple computers.
 
-### Important Shortcuts
+![Number of ROS Users](https://global.discourse-cdn.com/business7/uploads/ros/original/2X/2/2e99e36f60b1ca9aee851f7f33ef1b573d26aaf4.png)
+
+[2022 report](http://download.ros.org/downloads/metrics/metrics-report-2022-07.pdf)
+
+### ROS versions
+
+Our version is **Foxy Fitzroy** which is a ROS2 distribution released on the 5th of June 2020.
+
+![image-center](https://docs.ros.org/en/foxy/_static/foxy-small.png)
+
+And you can see the version history of ROS (both ROS1 and ROS2) and enjoy the nerdiness on alphabetic version naming and the sweet obsession of ROS on turtles.
+
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/rosVersions.jpg)
+  
+More updated versions of the history can be found on the [Wikipedia](https://en.wikipedia.org/wiki/Robot_Operating_System) page](https://en.wikipedia.org/wiki/Robot_Operating_System).
+
+### Useful Resources
+
+The documentation is prepared as a target-based concise summary of many cool features of ROS. However, a deeper and integrated understanding of ROS, we highly suggest you check out these tutorials:
+
+* [Official ROS Documentation](https://docs.ros.org/en/foxy/)
+* [TheConstructSim](https://www.theconstructsim.com/robotigniteacademy_learnros/ros-courses-library/)
+* [A Concise Introduction to Robot Programming with ROS2](https://github.com/fmrico/book_ros2)
+
+and some forums where you can ask questions:
+
+* [Stackexchange for ROS](https://robotics.stackexchange.com/)
+* [ROS Q&A](https://answers.ros.org/questions/)
+
+{: .notice--danger}
+
+**IMPORTANT:** You should specify the ROS distribution (Foxy in our case) when you are using other sources and forums. There are several ROS versions and some of which are not compatible with each other. The ROS1 distributions (..., Kinetic, Melodic, Noetic) are somewhat compatible with each other. Also ROS2 distributions (..., Dashing, Eloquent, **Foxy**, Galactic, Humble, Iron) are somewhat compatible with each other. If you cannot find what you are looking for, you may want to check answers for other distributions but always keep in mind that there might be incompatibility between ROS2 distributions and ROS2 is *a lot different* than ROS1.
+
+## Shortcuts, Commands, Definitions
+
+For a beginner, both the Linux system and ROS structure can be confusing. To make this transition as smooth as possible for you, we prepared a Python tutorial and a Linux tutorial page. Please check these out if you have struggles in any of these subjects.
+
+This section gives you an overview of the most used shortcuts, commands and definitions of the most used terms within ROS. Use this section as a cheat sheet.
+
+### Shortcuts
+
+```
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
 
 * Open a new terminal: `Ctrl+Alt+T`
 * Copy Paste: `Ctrl+Shit+C` and `Ctrl+Shit+V` (regular Ctrl+C andCtrl+V does not work in terminals)
 * `Tab` for auto-complete
 * Recursive search `Ctrl+R`
 
-### Important Commands
+{: .notice--info}
 
-* `roscore`: Start ROS master
-* `rosrun my_pkg my_node`: Start a node (a .py or .cpp file)
-* `roslaunch my_pkg my_launch.launch`: Start a launch file
-* `catkin_make`: Compile catkin workspace
-* `rosdep install --from-paths src --ignore-src -r -y`: Installdependencies of the packages in src
-* `source ~/catkin_ws/devel/setup.bash`: loads the compiled shellenvironment (use after every `catkin_make`)
+Terminal and IDE are two different software. A terminal is a *window* that you can run commands. You may look like a hacker if you type things on a terminal in front of your parents.
+Here is a screenshot of Terminator terminal (or you can use the generic Ubuntu terminal).
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/terminal.png)
+On the other hand, an IDE is a simple text editor. VSCode, Notepad, Atom or even Microsoft Word (LibreOffice for Ubuntu) can be considered as IDE. We write code in IDE -- not in a terminal (99% of the time).
+Here is a screenshot of VScode.
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/vscode.png)
+
+### Commands
+
+* `ros2 run my_pkg my_node`: Start a node (a .py or .cpp file)
+* `ros2 launch my_pkg my_launch.launch`: Start a launch file
+* `colcon build`: Compile colcon workspace
+* `colcon build --symlink-install`: Compile colcon workspace such that you don't need to compile every time you change something in Python files.
+* `rosdep install --from-paths src --ignore-src --rosdistro foxy -y`: Install dependencies of the packages in src. You need to be in the src folder and you may need `rosdep init` and/or `rosdep update` beforehand.
+* `source ~/ros2_ws/install/setup.bash`: loads the compiled shell environment (use after *almost* every `colcon build`)
 * `rospack profile`: checks and loads new packages (use after a newpackage is compiled)
 * `rostopic echo/list/info (topic_name)`: Listen/list/get informationabout available topics
 * `rosnode list/info (topic_name)`: List/get information aboutavailable nodes
@@ -56,6 +87,8 @@ This page serves as a look-up page where you can find process andcommands easily
 * `rosparam list/load/get/set`: Commands for parameter server
 
 ### Dictionary
+
+![image-center](https://docs.ros.org/en/humble/_images/Nodes-TopicandService.gif)
 
 * **ROS master**: The main node enables other nodes to communicate
 * **node**: ROS executable

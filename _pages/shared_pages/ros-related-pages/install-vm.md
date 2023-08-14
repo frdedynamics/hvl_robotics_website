@@ -1,4 +1,4 @@
-In this course, we are using Ubuntu 20.04 LTS and ROS2 Foxy as development tools. We will talk about what these *tools* mean later but for now you just need to know that these are not regular programs which you simply write the name in Microsoft Store (or App Store) and get. Therefore, we are using virtual machines.
+In this course, we are using [Ubuntu 20.04 LTS](https://releases.ubuntu.com/focal/) and [ROS2 Foxy](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html) as development tools. We will talk about what these *tools* mean later but for now you just need to know that these are not regular programs which you simply write the name in Microsoft Store (or App Store) and get. Therefore, we are using virtual machines.
 
 Virtual machines are basically some software which run just like a
 regular PC but without any physical components. They use the *host*\'s
@@ -8,7 +8,7 @@ this ready-to-use solution for you to start ROS as smooth as possible.
 
 There will be two components:
 
-1. The virtual appliance
+1. The virtual appliance (the file you open in a virtual machine player)
 2. A software to run the virtual appliance (VMware)
 
 The admin password inside the virtual appliance is: **ros**
@@ -49,26 +49,21 @@ Also make sure, that in the **Network Adapter** settings, under
 **Network connection**, **NAT** is selected, as shown in the pictures
 below.
 
-> ![](../../_static/images/ros/vm_network_settings.PNG){.align-center}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/vm_network_settings.PNG)
 
 When first opening the virtual machine, the following window will
 pop-up. Select **I Copied It** to continue.
 
-> ![](../../_static/images/ros/vm_installation_popup.PNG){.align-center}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/vm_installation_popup.PNG)
 
 ## Troubleshooting
 
-::: note
-::: title
-Note
-:::
+{: .notice--info}
 
-For those who don\'t use the given virtual copy and choose to install
+For those who don't use the given virtual copy and choose to install
 the necessary software and packages by themselves use the following
-links: [Ubuntu 18.04 LTS](https://releases.ubuntu.com/18.04/), [ROS
-Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu), [Necessary
+links: [Ubuntu 20.04 LTS](https://releases.ubuntu.com/20.04/), [ROS2 Foxy](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html), [Necessary
 Turtlebot
 packages](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/),
 [MATLAB
 2020a](https://se.mathworks.com/products/new_products/release2020a.html).
-:::
