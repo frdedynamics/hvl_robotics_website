@@ -56,6 +56,20 @@ There is no need to hand in a report for this lab. Signed attendance and a **coo
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/vm_bridge_settings.png)
 
 ### Connecting to the Turtlebot
+Once your Virtual Machine is on, make sure the networking setting worked, by checking that you are connectec to the World Wide Web. 
+This you can do by checking the nettwork status in the upper right corner (should show an ethernet wired connection) or by just opening the browser. 
+
+It's time to turn on the Turtlebot 3 you've been assigned! Plug the battery in and turn it own by using the little switch under the camera. The robot should make a little sound as tit turns on. 
+
+While the turtlebot get's ready, open a terminal in the Virtual Machine: `Crtl + Alt + t `
+```console
+rocotics@ubuntu:~$ ifconfig
+```
+make sure that the IP address shown is in the same local network as the Turtlebots.
+{: .notice--info}  
+Being in the same local network can be seen by having the same three first numbers of the IP address!
+
+
 
 ### Turtlebot bringup
 
