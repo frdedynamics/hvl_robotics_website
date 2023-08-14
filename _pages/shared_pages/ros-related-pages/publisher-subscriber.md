@@ -1,101 +1,112 @@
+In this tutorial, you will learn ROS Nodes (as publisher and subscriber), and create your first two nodes which communicate with each other.
+
 ## How does publisher/subscriber work?
 
 ![image-center](https://docs.ros.org/en/humble/_images/Nodes-TopicandService.gif)
 
-- Make a schematic
-- explain topics, services, parameters.
+Nodes are the simplest executable files of a ROS package. They are either written in Python or C++.
 
-## Publisher/Subscriber
+In the ROS framework, there are various ways that nodes communicate with each other such as via *topic*, *request/response* or *parameter*. All have advantages and disadvantages but we will focus on *topic*s in this tutorial.
 
-~/ros2_ws/src/my_package/my_package/my_node.py
+## ROS Node
+A ROS node can publish a topic, subscribe to a topic or can to both with several topics. We just need to define it in the code. A regular ROS node (as a publisher) would look like this:
 
-## /src folder
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/node-overview.png)
 
-Create with an empty `__init__.py`.
+Maybe this is too overwhelming for the start. Let's go step by step.
 
-## Simple Node:
+### Create Publisher
 
-This is a simple Python node under /src
+Create a Python script in the package: 
 
-    def main():
-        print('Hi from my_package.')
-    
-    if __name__ == '__main__':
-        main()
+`touch ~/ros2_ws/src/my_package/my_package/my_publisher.py`
 
-This is a simple publisher which does nothing:
+#### Simple Python Script
 
-    #!/usr/bin/env python3
-    
-    import rclpy
-    from rclpy.node import Node
-    
-    class myPublisherNode(Node):
-        def __init__(self) -> None:
-            super().__init__("my_publisher")
-    
-    def main(args=None):
-        rclpy.init(args=args)
-        node = myPublisherNode()
-    
-        rclpy.shutdown()
-    
-    if __name__ == '__main__':
-        main()
+This is a simple Python script.
 
-ATM, it works as a regular Python script but not as a ROS node. There is no autocomplete and `ros2 run` does not work.
+```python
+def main():
+    print('Hi from my_package.')
+
+if __name__ == '__main__':
+    main()
+```
+
+#### Simple Publisher
+This is a simple publisher node that does nothing:
+
+```python
+#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+
+class myPublisherNode(Node):
+    def __init__(self) -> None:
+        super().__init__("my_publisher")
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = myPublisherNode()
+
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+At the moment, it works as a regular Python script but not as a ROS node. There is no autocomplete and `ros2 run` does not work.
 
 We need to add entry point in `setup.py`:
 
-    entry_points={
-            'console_scripts': [
-                'my_node = my_package.my_node:main'
-            ],
-        },
-    )
+```python
+entry_points={
+        'console_scripts': [
+            'my_node = my_package.my_publisher:main'
+        ],
+    },
+)
+```
 
-and then compile: `colcon build` and source.
+and then compile: `colcon build` and source `source install/setup.bash`
 
-* File name of the node
-* node name in the code
-* and the executable name in the `[setup.py](http://setup.py)`
+{: .notice--info}
 
-are not necessarily the same. They can be different but it is easier to follow if all are the same.
+Note that 1)File name of the node, 2) Node name in the code, and 3) Executable name in the `setup.py` are not necessarily the same. Nonetheless, it is easier to follow if we keep all the same for now.
 
-****************************************Note for those who know ROS:****************************************
+#### Create Timer in the Publisher
 
-Normally, you wouldn’t need to `catkin_make` after you make a change in a Python node. It is not the case in ROS2. You always need to `colcon build`.
+Timers are the functions that are called periodically. If we want to publish something, let's say every second, we need to use a timer.
 
-But there is a tweak around. After you create your ROS2 node in the package, compiled it once (or not), you can run `colcon build --symlink-install`and source bashrc, then the changes in this node will be affected immediately.
+**What to do:** Create a timer function, call it in the init() and spin in the main()
 
-### Create timer
+*/my_package/my_publisher.py*
 
-Create a timer function, call it in the init() and spin in the main()
+```python
+#!/usr/bin/env python3
 
-*/my_package/src/my_node.py*
+import rclpy
+from rclpy.node import Node
 
-    #!/usr/bin/env python3
-    
-    import rclpy
-    from rclpy.node import Node
-    
-    class myPublisherNode(Node):
-        def __init__(self) -> None:
-            super().__init__("my_publisher")
-            self.create_timer(1.0, self.timer_callback)
-    
-        def timer_callback(self):
-            self.get_logger().info("Hello")
-    
-    def main(args=None):
-        rclpy.init(args=args)
-        node = myPublisherNode()
-        rclpy.spin(node)
-    
-        rclpy.shutdown()
-    
-    if __name__ == '__main__':
-        main()
+class myPublisherNode(Node):
+    def __init__(self) -> None:
+        super().__init__("my_publisher")
+        self.create_timer(1.0, self.timer_callback)
+
+    def timer_callback(self):
+        self.get_logger().info("Hello")
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = myPublisherNode()
+    rclpy.spin(node)
+
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
 
 ## Simple Publisher
 

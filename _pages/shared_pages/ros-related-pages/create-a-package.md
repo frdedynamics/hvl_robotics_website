@@ -46,7 +46,6 @@ Therefore you HAVE TO source your **setup.bash** after *every time* you create a
 
 <!-- https://www.youtube.com/watch?v=Gg25GfA456o&ab_channel=RoboticsBack-End -->
 
-<!-- {% include video id="Y-0OyxoN4xU" provider="youtube" %} -->
 
 ## Finally
 Your workspace should look like this at the end of this tutorial:
