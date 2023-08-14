@@ -39,6 +39,8 @@ Get set to witness the future unfold, one twisty maze and one parameter tweak at
 ## Report 
 There is no need to hand in a report for this lab. Signed attendance and a **cool video** of the final product will suffice as approved lab exercise. 
 
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/turtelbot/tb_in_maze.png)
+
 ## Instructions
 
 ### Setting up the Virtual Machine Network
