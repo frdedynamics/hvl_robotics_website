@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Python Tutorial"
-permalink: /python
+permalink: /ele306/python
 toc: true # The right side bar "on this page"
 breadcrumbs: true  # the directory-of-documents type of header navigation
 sidebar:

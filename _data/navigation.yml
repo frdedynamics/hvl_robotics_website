@@ -13,9 +13,9 @@ ele306:
   - title: "Useful Tutorials"
     children:
       - title: "Python Tutorial"
-        url: /python
+        url: /ele306/python
       - title: "Linux Tutorial"
-        url: /linux
+        url: /ele306/linux
   - title: "ROS Lecture Notes"
     children:
       - title: "Install VM"
@@ -36,6 +36,8 @@ ele306:
         url: /courses/ele306/gazebo
       - title: "Controllers and Sensors"
         url: /courses/ele306/ros2control
+      - title: "ROS - Matlab Communication"
+        url: /courses/ele306/ros-matlab
       - title: "Build a Custom Robot"
         url: /courses/ele306/build-custom-robot
   - title: "Lab Exercises"
@@ -56,13 +58,13 @@ dat160:
   - title: "Useful Tutorials"
     children:
       - title: "Python Tutorial"
-        url: /python
+        url: /dat160/python
       - title: "Linux Tutorial"
-        url: /linux
-  - title: "Lecture Notes"
+        url: /dat160/linux
+  - title: "ROS Lecture Notes"
     children:
       - title: "Install VM"
-        url: /courses/dat160/install_vm
+        url: /courses/dat160/install-vm
       - title: "ROS Introduction"
         url: /courses/dat160/ros-intro
       - title: "ROS Filesystem"
@@ -79,10 +81,10 @@ dat160:
         url: /courses/dat160/gazebo
       - title: "Controllers and Sensors"
         url: /courses/dat160/ros2control
-      - title: "Build a Custom Robot"
-        url: /courses/dat160/build_custom_robot
       - title: "Camera and AR"
         url: /courses/dat160/camera-ar
+      - title: "Build a Custom Robot"
+        url: /courses/dat160/build_custom_robot
   - title: "Assignments"
     children:
       - title: "Braitenberg Vehicle"
