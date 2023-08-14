@@ -1,6 +1,6 @@
 <!-- # Linux Tutorial -->
 
-**Disclaimer**: Linux is *probably* the most amazing operating system. It is neither easy not effective to teach Python in a single webpage. The main purpose of this page is to create a shortcut to the commands that we use a lot during this course. We also provide links to nice Linux tutorials if you are interested to improve your skills in Linux system.
+**Disclaimer**: Linux is *probably* the most amazing operating system. It is neither easy not effective to teach Linux in a single webpage. The main purpose of this page is to create a shortcut to the commands that we use a lot during this course. We also provide links to nice Linux tutorials if you are interested to improve your skills in Linux system.
 
 {: .notice--success} 
 **Did you know?**

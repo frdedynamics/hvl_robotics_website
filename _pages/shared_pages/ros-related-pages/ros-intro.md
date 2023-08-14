@@ -57,7 +57,9 @@ This section gives you an overview of the most used shortcuts, commands and defi
 {: .notice--info}
 
 **Terminal** and **IDE** are two different software. A **terminal** is a *window* that you can run commands. You may look like a hacker if you type things on a terminal in front of your parents.
-Here is a screenshot of Terminator terminal (or you can use the generic Ubuntu terminal).
+Here is a screenshot the generic Ubuntu terminal.
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/terminal-ubuntu.png)
+(or you can use other terminal programs which has more functionality such as Terminator).
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/terminal.png)
 On the other hand, an **IDE** is a simple text editor. VSCode, Notepad, Atom or even Microsoft Word (LibreOffice for Ubuntu) can be considered as IDE. We write code in IDE -- not in a terminal (99% of the time).
 Here is a screenshot of VScode.
