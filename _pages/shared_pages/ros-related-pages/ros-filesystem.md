@@ -1,6 +1,11 @@
+In this tutorial, you will be given a short introduction on how ROS is structured and how to navigate in it.
+
+## ROS is a Filesystem
 ROS2 uses *package* to organize its programs. ROS2 packages are typically organized within a *workspace*, which is a directory that contains all of the resources and code needed for a particular project.
 
 ROS2 packages are typically created using the `colcon build` tool, which is used to manage the dependencies and build process for packages within a workspace.
+
+## ROS Workspace Structure
 
 ```
     # my_package structure
@@ -34,6 +39,14 @@ ROS2 packages are typically created using the `colcon build` tool, which is used
                 ├── urdf                      # URDF Files
                 └── worlds                    # Gazebo world files
 ```
+
+So, what you need to know about ROS filesystem so far that:
+
+* You have a folder called **/ros2_ws** in your home directory, and you do everything ROS related in this folder. 
+* You place/create all the packages in **~/ros2_ws/src/** folder.
+* The folders **/install**, **build** and **/log** are automatically created by `colcon build`.
+
+
 
 ## Troubleshooting
 

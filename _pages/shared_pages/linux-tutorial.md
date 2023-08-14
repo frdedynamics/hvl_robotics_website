@@ -20,6 +20,7 @@ Recent statistics show that there are **32.8 million Linux users worldwide**. 96
     - In VS code
 - Commands
     - cd
+      - ~ is home
     - ls
     - pwd
     - find
@@ -33,6 +34,8 @@ Recent statistics show that there are **32.8 million Linux users worldwide**. 96
 - Shortcuts
     - Tab autocomplete
     - ctrl+R
+
+    * bashrc and source sh files.
 
 ## Useful materials:
 Python books
