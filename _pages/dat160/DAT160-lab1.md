@@ -40,6 +40,22 @@ Get set to witness the future unfold, one twisty maze and one parameter tweak at
 There is no need to hand in a report for this lab. Signed attendance and a **cool video** of the final product will suffice as approved lab exercise. 
 
 ## Instructions
+
+### Setting up the Virtual Machine Network
+1. Select your virtual machine on the left bar
+2. Click Edit virtual machine settings
+3. Select Network Adapter
+4. Select the first option **Bridged: Connected directly to the physical network** also check the **Replicate physical network connection state**
+5. Go to Configure Adapters and ONLY select the wireless adapter which your PC has. In our case it is “Killer(R) Wi-Fi 6 AX1650 160MHz Wireless Network Adapter”
+6. Save everything and start your virtual machine.
+
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/VM-settings.png)
+
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/vm_bridge_settings.png)
+
+
+
+
 TO DO!! write this better with pictures and stuff!
 
 - turn on the vm with the bridged network
