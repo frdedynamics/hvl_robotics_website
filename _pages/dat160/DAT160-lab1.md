@@ -17,7 +17,7 @@ Welcome to the lab sessions, where your imagination meets real-world tech! 🚀 
 
 Our maze is set, your vehicle awaits. Get ready to fine-tune those algorithms and parameters, transforming your virtual success into real-world magic. 🌟
 
-Get set to witness the future unfold, one twisty maze and one parameter tweak at a time. 🤖🔧🌈
+Get set to witness the future unfold, one twisty maze and one parameter tweak at a time. 🤖🔧
 
 <div align="center">
 <img src="https://media.giphy.com/media/47EtjlHYFREM5Rznaf/giphy.gif" width="340" height="340" />
@@ -29,7 +29,7 @@ Get set to witness the future unfold, one twisty maze and one parameter tweak at
 1. Your personal PC with the Virtual Machine running
 2. Your code from Assignment 1
 3. A real life Turtlebot 3
-4. Good mood!
+4. Good mood!🌈
 
 ## Before the lab 
 1. Make sure you did Assigment 1
@@ -40,4 +40,21 @@ Get set to witness the future unfold, one twisty maze and one parameter tweak at
 There is no need to hand in a report for this lab. Signed attendance and a **cool video** of the final product will suffice as approved lab exercise. 
 
 ## Instructions
+TO DO!! write this better with pictures and stuff!
 
+- turn on the vm with the bridged network
+- turn on the TB
+- in the vm go to the baschrc filer and change the 30 to something else
+- then ssh into the turtlebot, change said number too 
+- then launch the bringup
+- then on the vm launcht he python script and have fun changing the parameters to get the tb through the maze , open the python code with "code gile_name.py"
+
+ops: 
+from rclpy.qos import qos_profile_sensor_data
+self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qos_profile_sensor_data)
+
+parameters that worked for me: 
+angles: 40 and 320
+linear speed 0.1
+lidar_threshold: 0.35
+angular speed 0.45
