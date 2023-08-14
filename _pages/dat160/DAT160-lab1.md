@@ -39,7 +39,7 @@ Get set to witness the future unfold, one twisty maze and one parameter tweak at
 ## Report 
 There is no need to hand in a report for this lab. Signed attendance and a **cool video** of the final product will suffice as approved lab exercise. 
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/turtelbot/tb_in_maze.png)
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/turtlebot/tb_in_maze.png)
 
 ## Instructions
 
@@ -55,7 +55,11 @@ There is no need to hand in a report for this lab. Signed attendance and a **coo
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/vm_bridge_settings.png)
 
+### Connecting to the Turtlebot
 
+### Turtlebot bringup
+
+### Test and tweak your script
 
 
 TO DO!! write this better with pictures and stuff!
