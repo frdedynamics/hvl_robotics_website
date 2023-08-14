@@ -85,14 +85,14 @@ dat160:
         url: /courses/dat160/camera-ar
   - title: "Assignments"
     children:
-      - title: "ROS Publisher/Subscriber (Braitenberg)"
+      - title: "Braitenberg Vehicle"
         url: /courses/dat160/a1
-      - title: "Bug2 part-1 (wall follower)"
+      - title: "Wall Follower and Go-To-Point"
         url: /courses/dat160/a2
-      - title: "Bug2 part-2 (wall follower/go to point with action/server)"
+      - title: "Bug2"
         url: /courses/dat160/a3
       - title: "Robot Teams"
-        url: /courses/dat160/a3
+        url: /courses/dat160/a4
   - title: "Lab Exercises"
     children:
       - title: "Lab-1: Wall Follower with TB3"
