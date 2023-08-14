@@ -66,8 +66,11 @@ While the turtlebot get's ready, open a terminal in the Virtual Machine: `Crtl +
 rocotics@ubuntu:~$ ifconfig
 ```
 make sure that the IP address shown is in the same local network as the Turtlebots.
-{: .notice--info}  
+
+Info:
 Being in the same local network can be seen by having the same three first numbers of the IP address!
+{: .notice--info}  
+
 
 
 
