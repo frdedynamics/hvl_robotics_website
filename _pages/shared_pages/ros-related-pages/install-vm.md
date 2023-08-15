@@ -24,9 +24,8 @@ the .zip file.
 
 ## Virtual Appliance Player
 
-A virtual appliance player is a software on which you can run your
-virtual appliance (aka. a virtual copy of a system). We suggest you to
-download VMware for this purpose.
+A virtual appliance player is a piece of software on which you can run your
+virtual appliance (aka. a virtual copy of a system). We suggest you download VMware for this purpose.
 
 ### VMware Install
 
@@ -43,7 +42,7 @@ machine settings** and in Display settings enable **Accelerate 3D
 graphics** and choose recommended Graphics Memory from the dropdown box
 as shown in the pictures.
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/VM-settings.png)
+![image-center]({{ site.url }}{{ site.baseurl}}/assets/images/shared/vm/VM-settings.png)
 
 Also make sure, that in the **Network Adapter** settings, under
 **Network connection**, **NAT** is selected, as shown in the pictures

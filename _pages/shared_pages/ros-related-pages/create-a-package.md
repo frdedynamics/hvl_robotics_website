@@ -46,6 +46,10 @@ Therefore you HAVE TO source your **setup.bash** after *every time* you create a
 
 <!-- https://www.youtube.com/watch?v=Gg25GfA456o&ab_channel=RoboticsBack-End -->
 
+{: .notice--info}
+
+If you close the terminal and open a new one, it does automatically source your `~/ros2_ws`.
+
 
 ## Finally
 Your workspace should look like this at the end of this tutorial:
