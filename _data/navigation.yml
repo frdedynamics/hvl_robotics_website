@@ -36,6 +36,8 @@ ele306:
         url: /courses/ele306/gazebo
       - title: "Controllers and Sensors"
         url: /courses/ele306/ros2control
+      - title: "ROS Communication Patterns"
+        url: /courses/ele306/ros-comm-pattern
       - title: "ROS - Matlab Communication"
         url: /courses/ele306/ros-matlab
       - title: "Build a Custom Robot"
@@ -81,6 +83,8 @@ dat160:
         url: /courses/dat160/gazebo
       - title: "Controllers and Sensors"
         url: /courses/dat160/ros2control
+      - title: "ROS Communication Patterns"
+        url: /courses/dat160/ros-comm-pattern
       - title: "Camera and AR"
         url: /courses/dat160/camera-ar
       - title: "Competition"
