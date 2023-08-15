@@ -83,8 +83,8 @@ dat160:
         url: /courses/dat160/ros2control
       - title: "Camera and AR"
         url: /courses/dat160/camera-ar
-      - title: "Build a Custom Robot"
-        url: /courses/dat160/build_custom_robot
+      - title: "Competition"
+        url: /courses/dat160/competition
   - title: "Assignments"
     children:
       - title: "Braitenberg Vehicle"
