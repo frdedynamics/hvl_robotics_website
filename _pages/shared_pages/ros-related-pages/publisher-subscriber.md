@@ -237,6 +237,10 @@ You can v
 ### Visualize Nodes and Topics with rqt
 
 At the moment, there are a lot going on in the backg
+<button id="toggleButton">Toggle Text</button>
+<div id="hiddenText" style="display: none;">
+  This is the hidden text that will be shown and hidden.
+</div>
 
 
 
