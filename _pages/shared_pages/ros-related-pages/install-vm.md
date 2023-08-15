@@ -18,7 +18,7 @@ The admin password inside the virtual appliance is: **ros**
 A virtual appliance is a copy of a working operating system and its
 programs. We provide you ready-to-use virtual copy of what you need. To
 download it, use [this
-link](https://hvl365.sharepoint.com/:u:/s/RobotikkUndervisningHVL/Eb_Fy_CWLGNFkK0zY8PSimoBwOSer6dVaL8LRUHWVQUTNQ?e=llEm2S)
+link](https://hvl365.sharepoint.com/sites/RobotikkUndervisningHVL/Delte%20dokumenter/Forms/AllItems.aspx?id=%2Fsites%2FRobotikkUndervisningHVL%2FDelte%20dokumenter%2FROSTeaching%2FUbuntu20%5F04%5Ffoxy%5Fv2%2Ezip&parent=%2Fsites%2FRobotikkUndervisningHVL%2FDelte%20dokumenter%2FROSTeaching)
 with your HVL credentials. After downloading, extract the folder inside
 the .zip file.
 
