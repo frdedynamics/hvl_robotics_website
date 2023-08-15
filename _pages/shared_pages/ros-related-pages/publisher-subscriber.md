@@ -8,20 +8,20 @@ Nodes are the simplest executable files of a ROS package. They are either writte
 
 In the ROS framework, there are various ways that nodes communicate with each other such as via *topic*, *request/response* or *parameter*. All have advantages and disadvantages but we will focus on *topic*s in this tutorial.
 
-## Creating ROS Nodes
+## Creating ROS nodes
 A ROS node can publish a topic, subscribe to a topic or can to both with several topics. We just need to define it in the code. A regular ROS node (as a publisher) would look like this:
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/node-overview.png)
 
 Maybe this is too overwhelming for the start. Let's go step by step.
 
-### Create Publisher
+### Create a publisher
 
 Create a Python script in the package: 
 
 `touch ~/ros2_ws/src/my_package/my_package/my_publisher.py`
 
-#### Simple Python Script
+#### Simple Python script
 
 This is a simple Python script.
 
@@ -35,7 +35,7 @@ if __name__ == '__main__':
     main()
 ```
 
-#### Simple Publisher
+#### Simple publisher
 This is a simple publisher node that does nothing:
 
 *ros2_ws/src/my_package/my_publisher.py*
@@ -78,7 +78,7 @@ and then compile: `colcon build` and source `source install/setup.bash`
 
 Note that 1) File name of the node, 2) Node name in the code, and 3) Executable name in the `setup.py` are not necessarily the same. Nonetheless, it is easier to follow if we keep all the same for now.
 
-#### Create a Timer in the Publisher
+#### Create a timer in the publisher
 
 Timers are the functions that are called periodically. If we want to publish something, let's say every second, we need to use a timer.
 
@@ -150,7 +150,7 @@ if __name__ == '__main__':
     main()
 ```
 
-### Create Subscriber
+### Create a subscriber
 
 We have a node publishing the string `"Hello`"` at the moment. To make it more meaningful, we can create another node that listens to this string. We call these types of nodes **Subscriber**s. Let's copy-paste the code piece below and discuss how it works.
 
@@ -210,7 +210,7 @@ Now we have a publisher and a subscriber nodes. It is time to run them and obser
 1. Run subscriber: `ros2 run my_package my_subsciber`
 
 
-## Understanting Topics/Messages
+## Understanting topics/messages
 
 A **message is data** and a **topic is the channel** where nodes are subscribed to read messages or where the nodes publish those messages.
 
@@ -219,7 +219,7 @@ So far, we only focused on the *String* type of message and wrote a simple text.
 The message types can be quite generic like in [geometry_msgs](https://docs.ros2.org/latest/api/geometry_msgs/index-msg.html) and [std_msgs](https://docs.ros2.org/latest/api/std_msgs/index-msg.html), or intended to be used in specific cases like in [sensor_msgs](https://docs.ros2.org/latest/api/sensor_msgs/index-msg.html) and [nav_msgs](https://docs.ros2.org/latest/api/nav_msgs/index-msg.html). You can also create your own message type, which will be discussed later.
 
 
-### Turtlesim Tutorial
+### Turtlesim tutorial
 
 In this part of the tutorial, we will learn about a very common topic `/cmd_vel` which often controls the velocity of a robot.
 
@@ -240,7 +240,7 @@ In the ROS world, we can say that this turtle represents a mobile robot. We can 
 {: .notice--danger}
 Make sure that the terminal which the `turtle_teleop_key` node is running is selected, NOT THE SIMULATION WINDOW. Otherwise, you cannot control the turtle.
 
-### Visualize Nodes and Topics with rqt
+### Visualize nodes and topics with rqt
 
 At the moment, a lot is going on in the background. 
 
@@ -267,7 +267,10 @@ One last cool thing is that you can see all these visually also.
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/rqt-graph.png)
 
-### Turtlesim and /cmd_vel Exercise
+{: .notice--info}
+You can see what other executable nodes are available for **turtlesim** package by using the following command: `ros2 pkg executables turtlesim`
+
+### Turtlesim and /cmd_vel exercise
 
 This part is voluntary. 
 
