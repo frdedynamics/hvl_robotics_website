@@ -219,139 +219,89 @@ So far, we only focused on the *String* type of message and wrote a simple text.
 The message types can be quite generic like in [geometry_msgs](https://docs.ros2.org/latest/api/geometry_msgs/index-msg.html) and [std_msgs](https://docs.ros2.org/latest/api/std_msgs/index-msg.html), or intended to be used in specific cases like in [sensor_msgs](https://docs.ros2.org/latest/api/sensor_msgs/index-msg.html) and [nav_msgs](https://docs.ros2.org/latest/api/nav_msgs/index-msg.html). You can also create your own message type, which will be discussed later.
 
 
-### Available Topics of *turtlesim*
+### Turtlesim Tutorial
 
 In this part of the tutorial, we will learn about a very common topic `/cmd_vel` which often controls the velocity of a robot.
 
 As we mentioned before, ROS has a sweet obsession with turtles. The logos of each ROS distribution has a turtle, the mobile robots which you will work on lab assignments are called *Turtlebot*s and the tutorial that we will do now is on *turtlesim*.
 
-Run the turtlesim node: `ros2 run turtlesim turtlesim_node`
+**Run the turtlesim node:** `ros2 run turtlesim turtlesim_node`. You will see a simulated turtle.
 
-The `turtlesim` is a package that comes with ROS generic installation. You do not see a package named *turtlesim* under your `~/ros2_ws/src` directory but the code above works just fine! 
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/turtlesim-node.png)
 
 {: .notice--info}
+The `turtlesim` is a package that comes with ROS generic installation. You do not see a package named *turtlesim* under your `~/ros2_ws/src` directory but the code above works just fine! 
 If you are curious, all the default packages are in */opt/ros/foxy/share*.
 
-You can v
+In the ROS world, we can say that this turtle represents a mobile robot. We can control it as if it was a robot then. Luckily, the `turtlesim` package has an implemented *publisher node* that publishes `\cmd_vel` topic to the `turtlesim_node`.
+
+**Run the teleoperation node:** `ros2 run turtlesim turtle_teleop_key`. You will be able to control the turtle with the arrow keys on your keyboard.
+
+{: .notice--danger}
+Make sure that the terminal which the `turtle_teleop_key` node is running is selected, NOT THE SIMULATION WINDOW. Otherwise, you cannot control the turtle.
 
 ### Visualize Nodes and Topics with rqt
 
-At the moment, there are a lot going on in the backg
-<button id="toggleButton">Toggle Text</button>
+At the moment, a lot is going on in the background. 
+
+1. There are 2 nodes running: `ros2 node list`
+    ```
+    /teleop_turtle
+    /turtlesim
+    ```
+1. A few topics are available: `ros2 topic list` - one of which is **/cmd_vel**.
+    ```
+    /parameter_events
+    /rosout
+    /turtle1/cmd_vel
+    /turtle1/color_sensor
+    /turtle1/pose
+    ```
+1. The message type of the **/turtle1/cmd_vel** is *Twist*: `ros2 topic info /turtle1/cmd_vel`. There are 1 publisher and 1 subscriber node of this topic.
+
+And there is much more that you can observe with `ros2 topic/param/service/node list/info` but these are enough for this tutorial. You will learn different [communication patterns of ROS](https://frdedynamics.github.io/hvl_robotics_website/courses/dat160/ros-comm-pattern) later. These will make more sense there.
+
+One last cool thing is that you can see all these visually also. 
+
+**Type:** `ros2 run rqt_graph rqt_graph`
+
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/rqt-graph.png)
+
+### Turtlesim and /cmd_vel Exercise
+
+This part is voluntary. 
+
+Can you write a publisher that makes the turtle draw a circle?
+
+<button id="toggleButton">Click here to see the solution</button>
 <div id="hiddenText" style="display: none;">
-  This is the hidden text that will be shown and hidden.
-</div>
-
-
-
-
-## Simple Publisher
-
-Make turtlesim draw circle.
-
-*/my_package/src/my_draw_circle.py*
-
-```python
-#!/usr/bin/env python3
-
-import rclpy
-from rclpy.node import Node
-from geometry_msgs.msg import Twist
-
-class DrawCircleNode(Node):
-    def __init__(self):
-        super().__init__("draw_circle")
-        self.get_logger().info("DrawCircleNode created")
-        self.cmd_vel_pub = self.create_publisher(Twist, "/turtle1/cmd_vel", 10)
-        self.timer = self.create_timer(0.5, self.set_cmd_vel)
-
-    def set_cmd_vel(self):
-        msg = Twist()
-        msg.angular.z = 1.0
-        msg.linear.x = 1.0
-        self.cmd_vel_pub.publish(msg)
-
-def main(args=None):
-    rclpy.init(args=args)
-    pub_node = DrawCircleNode()
-    rclpy.spin(pub_node)
-    rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
-```
-
-**********Optional:********** add `geometry_msgs` and `turtlesim` in the `package.xml`.
-
-********Needed:******** Add `draw_circle.py` in `setup.py`.
-
-## Simple Subscriber
-
-Log the position of the turtlesim:
-
-*/my_package/src/my_pose_logger.py*
-
+    <pre><code class="python">
     #!/usr/bin/env python3
-    
+
     import rclpy
     from rclpy.node import Node
-    from turtlesim.msg import Pose
     from geometry_msgs.msg import Twist
-    
-    class PoseLoggerNode(Node):
+
+    class DrawCircleNode(Node):
         def __init__(self):
-            super().__init__("pose_logger")
-            self.pose_subscriber = self.create_subscription(
-                Pose, "/turtle1/pose", self.pose_callback, 10)
-            self.get_logger().info("Pose logger created")
-    
-        def pose_callback(self, msg: Pose):
-            self.get_logger().info(str(msg))
-    
+            super().__init__("draw_circle")
+            self.get_logger().info("DrawCircleNode created")
+            self.cmd_vel_pub = self.create_publisher(Twist, "/turtle1/cmd_vel", 10)
+            self.timer = self.create_timer(0.5, self.set_cmd_vel)
+
+        def set_cmd_vel(self):
+            msg = Twist()
+            msg.angular.z = 1.0
+            msg.linear.x = 1.0
+            self.cmd_vel_pub.publish(msg)
+
     def main(args=None):
         rclpy.init(args=args)
-        sub_node = PoseLoggerNode()
-        rclpy.spin(sub_node)
+        pub_node = DrawCircleNode()
+        rclpy.spin(pub_node)
         rclpy.shutdown()
-    
+
     if __name__ == '__main__':
         main()
-
-* It is nice to check out the *leaf topics* in `rqt_graph` to see unpublished/unsubscribed topics also.
-
-## Finally the setup.py:
-
-    from setuptools import setup
-    
-    package_name = 'my_package'
-    
-    setup(
-        name=package_name,
-        version='0.0.0',
-        packages=[package_name],
-        data_files=[
-            ('share/ament_index/resource_index/packages',
-                ['resource/' + package_name]),
-            ('share/' + package_name, ['package.xml']),
-        ],
-        install_requires=['setuptools'],
-        zip_safe=True,
-        maintainer='gizem',
-        maintainer_email='gizem@todo.todo',
-        description='TODO: Package description',
-        license='TODO: License declaration',
-        tests_require=['pytest'],
-        entry_points={
-            'console_scripts': [
-                'my_node = my_package.src.my_node:main',
-                'my_publisher = my_package.src.my_draw_circle:main',
-                'my_subscriber = my_package.src.my_pose_logger:main'
-            ],
-        },
-    )
-
-```sequence
-Alice->Bob: Hello Bob, how are you?
-Note right of Bob: Bob thinks
-Bob-->Alice: I am good thanks!
-```
+    </code></pre>
+</div>
