@@ -145,7 +145,7 @@ rocotics@ubuntu:~$ code FILE_NAME.py
 ```
 Don't forget to save the file before you run it again for testing purposes. 
 
-Hint 1: 
+**Hint 1:**
 If nothing happends when you launch your script, then you might have some subscriber or publisher problem. 
 Double check them and make sure the **qos** is set properly. 
 {: .notice--info} 
@@ -154,7 +154,7 @@ Double check them and make sure the **qos** is set properly.
 self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qos_profile_sensor_data)-->
 
 
-Hint 2: The parameters you are going to want to tweak are the following:
+Hint 2: The parameters you are going to want to tweak are the following: {: .notice--info}
 - the lidar angles
 - the linear speed
 - the angular speed
