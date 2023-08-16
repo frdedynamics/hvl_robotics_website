@@ -154,14 +154,14 @@ Double check them and make sure the **qos** is set properly.
 self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qos_profile_sensor_data)-->
 
 
-<div class="notice--info"">
+<div class="notice--info">
 <h4>Hint 2:</h4>
 <p>The parameters you are going to want to tweak are the following:</p>
 <ul>
-  <li> ::marker lidar angles</li>
-  <li> ::marker linear speed</li>
-  <li> ::marker anguler speed</li>
-  <li > ::marker distance threshold</li>
+  <li> lidar angles</li>
+  <li> linear speed</li>
+  <li> anguler speed</li>
+  <li > distance threshold</li>
 </ul>
 </div>
 
