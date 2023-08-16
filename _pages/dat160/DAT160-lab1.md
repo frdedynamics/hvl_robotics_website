@@ -89,24 +89,28 @@ The default middleware that ROS 2 uses for communication is DDS (Data Distributi
 So each student will have a domain ID given to you by the teacher. It will be a number between 0 and 101, inclusive.
 This domain ID has to be given to the turtlebot and to your virutal machine. 
 
+#### On the turtlebot
 So in the **terminal which is connected to the turtlebot**, write those commands:
 ```console
 ubuntu@ubuntu:~$ nano ~/.bashrc
 ```
 This will open a file in the terminal, with the arrows go all the way down until you find: 
 **ROS_DOMAIN_ID=30** 
+
 Change the 30 with your personal domain ID, then save and close the file with `Crtl + s ` then `Crtl + x `
 You then need to **source** the file you just modified, this is done with this command:
 ```console
 ubuntu@ubuntu:~$ source ~/.bashrc
 ```
 
+#### On the remote PC
 Then the same has to be done in the virtual machine, on what we call the **remote PC**:
 ```console
 rocotics@ubuntu:~$ nano ~/.bashrc
 ```
 This will open a file in the terminal, with the arrows go all the way down until you find: 
 **ROS_DOMAIN_ID=30** 
+
 Change the 30 with your personal domain ID, then save and close the file with `Crtl + s ` then `Crtl + x `
 You then need to **source** the file you just modified, this is done with this command:
 ```console
@@ -126,13 +130,15 @@ Your turtlebot is now ready to get commands from your script!
 ### Test and tweak your script
 Now comes the fun part! 
 
-Make sure the turtlebot is in a same environment before you start controlling it!{: .notice--info}  
+Make sure the turtlebot is in a same environment before you start controlling it!
+{: .notice--info}  
 
 It's time to run your simple navigation script, this you can do by navigation (in a terminal) in your virtual machine to the folder where the script is located and run it. Since it's a python 3 file, the command line is the following: 
 ```console
 rocotics@ubuntu:~$ python3 FILE_NAME.py
 ```
 Your turtlebot should now follow your simple navigation algorithm! But since this is not the simulated world you have been testing your code in, it's going to be a mess... that's why you have to now tweak the parameters to make it work in this real maze! 
+
 In the same terminal, open your script in Visual Studio Code with this command: 
 ```console
 rocotics@ubuntu:~$ code FILE_NAME.py
@@ -142,11 +148,11 @@ Don't forget to save the file before you run it again for testing purposes.
 Hint 1: 
 If nothing happends when you launch your script, then you might have some subscriber or publisher problem. 
 Double check them and make sure the **qos** is set properly. 
-```
-from rclpy.qos import qos_profile_sensor_data
-self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qos_profile_sensor_data)
-```
 {: .notice--info} 
+
+<! -- from rclpy.qos import qos_profile_sensor_data
+self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qos_profile_sensor_data)-->
+
 
 Hint 2:
 The parameters you are going to want to tweak are the following:
@@ -154,11 +160,12 @@ The parameters you are going to want to tweak are the following:
 - the linear speed
 - the angular speed
 - the distance threshold
-parameters that worked for me: 
+{: .notice--info}
+
+<!--parameters that worked for me: 
 angles: 40 and 320
 linear speed 0.1
 lidar_threshold: 0.35
-angular speed 0.45
+angular speed 0.45-->
 
-{: .notice--info}  
 
