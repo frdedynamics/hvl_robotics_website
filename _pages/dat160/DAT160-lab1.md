@@ -131,7 +131,7 @@ Your turtlebot is now ready to get commands from your script!
 Now comes the fun part! 
 
 Make sure the turtlebot is in a same environment before you start controlling it!
-{: .notice--info}  
+{: .notice--danger}  
 
 It's time to run your simple navigation script, this you can do by navigation (in a terminal) in your virtual machine to the folder where the script is located and run it. Since it's a python 3 file, the command line is the following: 
 ```console
@@ -154,12 +154,17 @@ Double check them and make sure the **qos** is set properly.
 self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qos_profile_sensor_data)-->
 
 
-Hint 2: The parameters you are going to want to tweak are the following: {: .notice--info}
-- the lidar angles
-- the linear speed
-- the angular speed
-- the distance threshold
-{: .notice--info}
+<div class="notice--info"">
+<h4>Hint 2:</h4>
+<p>The parameters you are going to want to tweak are the following:</p>
+<ul>
+  <li> ::marker lidar angles</li>
+  <li> ::marker linear speed</li>
+  <li> ::marker anguler speed</li>
+  <li > ::marker distance threshold</li>
+</ul>
+</div>
+
 
 <!--parameters that worked for me: 
 angles: 40 and 320
