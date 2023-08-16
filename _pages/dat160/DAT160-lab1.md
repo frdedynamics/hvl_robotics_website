@@ -150,12 +150,11 @@ If nothing happends when you launch your script, then you might have some subscr
 Double check them and make sure the **qos** is set properly. 
 {: .notice--info} 
 
-<! -- from rclpy.qos import qos_profile_sensor_data
+<!-- from rclpy.qos import qos_profile_sensor_data
 self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qos_profile_sensor_data)-->
 
 
-Hint 2:
-The parameters you are going to want to tweak are the following:
+Hint 2: The parameters you are going to want to tweak are the following:
 - the lidar angles
 - the linear speed
 - the angular speed
