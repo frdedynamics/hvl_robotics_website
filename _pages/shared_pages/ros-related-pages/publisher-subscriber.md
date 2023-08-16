@@ -258,10 +258,15 @@ At the moment, a lot is going on in the background.
     /turtle1/pose
     ```
 1. The message type of the **/turtle1/cmd_vel** is *Twist*: `ros2 topic info /turtle1/cmd_vel`. There are 1 publisher and 1 subscriber node of this topic.
+    ```
+    Type: geometry_msgs/msg/Twist
+    Publisher count: 1
+    Subscription count: 1
+    ```
 
 And there is much more that you can observe with `ros2 topic/param/service/node list/info` but these are enough for this tutorial. You will learn different [communication patterns of ROS](https://frdedynamics.github.io/hvl_robotics_website/courses/dat160/ros-comm-pattern) later. These will make more sense there.
 
-One last cool thing is that you can see all these visually also. 
+One last cool thing is that you can see all these visually instead.
 
 **Type:** `ros2 run rqt_graph rqt_graph`
 
