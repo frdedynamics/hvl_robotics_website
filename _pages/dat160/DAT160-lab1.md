@@ -67,12 +67,30 @@ rocotics@ubuntu:~$ ifconfig
 ```
 make sure that the IP address shown is in the same local network as the Turtlebots.
 
-Info:
+**Info:**
 Being in the same local network can be seen by having the same three first numbers of the IP address!
 {: .notice--info}  
 
+The IP address of the Turtlebot assigned to you will be provided to you by the teacher. This IP address is what you will use to connect to the Turtlebot. This type of connection is called an **ssh** connection (Secure Socket Shell), it's a network protocole that allows users to access computers on a network in a secure way. 
 
+Open a terminal window `Crtl + Alt + t ` in the virtual machine and use this command by changing IP_ADDRESS_TURTLEBOT with the actual IP address:
+```console
+rocotics@ubuntu:~$ ssh ubuntu@IP_ADDRESS_TURTLEBOT
+```
+The terminal should then ask you for a password, the turtlebot's on-board computer's password. Which is **turtlebot**.
+Once the password has been accepted, the terminal's prompt will change to the turtlebot's username, like this:
+```console
+rocotics@ubuntu:~$ ???? CHECK WHAT IT ACTUALLY IS
+```
+You are now controlling the turtlebot's on-board computer, a Raspberry Pi 3B. 
 
+### ROS environment configuration
+The default middleware that ROS 2 uses for communication is DDS (Data Distribution Service). In DDS, the primary mechanism for having different logical networks share a physical network is known as the Domain ID. ROS 2 nodes on the same domain can freely discover and send messages to each other, while ROS 2 nodes on different domains cannot. All ROS 2 nodes use domain ID 0 by default. To avoid interference between different groups of computers running ROS 2 on the same network, a different domain ID should be set for each group.
+So each student will have a domain ID given to you by the teacher. It will be a number between 0 and 101, inclusive.
+This domain ID has to be given to the turtlebot and to your virutal machine: 
+
+ echo 'export ROS_DOMAIN_ID=30 #TURTLEBOT3' >> ~/.bashrc
+$ source ~/.bashrc
 
 ### Turtlebot bringup
 
