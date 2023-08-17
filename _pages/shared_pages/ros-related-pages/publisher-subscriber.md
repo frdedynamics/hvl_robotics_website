@@ -231,7 +231,7 @@ As we mentioned before, ROS has a sweet obsession with turtles. The logos of eac
 
 {: .notice--info}
 The `turtlesim` is a package that comes with ROS generic installation. You do not see a package named *turtlesim* under your `~/ros2_ws/src` directory but the code above works just fine! 
-If you are curious, all the default packages are in */opt/ros/foxy/share*.
+If you are curious, all the default packages are in */opt/ros/foxy/share*. You can use this command: `ros2 pkg prefix turtlesim`
 
 In the ROS world, we can say that this turtle represents a mobile robot. We can control it as if it was a robot then. Luckily, the `turtlesim` package has an implemented *publisher node* that publishes `\cmd_vel` topic to the `turtlesim_node`.
 

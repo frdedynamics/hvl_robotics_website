@@ -14,14 +14,14 @@ or
 1. Open a terminal: **Ctrl+Alt+T**
 1. Change directory to your package: `cd ~/ros2_ws/src/my_package`
 1. Create a launch folder: `mkdir launch`
-1. Create a launch file in it: `touch my_launch.py`
+1. Create a launch file in it: `touch my_launch.launch.py`
 
 Your directory should look like this:
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/launch.png)
 
 Now copy the code below and go through line-by-line.
 
-*/my_package/launch/my_launch.py*
+*/my_package/launch/my_launch.launch.py*
 
 ```python
 from launch import LaunchDescription
@@ -49,7 +49,7 @@ def generate_launch_description():
 We need to tell the ROS that we have a new executable. It is a bit different than introducing a node as executable (as we did in the previous tutorial). Here, we include the whole /launch folder.
 
 1. Add the necessary imports `setuptools` and `glob`. 
-1. Expand the **data_files[]** such that you add this line: `(os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*launch.[pxy][yma]*'))),`
+1. Expand the **data_files[]** such that you add this line: `(os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*.launch.py'))),`
 
 */my_package/setup.py*
 ```python
@@ -67,7 +67,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*launch.[pxy][yma]*'))), ## Add-3
+        (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*.launch.py'))), ## Add-3
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -88,11 +88,11 @@ setup(
 
 ## Run the launch file
 
-The command to run a launch file is very similar to running a node: `ros2 launch my_package my_launch.py`
+The command to run a launch file is very similar to running a node: `ros2 launch my_package my_launch.launch.py`
 
 Now you can observe that two *hello world* nodes from the previous tutorial are running. (Hint: use either `ros2 node list` or `ros2 run rqt_graph rqt_graph`)
 
-### Voluntary exercise
+## Voluntary exercise
 
 Can you modify the launch file such that it also starts the `turtlesim_node` and `turtle_teleop_key` nodes from the previous tutorial? The result should look like this:
 
@@ -134,3 +134,4 @@ Can you modify the launch file such that it also starts the `turtlesim_node` and
 
     </code></pre>
 </div>
+
