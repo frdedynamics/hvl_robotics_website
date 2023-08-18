@@ -37,7 +37,7 @@ After installing it you can import the virtual appliance by clicking
 **Open a Virtual Machine** and choose the .vmx file from inside the
 previously downloaded and extracted folder.
 
-After you finished importing the virual appliance, go to **Edit virtual
+After you finished importing the virtual appliance, go to **Edit virtual
 machine settings** and in Display settings enable **Accelerate 3D
 graphics** and choose recommended Graphics Memory from the dropdown box
 as shown in the pictures.
@@ -71,6 +71,9 @@ sudo apt-get install --reinstall open-vm-tools-desktop -y
 and now restart the VMware.
 
 {: .notice--info}
+You might still experience errors in copy-paste'ing folders. Then just click "Skip all". It will successfully copy-paste, nonetheless.
+
+### Standalone installation
 
 For those who don't use the given virtual copy and choose to install
 the necessary software and packages by themselves use the following
