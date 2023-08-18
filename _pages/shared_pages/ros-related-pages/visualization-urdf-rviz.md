@@ -216,28 +216,33 @@ data_files=[
         ('share/' + package_name, ['package.xml']),
         ## Add 3-5
         (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*.launch.py'))),
-        (os.path.join('share', package_name, 'urdf'), glob(os.path.join('urdf', '*.xacro'))),
+        (os.path.join('share', package_name, 'urdf/my_mobile_robot/'), glob(os.path.join('urdf/my_mobile_robot/', '*.xacro'))),
         (os.path.join('share', package_name, 'config'), glob(os.path.join('config', '*.[yaml,rviz]'))),
     ],
 ...
 ```
 
-
-Rviz, URDF
-- What is an XML file
-- What is a URDF
-- What is xacro
-
-Get simple things from old notes
-
-Later:
-
-```python
-<link name='base_link'/>
-
-  <joint name='base_to_chassis' type='fixed'>
-    <parent link="base_link"/>
-    <child link="chassis"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </joint>
+We are ready to run. Run these in your ~/ros2_ws directory.
 ```
+colcon build
+source install/setup.bash
+ros2 launch  my_robot_pkg my_mobile_robot_visualize.launch.py
+```
+
+You will see Rviz started but you are not seeing any robots on the screen yet. There are 3 things we need to set on the left toolbox.
+1. Change fixed frame from *map* to *odom*
+1. Add **RobotModel** at the bottom left.
+1. Change the RobotModel description topic to */robot_description*
+
+You should be able to see the robot now.
+
+If you press Ctrl + S, it will save these settings.
+
+### Observing TF
+Go to the left toolbox and add **TF**.
+
+Change the model link features; show axes, adjust opacity (alpha)
+
+Play around the *Joint State Publisher*
+
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/rviz-tf.png)

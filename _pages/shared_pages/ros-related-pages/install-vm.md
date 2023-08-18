@@ -50,8 +50,7 @@ below.
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/vm_network_settings.PNG)
 
-When first opening the virtual machine, the following window will
-pop-up. Select **I Copied It** to continue.
+When first opening the virtual machine, the following window will pop-up. Select **I Copied It** to continue.
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/vm_installation_popup.PNG)
 
