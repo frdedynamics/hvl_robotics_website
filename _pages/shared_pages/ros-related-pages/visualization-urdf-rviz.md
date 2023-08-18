@@ -147,15 +147,17 @@ Your robot is ready but you cannot "run" an XML file in the ROS system. You need
 
 1. Change directory in your package: `cd ~/ros2_ws/src/my_robot_pkg`
 1. Create a new folder to keep your launch files: `mkdir launch`
-1. Create a new xacro file in this folder: `touch launch/my_mobile_robot_visualize.launch.py`
+1. Create a new xacro file in this folder: `touch launch/my_mobile_robot.launch.py`
 1. Copy-paste the content below:
 
-*~/ros2_ws/src/my_robot_pkg/launch/my_mobile_robot_visualize.launch.py*
+*~/ros2_ws/src/my_robot_pkg/launch/my_mobile_robot.launch.py*
 ```python
 from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
-import os
+import os, time
 import xacro
 from ament_index_python.packages import get_package_share_directory
 
@@ -163,12 +165,16 @@ def generate_launch_description():
 
     package_name = 'my_robot_pkg'
 
-    xacro_file = os.path.join(get_package_share_directory(package_name), 'urdf', 'my_mobile_robot_simple.xacro')
-   
+    package_path = os.path.join(
+        get_package_share_directory(package_name))
+    xacro_file = os.path.join(package_path,
+                              'urdf/',
+                              'my_mobile_robot_simple.xacro')
     
     doc = xacro.parse(open(xacro_file))
     xacro.process_doc(doc)
-    params = {'robot_description': doc.toxml()}
+    my_mobile_robot_description = doc.toxml()
+    params = {'robot_description': my_mobile_robot_description, 'use_sim_time': True}
 
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
@@ -185,7 +191,7 @@ def generate_launch_description():
 
     node_tf = Node(package = "tf2_ros", 
                        executable = "static_transform_publisher",
-                       arguments = ["0", "0", "0", "0", "0", "0", "odom", "base_link"])
+                       arguments = ["0", "0", "0", "0", "0", "0", "map", "base_link"])
 
     node_rviz = Node(
         package='rviz2',
@@ -214,10 +220,10 @@ data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ## Add 3-5
+        ## Add these
         (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*.launch.py'))),
-        (os.path.join('share', package_name, 'urdf/my_mobile_robot/'), glob(os.path.join('urdf/my_mobile_robot/', '*.xacro'))),
-        (os.path.join('share', package_name, 'config'), glob(os.path.join('config', '*.[yaml,rviz]'))),
+        (os.path.join('share', package_name, 'urdf'), glob(os.path.join('urdf', '*.xacro'))),
+        (os.path.join('share', package_name, 'config'), glob(os.path.join('config', '*.yaml'))),
     ],
 ...
 ```
@@ -226,11 +232,10 @@ We are ready to run. Run these in your ~/ros2_ws directory.
 ```
 colcon build
 source install/setup.bash
-ros2 launch  my_robot_pkg my_mobile_robot_visualize.launch.py
+ros2 launch  my_robot_pkg my_mobile_robot.launch.py
 ```
 
 You will see Rviz started but you are not seeing any robots on the screen yet. There are 3 things we need to set on the left toolbox.
-1. Change fixed frame from *map* to *odom*
 1. Add **RobotModel** at the bottom left.
 1. Change the RobotModel description topic to */robot_description*
 
