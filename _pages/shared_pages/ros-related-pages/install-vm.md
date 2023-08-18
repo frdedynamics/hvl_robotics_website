@@ -18,7 +18,7 @@ The admin password inside the virtual appliance is: **ros**
 A virtual appliance is a copy of a working operating system and its
 programs. We provide you ready-to-use virtual copy of what you need. To
 download it, use [this
-link](https://frdedynamics.github.io/hvl_robotics_website/custom_404)
+link](https://drive.google.com/file/d/1JDhAxU6_6whFFB2rzeElW-PkUM3Xn9Bw/view?usp=drive_link)
 with your HVL credentials. After downloading, extract the folder inside
 the .zip file.
 
@@ -56,6 +56,19 @@ pop-up. Select **I Copied It** to continue.
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/vm_installation_popup.PNG)
 
 ## Troubleshooting
+
+### Copy-paste doesn't work
+
+1. Start your virtual machine.
+1. Open a terminal: **Ctrl + Alt + T**
+1. Run these commands:
+```
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove
+sudo apt-get install --reinstall open-vm-tools-desktop -y
+```
+and now restart the VMware.
 
 {: .notice--info}
 
