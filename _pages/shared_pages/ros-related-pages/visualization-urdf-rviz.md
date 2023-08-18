@@ -241,7 +241,7 @@ If you press Ctrl + S, it will save these settings.
 ### Observing TF
 Go to the left toolbox and add **TF**.
 
-Change the model link features; show axes, adjust opacity (alpha)
+Change the model link features; show axes, adjust the opacity (alpha)
 
 Play around the *Joint State Publisher*
 
