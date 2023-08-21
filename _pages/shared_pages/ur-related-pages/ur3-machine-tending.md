@@ -46,7 +46,7 @@ You can store your installation as you store a program. Changes to the default i
 {: .notice}
 
 3.Top tip for preparing: Use the [offline simulator fromUR](https://www.universal-robots.com/download/?option=41508&fbclid=IwAR1yU32_hPdsL40SljlNJBEC9J9uIRgfqNrnM8_6hQLOALupTzte9jB3-ss#section41493). For the ambitious; do all your programming in the simulator, bring your saved program to the lab, bridge the simulation gap, success!  🌈  Or just wait for the lab to do it directly on the real robot...
-  
+{: .notice}  
 
 ## Report
 
