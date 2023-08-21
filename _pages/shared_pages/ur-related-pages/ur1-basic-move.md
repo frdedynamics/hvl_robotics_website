@@ -17,7 +17,7 @@
 2. Get in touch with the lab engineer **Raquel** (raquel.motzfeldt.tirach@hvl.no) for a good follow up.
 3. Travel to Campus Verftet!
 4. Read and sign the lab rules.
-5. Have fun! If you are stuck don't hesitate to ask for help ;) 
+5. Have fun! If you are stuck don't hesitate to ask for help 🌈
 
 ## Report
 
@@ -26,32 +26,36 @@ Signed attendance will suffice as approved lab exercise.
 
 ## Tasks
 
-1. Repeat Universal Robots Academy Task 4. Creating a program, but thistime on a real robot.
-    1. Make a triangle using MoveJ, then using MoveL, and finallyusing MoveP.
-    2. Pick up a real box, place it somewhere else.
-2. Repeat Universal Robots Academy Task 10. You may find it in the *PROTrack* section of the Universal Robots Academy - not in the *Core*section. The task is named feature coordinates. This time you willcompute the task on a real robot and you decide the real/imaginarybox.
+1. Repeat Universal Robots Academy Task 4. Creating a program, but this time on a **real robot**.
+    1. Make a triangle using MoveJ, then using MoveL, and finally using MoveP. 
+    2. Pick up a box with the robot, then place it somewhere else.
+2. Repeat Universal Robots Academy Task 10. You may find it in the **PROTrack** section of the Universal Robots Academy - not in the **Core** section. The task is named feature coordinates. This time you will compute the task on a **real robot** and you decide the real/imaginary box.
   
 
 ## Race pace
 
-Finally! A challenge. A series of demands are listed below, make aprogram to fulfill them. Make your program both as fast and smooth aspossible. This is a contest!
+Finally! A challenge. 🤖🔧
+
+A series of requirements are listed below, make a program to fulfill them. 
+
+Make the movements as fast and as smooth as possible!
+{: .notice--warning}
 
 1. Build the course in the picture below.
 2. Place the object in box C.
-3. Make the start position for the robot straight up, pointing to thesky.
+3. Make the start position for the robot straight up, pointing to the sky.
 4. Pick up the object
 5. Move between the two cups B, not over!
 6. Place object in box A
 
-![image-center](/assets/images/shared/ur/lab_layout_course1.png){: .align-center}
-
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ur/lab_layout_course1.png){: .align-center}
 
 
 ## Questions
 
 1. What is this thing UR calls \"Feature\"?
     1. Which ones did you use?
-    2. Where were their respective origo?
+    2. Where were their respective origins?
     3. What is their use?
-2. What is MoveJ, MoveL and MoveP? Describe the difference, and when touse what.
+2. What is MoveJ, MoveL and MoveP? Describe the difference, and when to use what.
 3. What was your fastest race time?
