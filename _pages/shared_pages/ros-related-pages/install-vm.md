@@ -58,6 +58,21 @@ When first opening the virtual machine, the following window will pop-up. Select
 
 ### Copy-paste doesn't work
 
+#### Option-1
+
+First try VM tools auto update:
+
+1. Start VMware.
+1. Select the virtual appliance *Ubuntu20_04_foxy* BUT DON'T RUN YET.
+1. Edit virtual machine settings > Options > VMware tools.
+1. Select update automatically and click Synchronize guest time with host.
+
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/vm-synch.png)
+
+#### Option-2
+
+Try this if option-1 does not work.
+
 1. Start your virtual machine.
 1. Open a terminal: **Ctrl + Alt + T**
 1. Run these commands:
