@@ -45,7 +45,7 @@ You can store your installation as you store a program. Changes to the default i
 2.Try to get together in a group of 2-4 people.
 {: .notice}
 
-3.Top tip for preparing: Use the [offline simulator fromUR](https://www.universal-robots.com/download/?option=41508&fbclid=IwAR1yU32_hPdsL40SljlNJBEC9J9uIRgfqNrnM8_6hQLOALupTzte9jB3-ss#section41493). For the ambitious; do all your programming in the simulator, bring your saved program to the lab, bridge the simulation gap, success!  🌈  Or just wait for the lab to do it directly on the real robot...
+3.Top tip for preparing: Use the [offline simulator from UR](https://www.universal-robots.com/download/?option=41508&fbclid=IwAR1yU32_hPdsL40SljlNJBEC9J9uIRgfqNrnM8_6hQLOALupTzte9jB3-ss#section41493). For the ambitious; do all your programming in the simulator, bring your saved program to the lab, bridge the simulation gap, success!  🌈  Or just wait for the lab to do it directly on the real robot...
 {: .notice}  
 
 ## Report
@@ -80,7 +80,7 @@ You will connect a total of 4 digital inputs to the UR, from the controlbox.
 
 ### Elements of the Work Station
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ur/URlab3_1.png){.align-center}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ur/URlab3_1.png)
 
 1. Door_open sensor
 2. Door_close sensor
@@ -92,7 +92,7 @@ You will connect a total of 4 digital inputs to the UR, from the controlbox.
 
 Set the machine to its initial state when starting up.
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ur/URlab3_2.png){.align-center}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ur/URlab3_2.png)
 
 ### Make a program to open the machine door
 
@@ -140,7 +140,7 @@ Also, take a look at palletize/de-palletize options on the UR5e for thebuilt-in 
 
 Using the above programs as subprograms or copy/paste source, make a program to open the door, fetch the workpiece, place them in a grid, feed the machine a new workpiece and close the door. Wait until it's finished. And repeat. One workpiece at a time.
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ur/URlab3_3.png){.align-center}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ur/URlab3_3.png)
 
 Voilà! Kick your feet up and let the robot do all the work!
 
