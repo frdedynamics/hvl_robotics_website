@@ -1,30 +1,27 @@
-# Basics of UR {#Basics-of-UR}
-
 ## Theme
 
 1. Waypoints.
 2. Motion -- MoveJ og MoveL.
-3. End-effector -- use of gripper.
+3. End-effector -- using the gripper.
 4. Pick and place.
 
 ## Equipment
 
-1. UR5 / UR5e robot with PolyScope (they are different, old/new).
+1. UR5e-series robot with PolyScope.
 2. Robotiq 2-Finger Adaptive Robot Gripper / Hand-E Gripper
 3. Lab station with two boxes, two cups and a gripable object.
 
 ## Before the lab
 
-1. Complete the [Universal Robots Academy](./UR_exercises.html)**\*\<\-- this is very important!**\*
-2. If first time then contact lab-assistant/phd-fellow/teacher. Expectthorough follow up.
-3. Travel to the [HVL RoboticsLab](https://www.google.com/maps/place/HVL+Robotics+Lab/@61.4590375,5.8326453,17z/data=!3m1!4b1!4m5!3m4!1s0x4616333d5f3d88b5:0x2025abbba16257dd!8m2!3d61.459035!4d5.8348393)
+1. **Very important:** Complete the [Universal Robots Academy](https://academy.universal-robots.com/free-e-learning/e-series-e-learning/){: .notice--warning}
+2. Get in touch with the lab engineer **Raquel** (raquel.motzfeldt.tirach@hvl.no) for a good follow up.
+3. Travel to Campus Verftet!
 4. Read and sign the lab rules.
-5. Have all the fun with robots! If stuck then ask for help.
+5. Have fun! If you are stuck don't hesitate to ask for help ;) 
 
 ## Report
 
 There is no need to hand in a report after this lab.
-
 Signed attendance will suffice as approved lab exercise.
 
 ## Tasks
