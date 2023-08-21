@@ -1,16 +1,15 @@
-# Advanced UR {#Advanced-UR}
+
+{: .notice--danger}
+
+Before connecting IO, turn the robot off and disconnect the power. Waita minute for any charge to dissipate. Or risk the unfortunate fate of being human toast! 🍞
+
+{: .notice--warning}
+
+If you wear out the IO connections by abusing them, shame on you! 
 
 {: .notice--info}
 
-Before connecting IO, turn the robot off and disconnect the power. Waita minute for any charge to dissipate. Or risk the unfortunate fate ofbeing human toast.
-
-{: .notice--info}
-
-If we wear out the IO connections by abusing them, I will be a very sadpanda.
-
-{: .notice--info}
-
-You can store your installation as you store a program. Changes to thedefault installation will be deleted.
+You can store your installation as you store a program. Changes to the default installation will be deleted.
 
 ## Theme
 
@@ -23,12 +22,11 @@ You can store your installation as you store a program. Changes to thedefault in
 
 ## Equipment
 
-1. UR5 / UR5e robot with PolyScope (they are different, old/new).
+1. UR5e robot with PolyScope.
   
 2. Robotiq 2-Finger Adaptive Robot Gripper / Hand-E Gripper
   
 3. Lab station with
-  
   > 1. E-stop, box with red button and 2 sets of wiring
   > 2. Workpiece holder
   > 3. Stack of workpieces
@@ -37,42 +35,31 @@ You can store your installation as you store a program. Changes to thedefault in
 
 ## Before the lab
 
-1. Complete the [Universal Robots Academy](./UR_exercises.html)**\*\<\-- this is very important!**\*
+1.**Very important:** Complete the [Universal Robots Academy](https://academy.universal-robots.com/free-e-learning/e-series-e-learning/) 
+{: .notice--warning}
+  > 3. Setting up a tool
+  > 7. Safety settings
+  > 9. Program Flow
+  > 10. Feature Coordinates
   
-  > * \"3. Setting up a tool\"
-  > * \"7. Safety settings\"
-  > * \"9. Program Flow\"
-  > * \"10. Feature Coordinates\"
-  
-2. Try to get together in a group of 2-4 people, plz.
-  
-3. Top tip for preparing: Use the [offline simulator fromUR](https://www.universal-robots.com/download/?option=41508&fbclid=IwAR1yU32_hPdsL40SljlNJBEC9J9uIRgfqNrnM8_6hQLOALupTzte9jB3-ss#section41493).For the ambitious; do all your programming in the simulator, bringyour saved program to the lab, bridge the simulation gap, success!
+2.Try to get together in a group of 2-4 people.
+{: .notice}
+
+3.Top tip for preparing: Use the [offline simulator fromUR](https://www.universal-robots.com/download/?option=41508&fbclid=IwAR1yU32_hPdsL40SljlNJBEC9J9uIRgfqNrnM8_6hQLOALupTzte9jB3-ss#section41493). For the ambitious; do all your programming in the simulator, bring your saved program to the lab, bridge the simulation gap, success!  🌈  Or just wait for the lab to do it directly on the real robot...
   
 
 ## Report
 
 There is no need to hand in a report after this lab.
-
 Signed attendance will suffice as approved lab exercise.
 
 ## Tasks
 
-1. [Connect and test E-stop]()
-2. [Connect Control box digital IO\'s, test IO\'s]()
-3. [Elements of the Work Station]()
-4. [Finite-State Sequence of the Machine Tending Box]()
-5. [Make a program to open the machine door]()
-6. [Make a program to close the machine door]()
-7. [Make a program to pick up a workpiece]()
-8. [Make a program to place a workpiece in the work station]()
-9. [Make a program to place workpieces in a grid]()
-10. [Combine everything to a complete machine tending program]()
+### Connect and test the E-stop
 
-## [Connect and test E-stop]{.title-ref}
+The UR cabinet is ready for the E-stop to be connected using a screwdriver. The E-stop IO\'s in the cabinet are all connected by short-wires, giving the E-stop inputs high signals at all times. If, for any reason, this voltage goes away, an emergency stop is triggered just as when using the E-stop on the pendant.
 
-The UR cabinet is ready for the E-stop to be connected using ascrewdriver. The E-stop IO\'s in the cabinet are all connected byshort-wires, giving the E-stop inputs high signals at all times. If, forany reason, this voltage goes away, an emergency stop is triggered justas when using the E-stop on the pendant.
-
-The new E-stop contains 2 NC switches. If the red button is pressed, theswitches are opened, breaking the circuits.
+The new E-stop contains 2 NC switches. If the red button is pressed, the switches are opened, breaking the circuits.
 
 1. Shutdown the robot
 2. Disconnect power
@@ -80,7 +67,7 @@ The new E-stop contains 2 NC switches. If the red button is pressed, theswitches
 4. Connect the new E-stop
 5. Fire up the robot again and verify that all E-stops work
 
-## [Connect Control box digital IO\'s, test IO\'s]{.title-ref}
+### Connect Control box digital IO\'s, test IO\'s
 
 You will connect a total of 4 digital inputs to the UR, from the controlbox.
 
@@ -91,7 +78,7 @@ You will connect a total of 4 digital inputs to the UR, from the controlbox.
 5. Fire up the robot again
 6. Test and name the inputs
 
-## [Elements of the Work Station]{.title-ref}
+### Elements of the Work Station
 
 {.align-center}
 
@@ -101,45 +88,45 @@ You will connect a total of 4 digital inputs to the UR, from the controlbox.
 4. Clamp servo
 5. Ready_LED and busy_LED
 
-## [Finite-State Sequence of the Machine Tending Box]{.title-ref}
+### Finite-State Sequence of the Machine Tending Box
 
 Set the machine to its initial state when starting up.
 
 {.align-left}
 
-## [Make a program to open the machine door]{.title-ref}
+### Make a program to open the machine door
 
-Make a program to open the machine door. This might sound easier than itis. Feel free to fasten the box. Consider using force control.
+Make a program to open the machine door. This might sound easier than it is. Feel free to fasten the box. Consider using force control.
 
-## [Make a program to close the machine door]{.title-ref}
+### Make a program to close the machine door
 
-Make a program to close the machine door. Same as above, but close.
+Make a program to close the machine door. Same as above, but closed.
 
-## [Make a program to pick up a workpiece]{.title-ref}
+### Make a program to pick up a workpiece
 
-Make a program to pick a workpiece. There are several ways to this.Consider the following suggestion as a starting point:
+Make a program to pick a workpiece. There are several ways to do this. Consider the following suggestion as a starting point:
 
 1. Move to a waypoint above the workpiece.
 2. Close gripper.
-3. Lower slowly relative to the waypoint above, until workpiece isdetected.
+3. Lower slowly relative to the waypoint above, until workpiece is detected.
 4. Relative move up 1 cm.
 5. Open gripper.
 6. Move to position.
 7. Pick workpiece.
 
-The direction option can be used to detect an object on contact andperform an action. Also, have a look at stack/de-stack options on theUR5e.
+The direction option can be used to detect an object on contact and perform an action. Also, have a look at stack/de-stack options on the UR5e.
 
-It is also possible to detect the force applied to the gripper oncontact, with pre-built functions. Have a look at them!
+It is also possible to detect the force applied to the gripper on contact, with pre-built functions. Have a look at them!
 
-Tip: [my_variable = get_actual_tcp_pose()]{.title-ref} and add 0.01meters to the Z index [\[2\]]{.title-ref}, then MoveL to this variableposition.
+Tip: *my_variable = get_actual_tcp_pose()* and add 0.01meters to the Z index, then MoveL to this variableposition.
 
-## [Make a program to place a workpiece in the work station]{.title-ref}
+### Make a program to place a workpiece in the work station
 
-Make a program to place a workpiece in the work station. Try to be asaccurate as possible when placing the workpiece!
+Make a program to place a workpiece in the work station. Try to be as accurate as possible when placing the workpiece!
 
-## [Make a program to place workpieces in a grid]{.title-ref}
+### Make a program to place workpieces in a grid
 
-Make a program to place the workpieces in a grid. There are several waysto this. Consider the following suggestion as a starting point:
+Make a program to place the workpieces in a grid. There are several ways to do this. Consider the following suggestions as a starting point:
 
 1. Make a waypoint at a corner of your grid.
 2. Make a counter, row_num.
@@ -149,9 +136,9 @@ Make a program to place the workpieces in a grid. There are several waysto this.
 
 Also, take a look at palletize/de-palletize options on the UR5e for thebuilt-in template.
 
-## [Combine everything to a complete machine tending program]{.title-ref}
+### Combine everything to a complete machine tending program
 
-Using the above programs as subprograms or copy/paste source, make aprogram to open the door, fetch the workpiece, place them in a grid,feed the machine a new workpiece and close the door. Wait until itsfinished. And repeat. One workpiece at a time.
+Using the above programs as subprograms or copy/paste source, make a program to open the door, fetch the workpiece, place them in a grid, feed the machine a new workpiece and close the door. Wait until it's finished. And repeat. One workpiece at a time.
 
 {.align-center}
 
