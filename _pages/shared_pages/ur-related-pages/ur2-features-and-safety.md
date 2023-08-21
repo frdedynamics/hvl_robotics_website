@@ -1,34 +1,32 @@
-# Features and Safety Planes {#Features-and-Safety-Planes}
-
 ## Theme
 
 1. Define features and safety plane
 2. Define TCP
 3. `for` and `if` loop
-4. Fill and empty ball dispensers
+4. Play with the ping-pong ball dispensers! 🚀
 
 ## Equipment
 
-1. UR5 / UR5e robot with PolyScope (they are different, old/new).
+1. UR5e robot with PolyScope.
 2. Robotiq 2-Finger Adaptive Robot Gripper / Hand-E Gripper
-3. Lab station with two ball dispensers and 4 balls.
+3. Lab station with two ping-pong ball dispensers and 4 balls 🏓
 
 ## Before the lab
 
-1. Complete the [Universal Robots Academy](./UR_exercises.html)**\*\<\-- this is very important!**\*
-  
+1. **Very important:** Complete the [Universal Robots Academy](https://academy.universal-robots.com/free-e-learning/e-series-e-learning/) 
   > * \"3. Setting up a tool\"
   > * \"7. Safety settings\"
   > * \"9. Program Flow\"
   > * \"10. Feature Coordinates\"
+{: .notice--warning}
   
 2. Try to get together in a group of 2-4 people.
+{: .notice}
   
 
 ## Report
 
 There is no need to hand in a report after this lab.
-
 Signed attendance will suffice as approved lab exercise.
 
 ## Tasks
@@ -39,13 +37,15 @@ Signed attendance will suffice as approved lab exercise.
 
 ## Infinite ball pick and place
 
-
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ur/lab2_pic.png){: .align-center}
 
 Initial conditions: Left (1) ball dispenser has 4 balls, right (2) balldispenser has 0 balls.
 
-In this task you will program the robot to move one ping-pong ball at atime
+In this task you will program the robot to move one ping-pong ball at a time
 
-The program flow is the following
+{% capture notice-2 %}
+
+**The program flow is the following**
 
 1. Pick ball from 1. dispenser
   
@@ -64,11 +64,13 @@ The program flow is the following
 6. Repeat step 4-5 4 times
   
 7. Loop for ever
-  
+{% endcapture %}
 
-The dispensers will be moved around when you\'re done. Therefore, makefeatures for each dispenser and define waypoint like \"approachdispenser 1\" relative to dispenser 1\'s feature with an origo thatmakes sense. For more accuracy, consider using a reference when defininga feature.
+<div class="notice">{{ notice-2 | markdownify }}</div>  
 
-Test that balls are picked for ever. Move dispensers, update theirfeatures, test that stuff still work.
+The dispensers will be moved around when you\'re done. Therefore, make features for each dispenser and define waypoint like \"approach dispenser 1\" relative to dispenser 1\'s feature with an origin that makes sense. For more accuracy, consider using a reference when defining a feature.
+
+And finally test your infinite loop!  🌈
 
 ## Questions
 
