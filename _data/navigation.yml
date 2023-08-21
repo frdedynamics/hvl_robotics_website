@@ -52,6 +52,8 @@ ele306:
         url: /courses/ele306/ur2
       - title: "Lab-3: UR Machine Tending"
         url: /courses/ele306/ur3
+      - title: "Lab-3: URCap External Control"
+        url: /courses/ele306/ur3-external
       - title: "Lab-4: Wall Follower with TB3"
         url: /courses/ele306/tb1
 

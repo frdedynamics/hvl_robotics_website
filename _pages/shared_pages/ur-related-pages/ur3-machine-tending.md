@@ -1,16 +1,16 @@
 # Advanced UR {#Advanced-UR}
 
-::: warning::: titleWarning:::
+{: .notice--info}
 
-Before connecting IO, turn the robot off and disconnect the power. Waita minute for any charge to dissipate. Or risk the unfortunate fate ofbeing human toast.:::
+Before connecting IO, turn the robot off and disconnect the power. Waita minute for any charge to dissipate. Or risk the unfortunate fate ofbeing human toast.
 
-::: warning::: titleWarning:::
+{: .notice--info}
 
-If we wear out the IO connections by abusing them, I will be a very sadpanda.:::
+If we wear out the IO connections by abusing them, I will be a very sadpanda.
 
-::: note::: titleNote:::
+{: .notice--info}
 
-You can store your installation as you store a program. Changes to thedefault installation will be deleted.:::
+You can store your installation as you store a program. Changes to thedefault installation will be deleted.
 
 ## Theme
 
