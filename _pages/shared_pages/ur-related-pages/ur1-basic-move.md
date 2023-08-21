@@ -13,7 +13,8 @@
 
 ## Before the lab
 
-1. **Very important:** Complete the [Universal Robots Academy](https://academy.universal-robots.com/free-e-learning/e-series-e-learning/) {: .notice--warning}
+1. **Very important:** Complete the [Universal Robots Academy](https://academy.universal-robots.com/free-e-learning/e-series-e-learning/) 
+{: .notice--warning}
 2. Get in touch with the lab engineer **Raquel** (raquel.motzfeldt.tirach@hvl.no) for a good follow up.
 3. Travel to **Campus Verftet**!
 4. Read and sign the lab rules.
@@ -30,7 +31,8 @@ Signed attendance will suffice as approved lab exercise.
 **Repeat Universal Robots Academy Task 4. Creating a program, but this time on a real robot**:
 * Make a triangle using MoveJ, then using MoveL, and finally using MoveP. 
 * Pick up a box with the robot, then place it somewhere else.
-**Repeat Universal Robots Academy Task 10. You may find it in the **PROTrack** section of the Universal Robots Academy - not in the **Core** section. The task is named feature coordinates. This time you will compute the task on a **real robot** and you decide the real/imaginary box.**:
+* 
+**Repeat Universal Robots Academy Task 10. You may find it in the PROTrack section of the Universal Robots Academy - not in the Core section. The task is named feature coordinates. This time you will compute the task on a real robot and you decide the real/imaginary box.**
 {% endcapture %}
 
 <div class="notice">{{ notice-2 | markdownify }}</div>
