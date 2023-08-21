@@ -68,6 +68,8 @@ Signed attendance will suffice as approved lab exercise.
 
     rtde_c.stopScript()
   ```
+
+
 3.Force mode example: 
 
 ```python

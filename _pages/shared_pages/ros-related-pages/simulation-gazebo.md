@@ -221,5 +221,57 @@ ros2 launch  my_robot_pkg my_mobile_robot.launch.py
 
 
 ## Adding world
-Later.
+
+Currently, the world is empty and meaningless (*smile here*). We can add lots of predefined or custom models into our world.
+
+The following code piece shows how to spawn your robot in a world with `gazebo_ros` node.
+```python
+  # Define your world path
+  world_file_path = os.path.join(get_package_share_directory(my_robot_pkg), 'worlds', 'my_world.world')
+
+  # Starting Gazebo with world
+      gazebo = IncludeLaunchDescription(
+          PythonLaunchDescriptionSource([os.path.join(get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
+          launch_arguments={'world': world_file_path}.items()
+      )
 ```
+
+And a simple world file looks like this:
+
+```xml
+<?xml version="1.0" ?>
+<sdf version="1.6">
+
+  <world name="default">  
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Focus camera on tall pendulum -->
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>4.927360 -4.376610 3.740080 0.000000 0.275643 2.356190</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+  </world>
+</sdf>
+```
+
+We can add some items by just adding items as we included the sun and the ground plane into our world file. There are many ready-to-use models in the official [gazebo-models](https://github.com/osrf/gazebo_models) repository. Now, choose a model and as in the following code.
+
+```xml
+  <!-- Add an object -->
+      <include>
+        <uri>model://postbox</uri>
+      </include>
+```
+
+You can change the position and orientation of any object which you have added with the `<pose>x y z roll pitch yaw</pose>` tag. Probably the easiest is to design the world in Gazebo and directly save there.
