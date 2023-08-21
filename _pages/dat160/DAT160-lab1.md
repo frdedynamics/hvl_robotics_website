@@ -145,10 +145,11 @@ rocotics@ubuntu:~$ code FILE_NAME.py
 ```
 Don't forget to save the file before you run it again for testing purposes. 
 
-**Hint 1:**
-If nothing happends when you launch your script, then you might have some subscriber or publisher problem. 
-Double check them and make sure the **qos** is set properly. 
-{: .notice--info} 
+<div class="notice--info">
+<h4>Hint 1:</h4>
+<p>If nothing happends when you launch your script, then you might have some subscriber or publisher problem. 
+Double check them and make sure the **qos** is set properly. </p>
+</div>
 
 <!-- from rclpy.qos import qos_profile_sensor_data
 self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qos_profile_sensor_data)-->
