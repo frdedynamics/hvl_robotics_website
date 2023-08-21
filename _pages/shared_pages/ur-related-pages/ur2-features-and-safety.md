@@ -13,14 +13,14 @@
 
 ## Before the lab
 
-1. **Very important:** Complete the [Universal Robots Academy](https://academy.universal-robots.com/free-e-learning/e-series-e-learning/) 
-  > * \"3. Setting up a tool\"
-  > * \"7. Safety settings\"
-  > * \"9. Program Flow\"
-  > * \"10. Feature Coordinates\"
+1.**Very important:** Complete the [Universal Robots Academy](https://academy.universal-robots.com/free-e-learning/e-series-e-learning/) 
+  > 3. Setting up a tool
+  > 7. Safety settings
+  > 9. Program Flow
+  > 10. Feature Coordinates
 {: .notice--warning}
   
-2. Try to get together in a group of 2-4 people.
+2.Try to get together in a group of 2-4 people.
 {: .notice}
   
 
@@ -47,23 +47,23 @@ In this task you will program the robot to move one ping-pong ball at a time
 
 **The program flow is the following**
 
-1. Pick ball from 1. dispenser
+1.Pick ball from 1. dispenser
   
   > * if ball not detected, halt
   
-2. Place it in 2. dispenser
+2.Place it in 2. dispenser
   
-3. Repeat step 1-2 4 times
+3.Repeat step 1-2 4 times
   
-4. Pick balls from 2. dispenser
+4.Pick balls from 2. dispenser
   
   > * if ball not detected, halt
   
-5. Place balls in 1. dispenser
+5.Place balls in 1. dispenser
   
-6. Repeat step 4-5 4 times
+6.Repeat step 4-5 4 times
   
-7. Loop for ever
+7.Loop for ever
 {% endcapture %}
 
 <div class="notice">{{ notice-2 | markdownify }}</div>  
