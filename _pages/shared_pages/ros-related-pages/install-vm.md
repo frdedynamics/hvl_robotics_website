@@ -11,7 +11,7 @@ There will be two components:
 1. The virtual appliance (the file you open in a virtual machine player)
 2. A software to run the virtual appliance (VMware)
 
-The admin password inside the virtual appliance is: **ros**
+The admin password inside the virtual appliance is: **student**
 
 ## Virtual Appliance
 
