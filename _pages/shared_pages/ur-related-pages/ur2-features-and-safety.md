@@ -14,11 +14,11 @@
 ## Before the lab
 
 1.**Very important:** Complete the [Universal Robots Academy](https://academy.universal-robots.com/free-e-learning/e-series-e-learning/) 
+{: .notice--warning}
   > 3. Setting up a tool
   > 7. Safety settings
   > 9. Program Flow
   > 10. Feature Coordinates
-{: .notice--warning}
   
 2.Try to get together in a group of 2-4 people.
 {: .notice}
