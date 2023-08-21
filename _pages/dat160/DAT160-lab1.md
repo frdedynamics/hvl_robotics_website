@@ -130,7 +130,7 @@ Your turtlebot is now ready to get commands from your script!
 ### Test and tweak your script
 Now comes the fun part! 
 
-Make sure the turtlebot is in a same environment before you start controlling it!
+Make sure the turtlebot is in a safe environment before you start controlling it!
 {: .notice--danger}  
 
 It's time to run your simple navigation script, this you can do by navigation (in a terminal) in your virtual machine to the folder where the script is located and run it. Since it's a python 3 file, the command line is the following: 
