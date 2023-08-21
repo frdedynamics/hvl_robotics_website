@@ -16,9 +16,10 @@
 1. **Very important:** Complete the [Universal Robots Academy](https://academy.universal-robots.com/free-e-learning/e-series-e-learning/) 
 {: .notice--warning}
 2. Get in touch with the lab engineer **Raquel** (raquel.motzfeldt.tirach@hvl.no) for a good follow up.
-3. Travel to **Campus Verftet**!
-4. Read and sign the lab rules.
-5. Have fun! If you are stuck don't hesitate to ask for help 🌈
+3. Try to get together in a group of 2-4 people.
+4. Travel to **Campus Verftet**!
+5. Read and sign the lab rules.
+6. Have fun! If you are stuck don't hesitate to ask for help 🌈
 
 ## Report
 
