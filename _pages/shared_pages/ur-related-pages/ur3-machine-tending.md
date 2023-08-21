@@ -1,11 +1,11 @@
 
 {: .notice--danger}
 
-Before connecting IO, turn the robot off and disconnect the power. Waita minute for any charge to dissipate. Or risk the unfortunate fate of being human toast! 🍞
+**Danger:** Before connecting IO, turn the robot off and disconnect the power. Waita minute for any charge to dissipate. Or risk the unfortunate fate of being human toast! 🍞
 
 {: .notice--warning}
 
-If you wear out the IO connections by abusing them, shame on you! 
+**Warning:** If you wear out the IO connections by abusing them, shame on you! 🔔 shame! 🔔 shame!
 
 {: .notice--info}
 
