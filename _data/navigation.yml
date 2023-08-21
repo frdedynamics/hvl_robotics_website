@@ -109,6 +109,15 @@ dat160:
         url: /courses/dat160/lab2
       - title: "DAT160 Lab-3"
         url: /courses/dat160/lab3
+  - title: "Optional labs and exercices"
+    children:
+      - title: "UR Intro"
+        url: /courses/dat160/ur0
+      - title: "Lab-1: UR Basics"
+        url: /courses/dat160/ur1
+      - title: "Lab-2: UR Features and Safety Planes"
+        url: /courses/dat160/ur2
+    
 
 
 ros:
