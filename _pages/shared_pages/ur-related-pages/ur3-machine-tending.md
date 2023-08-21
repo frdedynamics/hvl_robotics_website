@@ -80,7 +80,7 @@ You will connect a total of 4 digital inputs to the UR, from the controlbox.
 
 ### Elements of the Work Station
 
-{.align-center}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ur/URlab3_1.png){.align-center}
 
 1. Door_open sensor
 2. Door_close sensor
@@ -92,7 +92,7 @@ You will connect a total of 4 digital inputs to the UR, from the controlbox.
 
 Set the machine to its initial state when starting up.
 
-{.align-left}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ur/URlab3_2.png{.align-left}
 
 ### Make a program to open the machine door
 
@@ -140,7 +140,7 @@ Also, take a look at palletize/de-palletize options on the UR5e for thebuilt-in 
 
 Using the above programs as subprograms or copy/paste source, make a program to open the door, fetch the workpiece, place them in a grid, feed the machine a new workpiece and close the door. Wait until it's finished. And repeat. One workpiece at a time.
 
-{.align-center}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ur/URlab3_3.png{.align-center}
 
 Voilà! Kick your feet up and let the robot do all the work!
 
