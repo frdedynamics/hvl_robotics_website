@@ -18,7 +18,7 @@ The admin password inside the virtual appliance is: **student**
 A virtual appliance is a copy of a working operating system and its
 programs. We provide you ready-to-use virtual copy of what you need. To
 download it, use [this
-link](https://drive.google.com/file/d/1JDhAxU6_6whFFB2rzeElW-PkUM3Xn9Bw/view?usp=drive_link)
+link](https://drive.google.com/file/d/15QU57vWVVieqcQ1c6Yy_SgfXyAmGCMJW/view?usp=sharing)
 with your HVL credentials. After downloading, extract the folder inside
 the .zip file.
 
