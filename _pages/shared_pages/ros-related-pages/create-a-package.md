@@ -32,7 +32,7 @@ Now you can see a folder with your package name both under **/install** and **/b
 Well, you can escape building the whole workspace after *every* change partly. Python is a programming as well as a scripting language. The nodes which are created as Python scripts do not need to be compiled in the traditional way - they can simply be run. Therefore, you can create a symbolic link to your Python nodes once and the changes you do in the Python nodes will be effective immediately. To do that use `colcon build --symlink-install` instead.
 
 ## Source Your Workspace
-`source ~ros2_ws/install/setup.bash`
+`source ~/ros2_ws/install/setup.bash`
 
 or if you are already in **~/ros2_ws** directory in your terminal:
 

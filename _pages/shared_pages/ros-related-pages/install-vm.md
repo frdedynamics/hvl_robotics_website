@@ -76,6 +76,7 @@ Try this if option-1 does not work.
 1. Start your virtual machine.
 1. Open a terminal: **Ctrl + Alt + T**
 1. Run these commands:
+
 ```
 sudo apt update
 sudo apt upgrade
