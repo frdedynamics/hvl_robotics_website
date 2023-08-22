@@ -54,8 +54,7 @@ If you close the terminal and open a new one, it does automatically source your 
 ## Finally
 Your workspace should look like this at the end of this tutorial:
 
-<img src="/assets/images/shared/ros/ws1.png" alt="image-left" width="600" align="left">
-<img src="/assets/images/shared/ros/ws2.png" alt="image-left" width="600" align="left">
-<img src="/assets/images/shared/ros/ws3.png" alt="image-left" width="600" align="left">
-<img src="/assets/images/shared/ros/ws4.png" alt="image-left" width="600" align="left">
-
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ws1.png)
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ws2.png)
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ws3.png)
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ws4.png)
