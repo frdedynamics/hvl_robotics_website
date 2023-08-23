@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "ADA526 Home"
+title: "ADA526 -- ROS2 Resources"
 permalink: /courses/ada526
 redirect_from:
   - /ada526
@@ -18,8 +18,11 @@ sidebar:
 taxonomy: markup
 ---
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/home/ada526-logo-eng.png)
-Welcome to ADA526 page. Please refer to Canvas while using the content in this category. Here is the [course plan](https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/2023/ADA526). 
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/home/ada526-logo-eng.png)  
+
+
+**Here you will find the ROS2 related lecture notes and tutorials.**  
+Other resources related to the semester group project you find on the [Project Website](https://frdedynamics.github.io/ADA526/).  
 
 
 
