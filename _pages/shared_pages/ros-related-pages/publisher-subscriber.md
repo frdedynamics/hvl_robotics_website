@@ -154,48 +154,50 @@ if __name__ == '__main__':
 
 We have a node publishing the string `"Hello`"` at the moment. To make it more meaningful, we can create another node that listens to this string. We call these types of nodes **Subscriber**s. Let's copy-paste the code piece below and discuss how it works.
 
-1. Create the Python script: `touch ~/ros2_ws/src/my_package/my_package/my_subscriber.py`
+1.Create the Python script: `touch ~/ros2_ws/src/my_package/my_package/my_subscriber.py`
 
-2. Copy-paste the code below:
+2.Copy-paste the code below:
 
-    *ros2_ws/src/my_package/my_subscriber.py* (Completed)
-    ```python
-    #!/usr/bin/env python3
+*ros2_ws/src/my_package/my_subscriber.py* (Completed)
 
-    import rclpy
-    from rclpy.node import Node
+```python
+#!/usr/bin/env python3
 
-    from std_msgs.msg import String
+import rclpy
+from rclpy.node import Node
 
-    class mySubscriberNode(Node):
-        def __init__(self) -> None:
-            super().__init__("my_subscriber")
-            self.sub = self.create_subscription(String, 'topic', self.listener_callback, 10)
-            print("Created")
+from std_msgs.msg import String
 
-        def listener_callback(self, msg):
-            self.get_logger().info('I heard: "%s"' % msg.data)
+class mySubscriberNode(Node):
+    def __init__(self) -> None:
+        super().__init__("my_subscriber")
+        self.sub = self.create_subscription(String, 'topic', self.listener_callback, 10)
+        print("Created")
 
-    def main(args=None):
-        rclpy.init(args=args)
-        node = mySubscriberNode()
-        rclpy.spin(node)
+    def listener_callback(self, msg):
+        self.get_logger().info('I heard: "%s"' % msg.data)
 
-        rclpy.shutdown()
+def main(args=None):
+    rclpy.init(args=args)
+    node = mySubscriberNode()
+    rclpy.spin(node)
 
-    if __name__ == '__main__':
-        main()
-    ```
+    rclpy.shutdown()
 
-3. Add an entry point in `setup.py`.
-    ```python
-    entry_points={
-            'console_scripts': [
-                'my_publisher = my_package.my_publisher:main',
-                'my_subscriber = my_package.my_subscriber:main'
-            ],
-        },
-    ```
+if __name__ == '__main__':
+    main()
+```
+
+3.Add an entry point in `setup.py`.
+
+```python
+entry_points={
+        'console_scripts': [
+            'my_publisher = my_package.my_publisher:main',
+            'my_subscriber = my_package.my_subscriber:main'
+        ],
+    },
+```
 
 ### Run nodes
 
