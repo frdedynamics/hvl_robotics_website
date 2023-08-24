@@ -98,6 +98,9 @@ ubuntu@ubuntu:~$ source ~/.bashrc
 ```
 
 #### On the remote PC
+If you also want your virtual machine to be on the same ros2 network that the turtlebot, this is the setup you need to follow. 
+For this lab, this will not be necessary. 
+
 Then the same has to be done in the virtual machine, on what we call the **remote PC**:
 ```console
 rocotics@ubuntu:~$ nano ~/.bashrc
@@ -121,23 +124,89 @@ ubuntu@ubuntu:~$ ros2 launch turtlebot3_manipulation_bringup hardware.launch.py
 The turtlebot should make a sound and the open manipulator (the arm) should rise to start position. 
 Your turtlebot is now ready to get commands from your script!
 
+### Implementing a simple navigation algorithm 
+Open a new Matlab script and implement a controller which navigates your Turtlebot robot through the maze.
+The steps to complete this task will be outlined but the exact code/commands needed you will have to figure out yourself using what you have learned in the lecture, the information available on this website or what you can find on the internet. 🌐
+
+You will control the Turtlebot by using two points (+a and -a in degrees) from the 360 degree onboard LiDAR. With the LiDAR data as input, the robot should show the following behaviours:
+- No obstacles are detected -> move forward
+- Only the left sensor detects an obstacle -> turn right
+- Only the right sensor detects an obstacle -> turn left
+- Both sensors detect an obstacle -> stop
+
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/braitenberg_vehicle/braitenberg_vehicle.png)
+
+Here is a skeleton of the Matlab script you need to implement today! 
+```matlab
+%% ELE306 turtlebot lab number 1
+clc; 
+clear; 
+close all;
+
+% Setting up the environment: you have to define YOUR ros domain id 
+
+% Initializing a ros node
+
+pause(3)
+% Creating subscriber to laser scan (you will need those key words "Reliability","besteffort","Durability","volatile","Depth" ) and publisher to cmd velocity
+
+pause(3)
+
+% Defining the message type for the publisher
+
+
+% Defining variables
+
+% Front left and front right distances
+lidar_left_front = 0;
+lidar_right_front = 0;
+
+% Front left and front right angles
+left_range = ;
+right_range = ;
+
+% Distance threshold
+lidar_threshold = ;
+
+% For ever loop
+while true
+    % Reading out the scan data 
+    
+
+    % Plotting the scan data for fun :)
+    angles = linspace(-pi,pi,360);
+    scan = lidarScan(scanData.ranges, angles);
+    plot(scan);
+    
+    % Velocity commands if no obstacle
+
+
+    % Velocity commands if obstacles on both sides
+    if 
+       
+    else
+        % Velocity commands if obstacles on the right side -> turning left
+        if 
+        
+        end 
+        % Velocity commands if obstacles on the left side -> turning right
+        if 
+        
+        end
+    end 
+    % Send velocity commands to turtlebot
+   
+end
+```
+
 ### Test and tweak your script
 Now comes the fun part! 
 
 Make sure the turtlebot is in a safe environment before you start controlling it!
 {: .notice--danger}  
 
-It's time to run your simple navigation script, this you can do by navigation (in a terminal) in your virtual machine to the folder where the script is located and run it. Since it's a python 3 file, the command line is the following: 
-```console
-rocotics@ubuntu:~$ python3 FILE_NAME.py
-```
-Your turtlebot should now follow your simple navigation algorithm! But since this is not the simulated world you have been testing your code in, it's going to be a mess... that's why you have to now tweak the parameters to make it work in this real maze! 
-
-In the same terminal, open your script in Visual Studio Code with this command: 
-```console
-rocotics@ubuntu:~$ code FILE_NAME.py
-```
-Don't forget to save the file before you run it again for testing purposes. 
+It's time to run your simple navigation script, start your Matlab script and see what happends ... it's going to be a bit messy ... that's why you have to tweak the parameters to make it work in this maze! 
+Change the values of the different parameters and test it on the Turtlebot. Don't forget to save the file before you run it again for testing purposes and don't forget to put your Turtelbot in a safe environment.
 
 <div class="notice--info">
 <h4>Hint 1:</h4>
@@ -145,8 +214,7 @@ Don't forget to save the file before you run it again for testing purposes.
 Double check them and make sure the **qos** is set properly. </p>
 </div>
 
-<!-- from rclpy.qos import qos_profile_sensor_data
-self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qos_profile_sensor_data)-->
+<!-- laserSub = ros2subscriber(braitenberControllerNode,"/scan","sensor_msgs/LaserScan","Reliability","besteffort","Durability","volatile","Depth",5); -->
 
 
 <div class="notice--info">
@@ -156,7 +224,7 @@ self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qo
   <li> lidar angles</li>
   <li> linear speed</li>
   <li> anguler speed</li>
-  <li > distance threshold</li>
+  <li> distance threshold</li>
 </ul>
 </div>
 
