@@ -102,6 +102,7 @@ There are a couple of different ways adding controllers to your robot. We will u
     ])
 ```
 
+{: .notice--info}
 At this point, you do not need `node_joint_state_publisher_gui`. Please make sure that it is commented out.
 
 We are ready to run. Run these in your ~/ros2_ws directory.
@@ -275,3 +276,6 @@ We can add some items by just adding items as we included the sun and the ground
 ```
 
 You can change the position and orientation of any object which you have added with the `<pose>x y z roll pitch yaw</pose>` tag. Probably the easiest is to design the world in Gazebo and directly save there.
+
+{: .notice--info}
+Don't forget to add your /world folder directory in the **setup.py**

@@ -14,6 +14,7 @@ or
 1. Open a terminal: **Ctrl+Alt+T**
 1. Change directory to your package: `cd ~/ros2_ws/src/my_package`
 1. Create a launch folder: `mkdir launch`
+1. Go to the newly creatged **launch** folder: `cd launch`
 1. Create a launch file in it: `touch my_launch.launch.py`
 
 Your directory should look like this:
@@ -85,6 +86,8 @@ setup(
     },
 )
 ```
+
+Done. Compile and source.
 
 ## Run the launch file
 
