@@ -100,6 +100,7 @@ ubuntu@ubuntu:~$ source ~/.bashrc
 #### On the remote PC
 If you also want your virtual machine to be on the same ros2 network that the turtlebot, this is the setup you need to follow. 
 For this lab, this will not be necessary. 
+{: .notice--info}  
 
 Then the same has to be done in the virtual machine, on what we call the **remote PC**:
 ```console
@@ -136,7 +137,8 @@ You will control the Turtlebot by using two points (+a and -a in degrees) from t
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/braitenberg_vehicle/braitenberg_vehicle.png)
 
-Here is a skeleton of the Matlab script you need to implement today! 
+Here is a skeleton of the Matlab script that will help your Turtlebot out of this maze!
+
 ```matlab
 %% ELE306 turtlebot lab number 1
 clc; 
@@ -200,12 +202,13 @@ end
 ```
 
 ### Test and tweak your script
-Now comes the fun part! 
+Now comes the fun part! :)
 
 Make sure the turtlebot is in a safe environment before you start controlling it!
 {: .notice--danger}  
 
 It's time to run your simple navigation script, start your Matlab script and see what happends ... it's going to be a bit messy ... that's why you have to tweak the parameters to make it work in this maze! 
+
 Change the values of the different parameters and test it on the Turtlebot. Don't forget to save the file before you run it again for testing purposes and don't forget to put your Turtelbot in a safe environment.
 
 <div class="notice--info">
