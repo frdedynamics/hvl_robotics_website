@@ -132,9 +132,7 @@ about their location and distinguish if it is a fire or a human. You
 have 10 minutes (600 secs) in total to finish the task. Each
 successfully detected Aruco tag will give you points.
 
-- You can spawn as many robots as you want.
-- Big fire requires at least 2 robots to meet at the fire location to
-  extinguish. Therefore, robots should communicate with each other.
+You can spawn as many robots as you want. But all robots have to start in the starting zone. Big fire requires at least 2 robots to meet at the fire location to extinguish. Therefore, robots should communicate with each other.
   
 
 ### Usage of software libraries and existing code
