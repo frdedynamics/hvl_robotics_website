@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Braitenberg Vehikel"
+title: "Braitenberg Vehicle"
 permalink: /courses/dat160/a1
 toc: true # The right side bar "on this page"
 breadcrumbs: true  # the directory-of-documents type of header navigation
