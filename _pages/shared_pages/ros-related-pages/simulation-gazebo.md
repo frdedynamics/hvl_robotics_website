@@ -73,7 +73,7 @@ There are a couple of different ways adding controllers to your robot. We will u
 
 1. Define controller parameters. This is done in */config/my_controllers.yaml*.
 1. Define `command_interface` and `state_interface` for ros2_control in your robot model. To keep things clean, we defined them in */urdf/gazebo_control.xacro*. We already added this into */urdf/my_mobile_robot_inertia_collision.xacro* which is our main URDF.
-1. Tell Gazebo to use ros2_control. This is also done in  */urdf/gazebo_control.xacro*.
+1. Tell Gazebo to use ros2_control. This is **already done** in  */urdf/gazebo_control.xacro*.
 1. Start controllers in the launch file. Add the following part at the end of your launch file. Remember to add them in the `LaunchDescription()`, as well.
 
 ```python

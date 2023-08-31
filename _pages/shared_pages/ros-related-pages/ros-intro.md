@@ -72,7 +72,7 @@ Here is a screenshot of VScode.
 * `colcon build`: Compile colcon workspace
 * `colcon build --symlink-install`: Compile colcon workspace such that you don't need to compile every time you change something in Python files.
 * `source ~/ros2_ws/install/setup.bash`: loads the compiled shell environment (use after *almost* every `colcon build`)
-* `rosdep install --from-paths src --ignore-src --rosdistro foxy -y`: Install dependencies of the packages in src. You need to be in the src folder and you may need `rosdep init` and/or `rosdep update` beforehand.
+* `rosdep update --include-eol-distros` and `rosdep install --from-paths src --rosdistro foxy -y`: Install dependencies of the packages in src. You need to be in the **ros2_ws** folder and you may need `rosdep init` beforehand.
 * `ros2 topic echo/list/info (topic_name)`: Listen/list/get information about available topics
 * `ros2 param list/load/get/set`: Commands for parameter server
 * `ros2 node list/info (topic_name)`: List/get information about available nodes
