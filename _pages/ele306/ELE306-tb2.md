@@ -161,11 +161,11 @@ pause(3)
 
 
 %% Defining the robotic arm
-L1 = 0.077;
-L2 = 0.128;
-L3 = 0.024;
-L4 = 0.124;
-L5 = 0.126;
+L1 = ;
+L2 = ;
+L3 = ;
+L4 = ;
+L5 = ;
 L6 = sqrt(L2*L2 + L3*L3);
 beta = atan(L3/L2);
 
