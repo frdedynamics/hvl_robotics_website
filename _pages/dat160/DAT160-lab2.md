@@ -137,11 +137,11 @@ As for your assigments, it is expected of you that you write a python script. Fo
 This project is very close to your assigments so re-use them as much as possible!
 
 <div class="notice--warning">
-<h4>Requirements: </h4>
-<p>The wall follower should find a wall and then drive in parallel to it, using the LiDAR sensor topic (/scan) to ensure the robot is not straying off and to reorient itself when hitting a corner.
+<h3>Requirements: </h3>
+<h4>The wall follower should find a wall and then drive in parallel to it, using the LiDAR sensor topic (/scan) to ensure the robot is not straying off and to reorient itself when hitting a corner.
 A special case you will also need to take care off is when the wall suddenly stops you need to program a behavior which moves the robot to the other side of the wall so that it can continue with the normal wall following.
 For moving the robot create a publisher for the /cmd_vel topic. Inside the control loop use a state variable to define which "mode" the navigation is in and switch between different control "modes".
-Don't hesitate to measure the maze and make small schematics to help you with the logic. </p>
+Don't hesitate to measure the maze and make small schematics to help you with the logic. </h4>
 </div>
 
 ### Test and tweak your script
