@@ -54,8 +54,10 @@ ele306:
         url: /courses/ele306/ur3
       - title: "Lab-3: URCap External Control"
         url: /courses/ele306/ur3-external
-      - title: "Lab-4: Wall Follower with TB3"
+      - title: "Lab-4: Simple Wall Follower with TB3"
         url: /courses/ele306/tb1
+      - title: "Lab-5: Pick and Place with TB3"
+        url: /courses/ele306/tb2
 
 
 dat160:
