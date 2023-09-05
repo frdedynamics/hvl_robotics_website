@@ -11,35 +11,37 @@ taxonomy: markup
 
 
 
-👋 Hey there, Future Roboticists!
+👋 Heello again, Future Roboticists!
 
-Welcome to the lab sessions, where your imagination meets real-world tech! 🚀 Remember that inverse Brainenberg vehicle you rocked in the virtual realm? It's time to see it cruise in real life using the TurtleBot 3 robot.
+Welcome back to the lab sessions! 🚀 In the last lab, you implemented in real life an inverse Brainenberg vehicle on a Turtlebot 3 robot.
 
-Our maze is set, your vehicle awaits. Get ready to fine-tune those algorithms and parameters, transforming your virtual success into real-world magic. 🌟
+But it could not handle corners, so we had to make it easier for the Turtlebot by covering up the corners. 
 
-Get set to witness the future unfold, one twisty maze and one parameter tweak at a time. 🤖🔧
+The time for simple navigation is over! It's time to uncover the maze's corners and implement a better solution to our maze. 🌟
+
+It's your turn to use the assigments 2 and 3 and create a wall following algorithm for this maze and robot and you will again need to tweak the different parameters! 🤖🔧
 
 <div align="center">
-<img src="https://media.giphy.com/media/47EtjlHYFREM5Rznaf/giphy.gif" width="340" height="340" />
+<img src="https://media.giphy.com/media/3o6ZthgwwYimHPVTaM/giphy.gif" width="340" height="340" />
 </div>
 
 
 
 ## Equipment
 1. Your personal PC with the Virtual Machine running
-2. Your code from Assignment 1
+2. Your code from Assignments 2 and 3
 3. A real life Turtlebot 3
 4. Good mood!🌈
 
 ## Before the lab 
-1. Make sure you did Assigment 1
+1. Make sure you did Assigment 2 and 3
 2. Get together in a group of 2-3 people
 3. Find your way to Verftet, Øyrane
 
 ## Report 
 There is no need to hand in a report for this lab. Signed attendance and a **cool video** of the final product will suffice as approved lab exercise. 
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/turtlebot/tb_in_maze.png)
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/turtlebot/tb_in_maze_2.png)
 
 ## Instructions
 
@@ -127,17 +129,32 @@ ubuntu@ubuntu:~$ ros2 launch turtlebot3_manipulation_bringup hardware.launch.py
 The turtlebot should make a sound and the open manipulator (the arm) should rise to start position. 
 Your turtlebot is now ready to get commands from your script!
 
+
+### Implement a wall follower algorithm
+Let's hack together some wall follower algorithm! 
+
+As for your assigments, it is expected of you that you write a python script. For this lab it is anough with the python file, no need to make a ros2 package. 
+This project is very close to your assigments so re-use them as much as possible!
+
+<div class="notice--warning">
+<h4>Requirements: </h4>
+<p>The wall follower should find a wall and then drive in parallel to it, using the LiDAR sensor topic (/scan) to ensure the robot is not straying off and to reorient itself when hitting a corner.
+A special case you will also need to take care off is when the wall suddenly stops you need to program a behavior which moves the robot to the other side of the wall so that it can continue with the normal wall following.
+For moving the robot create a publisher for the /cmd_vel topic. Inside the control loop use a state variable to define which "mode" the navigation is in and switch between different control "modes".
+Don't hesitate to measure the maze and make small schematics to help you with the logic. </p>
+</div>
+
 ### Test and tweak your script
 Now comes the fun part! 
 
 Make sure the turtlebot is in a safe environment before you start controlling it!
 {: .notice--danger}  
 
-It's time to run your simple navigation script, this you can do by navigation (in a terminal) in your virtual machine to the folder where the script is located and run it. Since it's a python 3 file, the command line is the following: 
+It's time to run your wall follower script, this you can do by navigation (in a terminal) in your virtual machine to the folder where the script is located and run it. Since it's a python 3 file, the command line is the following: 
 ```console
 rocotics@ubuntu:~$ python3 FILE_NAME.py
 ```
-Your turtlebot should now follow your simple navigation algorithm! But since this is not the simulated world you have been testing your code in, it's going to be a mess... that's why you have to now tweak the parameters to make it work in this real maze! 
+Your turtlebot should now follow your wall follower algorithm! But it's going to be a mess... that's why you have to now tweak the parameters to make it work in this real maze! 
 
 In the same terminal, open your script in Visual Studio Code with this command: 
 ```console
@@ -152,25 +169,48 @@ Double check them and make sure the **qos** is set properly. </p>
 </div>
 
 <!-- from rclpy.qos import qos_profile_sensor_data
-self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qos_profile_sensor_data)-->
+self.scan_sub = self.create_subscription(LaserScan, '/scan', self.clbk_laser, qos_profile_sensor_data) -->
 
 
 <div class="notice--info">
 <h4>Hint 2:</h4>
 <p>The parameters you are going to want to tweak are the following:</p>
 <ul>
-  <li> lidar angles</li>
-  <li> linear speed</li>
-  <li> anguler speed</li>
-  <li > distance threshold</li>
+  <li> lidar angles: front, front right, front left, left, right, back right, back left</li>
+  <li> linear speeds for each mode or state</li>
+  <li> anguler speeds for each mode or state</li>
+  <li> distance thresholds front, sides, etc</li>
 </ul>
 </div>
 
 
 <!--parameters that worked for me: 
-angles: 40 and 320
-linear speed 0.1
-lidar_threshold: 0.35
-angular speed 0.45-->
+'right':  msg.ranges[269],
+'fright': msg.ranges[314],
+'bright': msg.ranges[224],
+'front':  msg.ranges[0],
+'fleft':  msg.ranges[44],
+'left':   msg.ranges[89],
+
+ d = 0.25
+ d_45 = d/math.cos(math.pi/4)
+ d_error = d/10
+ d_front = d + 0.15
+
+  def find_wall(self):
+      msg = Twist()
+      msg.linear.x = 0.1
+      msg.angular.z = -0.5
+      return msg
+  
+  def turn_left(self):
+      msg = Twist()
+      msg.angular.z = 0.2
+      return msg
+  
+  def follow_the_wall(self):
+      msg = Twist()
+      msg.linear.x = 0.1
+      return msg  -->
 
 
