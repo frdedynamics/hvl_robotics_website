@@ -9,20 +9,18 @@ sidebar:
 taxonomy: markup
 ---
 
-👋 Hey there, Future Roboticists!
+👋 Hello again, Future Roboticists!
 
-Welcome to the lab sessions, where your imagination meets real-world tech! 🚀 
-Today you are going to implement an inverse Brainenberg vehicle logic on a TurtleBot 3 robot. Your mission, is to help the Turtlebot to make it out of a maze!
-
-Our maze is set, your vehicle awaits. Get ready to program and fine-tune those parameters! 🤖🔧
+Welcome back to the lab sessions! 🚀 
+Now that the Turtlebot 3 can make it out of the maze, let's make it a saving robot by helping it pick up objects and recuing them out of the maze! 🤖🔧
 
 <div align="center">
-<img src="https://media.giphy.com/media/XBpUGMmoGM4DVHoRMZ/giphy.gif" width="680" height="340" />
+<img src="https://media.giphy.com/media/RQeTBYpyFe1ZhCUTkF/giphy.gif" width="680" height="340" />
 </div>
 
 ## Equipment
 1. Your personal PC with the Virtual Machine running
-2. Matlab
+2. Matlab 2023a!! Very important!
 3. A real life Turtlebot 3
 4. Good mood!🌈
 
@@ -33,7 +31,7 @@ Our maze is set, your vehicle awaits. Get ready to program and fine-tune those p
 ## Report 
 There is no need to hand in a report for this lab. Signed attendance and a **cool video** of the final product will suffice as approved lab exercise. 
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/turtlebot/tb_in_maze.png)
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/turtlebot/tb_in_maze_with_cup.png)
 
 ## Instructions
 
@@ -125,116 +123,114 @@ ubuntu@ubuntu:~$ ros2 launch turtlebot3_manipulation_bringup hardware.launch.py
 The turtlebot should make a sound and the open manipulator (the arm) should rise to start position. 
 Your turtlebot is now ready to get commands from your script!
 
-### Implementing a simple navigation algorithm 
-Open a new Matlab script and implement a controller which navigates your Turtlebot robot through the maze.
+### Implementing an arm and gripper controller
+Open a new Matlab script and implement a new controller which controls the robotic arm on the Turtlebot and the gripper!
 The steps to complete this task will be outlined but the exact code/commands needed you will have to figure out yourself using what you have learned in the lecture, the information available on this website or what you can find on the internet. 🌐
 
-You will control the Turtlebot by using two points (+a and -a in degrees) from the 360 degree onboard LiDAR. With the LiDAR data as input, the robot should show the following behaviours:
-- No obstacles are detected -> move forward
-- Only the left sensor detects an obstacle -> turn right
-- Only the right sensor detects an obstacle -> turn left
-- Both sensors detect an obstacle -> stop
+// TO DO
+You will control the OpenManipulator (name of the arm) by following those steps: 
+- Setup the environment to communicate with the real turtlebot
+- Control the arm through a publisher and the gripper through an action client: it's whise to use the ```ros2 topic info``` and ```ros2 action info```
+- Define the robotic arm using your knowledge from the lectures and this [documentation](https://emanual.robotis.com/docs/en/platform/openmanipulator_x/specification/)
+- Use the inverse kinematics function from the Peter Corke toolbox to define a goal in joint space: it's important to use the joint limits and an initial position, have a look at this [documentation](https://www.petercorke.com/RTB/r9/html/SerialLink.html)
+- Send the goals to the arm
+- Send gripper commands to the gripper: there you will have a problem, the **control_msgs/GripperCommand** message/action type is not defined in matlab. You will therefore are to import it yourself by following those [instructions](https://www.mathworks.com/help/ros/ug/_mw_6d3d1e8b-6b64-4d0b-95cf-ef6d7a2d3abf.html)
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/braitenberg_vehicle/braitenberg_vehicle.png)
-
-Here is a skeleton of the Matlab script that will help your Turtlebot out of this maze!
+Here is a skeleton of the Matlab script that will help control the arm and gripper!
 
 ```matlab
-%% ELE306 turtlebot lab number 1
+%% ELE306 turtlebot lab number 2
 clc; 
 clear; 
 close all;
+import ETS3.*
 
-% Setting up the environment: you have to define YOUR ros domain id 
+%% Environment setup
+% Setting up environment: you have to define YOUR ros domain id
 
-% Initializing a ros node
+
+% Initializing ros node, with a name that makes sense
+
+pause(2)
+% Creating publisher to /arm_controller/joint_trajector, message type being trajectory_msgs/JointTrajectory
 
 pause(3)
-% Creating subscriber to laser scan (you will need those key words "Reliability","besteffort","Durability","volatile","Depth" ) and publisher to cmd velocity
-
-pause(3)
-
-% Defining the message type for the publisher
 
 
-% Defining variables
-
-% Front left and front right distances
-lidar_left_front = 0;
-lidar_right_front = 0;
-
-% Front left and front right angles
-left_range = ;
-right_range = ;
-
-% Distance threshold
-lidar_threshold = ;
-
-% For ever loop
-while true
-    % Reading out the scan data 
-    
-
-    % Plotting the scan data for fun :)
-    angles = linspace(-pi,pi,360);
-    scan = lidarScan(scanData.ranges, angles);
-    plot(scan);
-    
-    % Velocity commands if no obstacle
+% Defining message for publisher, and joint_names component
 
 
-    % Velocity commands if obstacles on both sides
-    if 
-       
-    else
-        % Velocity commands if obstacles on the right side -> turning left
-        if 
-        
-        end 
-        % Velocity commands if obstacles on the left side -> turning right
-        if 
-        
-        end
-    end 
-    % Send velocity commands to turtlebot
-   
-end
+%% Defining the robotic arm
+L1 = 0.077;
+L2 = 0.128;
+L3 = 0.024;
+L4 = 0.124;
+L5 = 0.126;
+L6 = sqrt(L2*L2 + L3*L3);
+beta = atan(L3/L2);
+
+
+%j1 = Revolute('d', ?, 'a', ?, 'alpha', pi/2, 'offset', pi);
+%j2 = Revolute('d', ?, 'a', ?, 'alpha', 0, 'offset', beta + pi/2);
+%j3 = Revolute('d', ?, 'a', ?, 'alpha', 0, 'offset', -beta + pi/2);
+%j4 = Revolute('d', ?, 'a', ?, 'alpha', 0, 'offset', pi/90);
+
+robot = SerialLink([j1 j2 j3 j4],'name', 'my robot');
+robot.qlim = [-3.14, +3.14; -1.57, +1.57; -1.40, +1.57; -1.57, 1.57];
+
+% Visualizing the arm on zero position to check that the definition is correct
+robot.plot([0, 0, 0, 0]);
+
+%% Control the gripper and make sure it's open
+% Create an action client for /gripper_controller/gripper_cmd with action type control_msgs/GripperCommand => this needs to be imported first!
+
+
+% Make sure the gripper is open  /gripper_controller/gripper_cmd
+
+
+%% Time for inverse kinematics!
+
+% First position:
+
+% Define a goal in the reference frame of the base of the arm, with orientation!
+
+% Apply inverse kinematics which TAKE INTO ACCOUNT JOINT LIMITS! and an initial position
+
+% Check the result with plot
+
+% Create a publisher message with that goal in joint space
+
+
+% Do that as many times as needed to get the full trajectory of the arm and then send the message with all positions
+
+
+%% Gripping an object
+% Create a new gripper goal and send it
+
+
+%% Taking the object up, for safe keeping
+% Reproduce what was done before to control the arm and fold it back in a safe way where it can store the cup while it navigates the maze
+
+
+
+
+%%
+% Function definitions at the end if needed
+
 ```
 
-### Test and tweak your script
+<div class="notice--info">
+<h4>Hint 1: this is how you import ros messages to matlab</h4>
+<p> Go to the github repo of the messages: https://github.com/ros-controls/control_msgs/tree/foxy-devel. Download the repo from the foxy branch. In the folder where your matlab scripts are, make a new folder called "custom_msgs" and copy the content of control_msgs into that folder. Then in the matlab terminal run this command: ``` folderPath = fullfile(pwd,"custom_msgs"); ``` and then this command: ``` ros2genmsg(folderPath) ```. It will take a bit of time, but once it's done you should see the **control_msgs/GripperCommand** when running ``` ros2 msg list ``` </p>
+</div>
+
+### Fuse your scripts
 Now comes the fun part! :)
+
+It's time to fuse the part where the turtlebot picks up the cup, the navigation out of the maze from last lab and the part where the turtlebot releases the cup! 
 
 Make sure the turtlebot is in a safe environment before you start controlling it!
 {: .notice--danger}  
 
-It's time to run your simple navigation script, start your Matlab script and see what happends ... it's going to be a bit messy ... that's why you have to tweak the parameters to make it work in this maze! 
-
-Change the values of the different parameters and test it on the Turtlebot. Don't forget to save the file before you run it again for testing purposes and don't forget to put your Turtelbot in a safe environment.
-
-<div class="notice--info">
-<h4>Hint 1:</h4>
-<p>If nothing happends when you launch your script, then you might have some subscriber or publisher problem. 
-Double check them and make sure the **qos** is set properly. </p>
-</div>
-
-<!-- laserSub = ros2subscriber(braitenberControllerNode,"/scan","sensor_msgs/LaserScan","Reliability","besteffort","Durability","volatile","Depth",5); -->
-
-
-<div class="notice--info">
-<h4>Hint 2:</h4>
-<p>The parameters you are going to want to tweak are the following:</p>
-<ul>
-  <li> lidar angles</li>
-  <li> linear speed</li>
-  <li> anguler speed</li>
-  <li> distance threshold</li>
-</ul>
-</div>
-
-
-<!--parameters that worked for me: 
-angles: 40 and 320
-linear speed 0.1
-lidar_threshold: 0.35
-angular speed 0.45-->
+Start testing and correcting your code and save that poor cup our of this maze! 
 
