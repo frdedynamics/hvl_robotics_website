@@ -144,6 +144,11 @@ For moving the robot create a publisher for the /cmd_vel topic. Inside the contr
 Don't hesitate to measure the maze and make small schematics to help you with the logic. </p>
 </div>
 
+<div class="notice--info">
+<h4>Hint 0:</h4>
+<p> You can ask the teachers for a simulation environment of the actual maze if you want to do safe testing ;) </p>
+</div>
+
 ### Test and tweak your script
 Now comes the fun part! 
 
