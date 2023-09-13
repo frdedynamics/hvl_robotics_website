@@ -107,12 +107,10 @@ Make a program to close the machine door. Same as above, but closed.
 Make a program to pick a workpiece. There are several ways to do this. Consider the following suggestion as a starting point:
 
 1. Move to a waypoint above the workpiece.
-2. Close gripper.
-3. Lower slowly relative to the waypoint above, until workpiece is detected.
-4. Relative move up 1 cm.
-5. Open gripper.
-6. Move to position.
-7. Pick workpiece.
+2. Lower slowly relative to the waypoint above.
+3. Close gripper, until workpiece is detected.
+5. Relative move up 1 cm.
+7. Move to position.
 
 The direction option can be used to detect an object on contact and perform an action. Also, have a look at stack/de-stack options on the UR5e.
 
