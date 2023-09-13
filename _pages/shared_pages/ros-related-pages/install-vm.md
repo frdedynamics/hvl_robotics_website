@@ -88,6 +88,13 @@ and now restart the VMware.
 {: .notice--info}
 You might still experience errors in copy-paste'ing folders. Then just click "Skip all". It will successfully copy-paste, nonetheless.
 
+### Network is not working
+Despite all the settings being correct, your VM seams to simply not have a network adapter? Or you can't see anything in the wifi and network setting except proxy? 
+Then this command in the terminal of the VM might help you:
+```
+sudo nmcli networking on
+```
+
 ### Standalone installation
 
 For those who don't use the given virtual copy and choose to install
