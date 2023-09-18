@@ -121,6 +121,15 @@ You do that in the **terminal window which is connected to the turtlebot** with 
 ubuntu@ubuntu:~$ ros2 launch turtlebot3_manipulation_bringup hardware.launch.py
 ```
 The turtlebot should make a sound and the open manipulator (the arm) should rise to start position. 
+
+In this lab you will have to control the gripper of the Turtlebot. To send a goal to the gripper, one normally has to implement an action client with a message of type **control_msgs/GripperCommand**. This message type is not available in matlab, it is possible to import a custom ros2 message in matlab following those [instructions](https://www.mathworks.com/help/ros/ug/_mw_6d3d1e8b-6b64-4d0b-95cf-ef6d7a2d3abf.html). Because importing custom messages is very tricky on a Windows computer, we have created an extra ros2 node that will handle the gripper for us. 
+This node can be found on the github repo ros2_students/matlab/labs: simple_gripper_client.py. It is a simple ros2 node that subscribes to **/simple_gripper_cmd** which will be published by the matlab script and creates a action client for **/gripper_controller/gripper_cmd** whose action server is running on the Turtlebot (part of the bringup).
+You therefore have to make sure that this node is running on your VM before you send gripper commands from Matlab to the Rurtlebot.
+**In a new terminal, in the VM, run this file**:
+```console
+rocotics@ubuntu:~$ python3 simple_gripper_client.py
+```
+
 Your turtlebot is now ready to get commands from your script!
 
 ### Implementing an arm and gripper controller
@@ -130,11 +139,11 @@ The steps to complete this task will be outlined but the exact code/commands nee
 // TO DO
 You will control the OpenManipulator (name of the arm) by following those steps: 
 - Setup the environment to communicate with the real turtlebot
-- Control the arm through a publisher and the gripper through an action client: it's whise to use the ```ros2 topic info``` and ```ros2 action info```
+- Control the arm through a publisher and the gripper through another publisher.
 - Define the robotic arm using your knowledge from the lectures and this [documentation](https://emanual.robotis.com/docs/en/platform/openmanipulator_x/specification/)
-- Use the inverse kinematics function from the Peter Corke toolbox to define a goal in joint space: it's important to use the joint limits and an initial position, have a look at this [documentation](https://www.petercorke.com/RTB/r9/html/SerialLink.html)
+- Use the inverse kinematics function from the Peter Corke toolbox to define a goal in joint space: it's important to use the joint limits and an initial position to be able to get a solution to the inverse kinematic problem, have a look at this [documentation](https://www.petercorke.com/RTB/r9/html/SerialLink.html)
 - Send the goals to the arm
-- Send gripper commands to the gripper: there you will have a problem, the **control_msgs/GripperCommand** message/action type is not defined in matlab. You will therefore are to import it yourself by following those [instructions](https://www.mathworks.com/help/ros/ug/_mw_6d3d1e8b-6b64-4d0b-95cf-ef6d7a2d3abf.html)
+- Send gripper commands to the gripper: have a look at the **simple_gripper_client.py** script to make sure the message is well defined.
 
 Here is a skeleton of the Matlab script that will help control the arm and gripper!
 
@@ -220,7 +229,7 @@ robot.plot([0, 0, 0, 0]);
 ```
 
 <div class="notice--info">
-<h4>Hint 1: this is how you import ros messages to matlab</h4>
+<h4>Info 1: this is how you import ros messages to matlab if you want to try or are running Matlab in ubuntu</h4>
 <p> Go to the github repo of the messages: https://github.com/ros-controls/control_msgs/tree/foxy-devel. Download the repo from the foxy branch. In the folder where your matlab scripts are, make a new folder called "custom_msgs" and copy the content of control_msgs into that folder. Then in the matlab terminal run this command: ``` folderPath = fullfile(pwd,"custom_msgs"); ``` and then this command: ``` ros2genmsg(folderPath) ```. It will take a bit of time, but once it's done you should see the **control_msgs/GripperCommand** when running ``` ros2 msg list ``` </p>
 </div>
 
