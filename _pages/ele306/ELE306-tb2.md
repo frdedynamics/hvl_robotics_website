@@ -20,7 +20,7 @@ Now that the Turtlebot 3 can make it out of the maze, let's make it a saving rob
 
 ## Equipment
 1. Your personal PC with the Virtual Machine running
-2. Matlab 2023a!! Very important!
+2. Matlab, the newest version the better
 3. A real life Turtlebot 3
 4. Good mood!🌈
 
