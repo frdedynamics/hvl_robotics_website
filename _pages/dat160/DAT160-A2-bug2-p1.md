@@ -14,7 +14,7 @@ This assignment is the first part of two to create a Bug2 algorithm for navigati
 1. Implement a wall follower and a go-to-point controller which use ROS topics for communicating with the robot.
 2. Implement a bug2 controller which uses the already established wall follower and go-to-point controllers. The bug2 controller should enable and disable the wall follower and go-to-point controllers using their ROS services. For sending a target location to the bug2 controller an action server should be created.
 
-In this assignment both the Wall Follower as well as the Go-To-Point algorithm uses the /cmd_vel topic to control the movement of the robot. You should already be familiar with using it from the first assignemtn.
+In this assignment both the Wall Follower as well as the Go-To-Point algorithm uses the /cmd_vel topic to control the movement of the robot. You should already be familiar with using it from the first assignment.
 
 ## Wall Follower
 The Wall Follower basically has 3 modes:

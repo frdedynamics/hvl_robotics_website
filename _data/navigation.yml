@@ -89,6 +89,8 @@ dat160:
       #   url: /courses/dat160/ros2control
       - title: "ROS Communication Patterns"
         url: /courses/dat160/ros-comm-pattern
+      - title: "ROS Namespaces"
+        url: /courses/dat160/namespace
       - title: "Camera and AR"
         url: /courses/dat160/camera-ar
       - title: "Competition"
