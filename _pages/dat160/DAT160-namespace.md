@@ -27,7 +27,7 @@ def generate_launch_description():
 
 ## Exercise 1 - Namespaces
 
-Inside the given ROS package **multi_robot_challenge_22** do the following steps:
+Inside the given ROS package **multi_robot_challenge_23** do the following steps:
 
 * Create a python class used for the robot controller
 * Create a python class used for the leader
