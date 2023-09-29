@@ -149,4 +149,6 @@ ada526:
       - title: "Launch"
         url: /courses/ada526/launch
       - title: "ROS Communication Patterns"
-        url: /courses/ada526/ros-comm-pattern
+        url: /courses/ada526/ros-comm-pattern 
+      - title: "ROS-ify Python Scripts"
+        url: /courses/ada526/rosify-python-scripts
