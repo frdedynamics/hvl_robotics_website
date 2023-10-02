@@ -2,66 +2,16 @@ So far, you have been introduced how to control Dynamixel robots using [Dynamixe
 
 On the other hand, recently, you have been introduced [ROS](https://docs.ros.org/en/foxy/Tutorials.html). You know that you can use Python or C++ to program nodes and launches in ROS. Today, we are going to learn how to "ROS-ify" simple Python scripts such that you can implement your Python scripts into the ROS environment.
 
-# Remember ROS publisher steps
-In [Publisher/Subscriber lesson](https://frdedynamics.github.io/hvl_robotics_website/courses/ada526/pub-sub#creating-ros-nodes), we have learned how a simple publisher looks like. Remember the steps:
+Let's start by creating a new package. 
 
-## Simple Publisher
+1. Open your favorite terminal: **Ctrl+Alt+T**
+1. Make sure that you are in the right directory: `cd ~/ros2_ws/src`
+1. Create a new package with a node: `ros2 pkg create --build-type ament_python --node-name send_single_joint_cmd rosify_dynamixel_ros_pkg`
+1. Direct to the workspace back: `cd ..`
+1. Compile the workspace: `colcon build --symlink-install`
+1. Source the workspace: `source install/setup.bash`
 
-```python
-#!/usr/bin/env python3
-
-import rclpy
-from rclpy.node import Node
-
-class myPublisherNode(Node):
-    def __init__(self) -> None:
-        super().__init__("my_publisher")
-        self.create_timer(1.0, self.timer_callback)
-
-    def timer_callback(self):
-        self.get_logger().info("Hello")
-
-def main(args=None):
-    rclpy.init(args=args)
-    node = myPublisherNode()
-    rclpy.spin(node)
-
-    rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
-
-```
-
-{: .notice--info}
-
-## Message types
-
-Remember different message types. This is something you need to choose based on the data that you want to provide to ROS in terms of sensor publisher or that you get from ROS in terms of actuator commands. Some relevant message types are given below.
-
-[**geometry_msgs/Twist Message**](https://docs.ros.org/en/melodic/api/geometry_msgs/html/msg/Twist.html)
-* Vector3  linear
-    * float64 x
-    * float64 y
-    * float64 z
-* Vector3  angular
-    * float64 x
-    * float64 y
-    * float64 z
-
-[**std_msgs/Float32 Message**](http://docs.ros.org/en/melodic/api/std_msgs/html/msg/Float32.html)
-* float32 data
-
-[**std_msgs/Float64MultiArray Message**](http://docs.ros.org/en/melodic/api/std_msgs/html/msg/Float64MultiArray.html)
-* std_msgs/MultiArrayLayout layout
-  * std_msgs/MultiArrayDimension[] dim
-    - string label 
-    - uint32 size 
-    - uint32 stride 
-  * uint32 data_offset
-* float64[] data
-
-# Import necessary libraries
+# How to import custom libraries
 
 The ROS packages *have to be* under your ROS workspace. It is `~/ros2_ws` in the virtual machine. This might cause an issue in the beginning for some manually installed Python packages that you want to use (i.e adatools). First, you need to import the Python path of the sensors, motors, visualizer scripts etc. libraries into your `$PYTHONPATH`. Otherwise, you will get `ImportError` or `ModuleNotFoundError` when you attempt to use those libraries.
 
@@ -69,7 +19,9 @@ Check your Python libraries path: `echo $PYTHONPATH`
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/echo-pythonpath.png)
 
-You can do in manually every time, or package specify, but we will focus on a global solution since you may want to skip this step in future occasions. 
+You can do in manually every time, or package specify, but we will focus on a global solution since you may want to skip this step in future occasions.
+
+## Import adatools path
 
 Check the path of your desired library, for example **adatools**. Browse to the folder location, open a new terminal, type `pwd`, note the directory. For my case:
 
@@ -103,10 +55,13 @@ from adatools import utils
 print(utils.__file__)
 ```
 
+# Exercise: ROSify a Dynamixel script
 
-## Exercise: ROSify a Dynamixel script
+Let's ROSify a Dynamixel script. Our end goal at this step is to make a ROS node that subscribes to a simple user command in terms of a single joint command topic and controls the respective Dynamixel motor.
 
-Let's ROSify a Dynamixel script. To make things easier, I am going to create a custom Dynamixel class. 
+## CustomDXL class
+
+To make things easier, I am going to create a custom Dynamixel class. Here is the dummy version just to remember creating custom classes in Python:
 
 /home/rocotics/adatools/custom_dxl/CustomDXL.py
 
@@ -115,7 +70,6 @@ import dynamixel_sdk as dxl
 import numpy as np
 from adatools import utils
 from sys import exit
-
 
 class CustomDXL:
    def __init__(self,val):
@@ -128,7 +82,110 @@ class CustomDXL:
 /home/rocotics/adatools/examples/test.py
 ```python
 from custom_dxl.CustomDXL import CustomDXL
-# creating object for Square class
-object1 = CustomDXL(5)
-print(f"Val: {object1.getVal()}")
+
+object_dxls = CustomDXL(5)
+print(f"Val: {object_dxls.getVal()}")
 ```
+
+You can download the full version [here](https://github.com/frdedynamics/ros2_students.git) **rosify_dynamixel** folder. Remember to change the port, baud_rate and motor IDs.
+
+{: .notice--info}
+At this point, you should be able to control your motors if you copy-paste the content in [test_CustomDXL.py](https://github.com/frdedynamics/ros2_students/blob/master/rosify_dynamixel/test_CustomDXL.py) into the node `~/ros2_ws/src/rosify_dynamixel_ros_pkg/rosify_dynamixel_ros_pkg/send_single_joint_cmd.py`.
+
+
+## Use CustomDXL in a ROS node
+In [Publisher/Subscriber lesson](https://frdedynamics.github.io/hvl_robotics_website/courses/ada526/pub-sub#creating-ros-nodes), we have learned how a simple subscriber looks like. It will look like this when we add **CustomDXL** library:
+
+
+```python
+#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+
+from custom_dxl.CustomDXL import CustomDXL
+
+IMPORT NECESSARY MESSAGE LIBRARIES
+
+class myDynamixelController(Node):
+    def __init__(self) -> None:
+        super().__init__("my_dynamixel_controller")
+        self.sub = self.create_subscription(MSG_TYPE, 'TOPIC_NAME', self.listener_callback, 10)
+        self.dxls = CustomDXL()
+        self.dxls.open_port()
+        self.dxls.send_goal_all_joints(goal=[1000, 2665]) ## Random initial positions to all motors
+        self.dxls.read_pos()
+        print("Created")
+
+    def listener_callback(self, msg):
+        pass
+    
+def main(args=None):
+    rclpy.init(args=args)
+    node = myDynamixelController()
+    rclpy.spin(node)
+
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
+
+{: .notice--info}
+
+Remember different message types. This is something you need to choose based on the data that you want to provide to ROS in terms of sensor publisher or that you get from ROS in terms of actuator commands. We will use [**std_msgs/Int32 Message**](http://docs.ros.org/en/melodic/api/std_msgs/html/msg/Int32.html) in this exercise.
+
+
+**Your turn:**
+
+Imagine a topic `/dxl_joint_cmd` (Int32) is supposed control the first joint of your robot. Can you modify the code such that you will subscribe to this topic and actuate your motor accordingly? 
+
+Hint:
+
+1. Use `rqt_publisher` to publish `/dxl_joint_cmd`.
+2. Update joint value every second.
+
+
+<button id="toggleButton">Click here to see the solution</button>
+<div id="hiddenText" style="display: none;">
+    <pre><code class="python">
+    #!/usr/bin/env python3
+
+    import rclpy
+    from rclpy.node import Node
+
+    from custom_dxl.CustomDXL import CustomDXL
+
+    from std_msgs.msg import Int32
+    import time
+    import sys
+
+    class myDynamixelController(Node):
+        def __init__(self) -> None:
+            super().__init__("my_dynamixel_controller")
+            self.sub = self.create_subscription(Int32, '/dxl_joint_cmd', self.listener_callback, 10)
+            self.dxls = CustomDXL()
+            self.dxls.open_port()
+            self.dxls.send_goal_all_joints(goal=[1000, 2665]) ## Random initial positions to all motors
+            self.dxls.read_pos()
+
+            print("Created")
+
+        def listener_callback(self, msg):
+            print("here")
+            self.dxls.send_goal_single_joint(0,int(msg.data))
+            self.dxls.read_pos()
+        
+    def main(args=None):
+        rclpy.init(args=args)
+        node = myDynamixelController()
+        rclpy.spin(node)
+
+        rclpy.shutdown()
+
+    if __name__ == '__main__':
+        main()
+    </code></pre>
+</div>
+
