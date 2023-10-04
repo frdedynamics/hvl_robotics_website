@@ -24,6 +24,7 @@ This section gives you a view usefull code-snippets that you might want to use d
 ### Subscribing to the map topic
 To subscribe to the map topic, use the following code. The qos_profile (Quality of Service) allows you to more finely tune the communication in ROS2. It is out of the scope of this course to explain what it does in detail but if you are interested you can read more [here](https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Quality-of-Service-Settings.html).
 ```python
+from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy, QoSDurabilityPolicy
 from nav_msgs.msg import OccupancyGrid
 
 qos_profile = QoSProfile(reliability=QoSReliabilityPolicy.RMW_QOS_POLICY_RELIABILITY_RELIABLE,
