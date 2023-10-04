@@ -11,8 +11,6 @@ taxonomy: markup
 
 In this assignment you will create a controller which uses the Bug2 algorithm for navigating a Turtlebot to a target destination. The goal of this exercise is for you to be able to implement a navigation algorithm and learn to use the different communication patterns available in ROS. In the last assignment you have created a wall-follower and a go-to-point algorithm. In this assignment you will reuse them and connect them to implement the bug2 algorithm. You will also have to use all 3 of the available communciation patterns in ROS2.
 
-Video Tutorials on how to implement the different ROS communication patterns can be found here.
-
 ## Bug2 Algorithm
 The bug2 algorithm requires a known starting and goal position. It will start by computing a line between the start and the goal positions and then basically operates in 2 modes:
 

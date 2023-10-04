@@ -93,6 +93,8 @@ dat160:
         url: /courses/dat160/namespace
       - title: "Camera and AR"
         url: /courses/dat160/camera-ar
+      - title: "Occupancy Grids"
+        url: /courses/dat160/occupancy-grid
       - title: "Competition"
         url: /courses/dat160/competition
   - title: "Assignments"
