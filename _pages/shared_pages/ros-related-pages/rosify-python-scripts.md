@@ -59,14 +59,11 @@ print(utils.__file__)
 
 Let's ROSify a Dynamixel script. Our end goal at this step is to make a ROS node that subscribes to a simple user command in terms of a single joint command topic and controls the respective Dynamixel motor.
 
-{: .notice--info}
-Create a new package called **rosify_dynamixel_ros_pkg.py** in your workspace: `ros2 pkg create --build-type ament_python --node-name send_single_joint_cmd rosify_dynamixel_ros_pkg`
-
 ## CustomDXL class
 
-To make things easier, I am going to create a custom Dynamixel class. Here is the dummy version just to remember creating custom classes in Python:
+To make things easier, I am going to create a custom Dynamixel class. Here is the dummy version just to remember how to create custom classes in Python:
 
-/home/rocotics/adatools/custom_dxl/CustomDXL.py
+~/adatools/custom_dxl/CustomDXL.py
 
 ```python
 import dynamixel_sdk as dxl
@@ -79,7 +76,7 @@ class CustomDXL:
 
 ```
 
-/home/rocotics/adatools/examples/test.py
+~/adatools/examples/test.py
 ```python
 from custom_dxl.CustomDXL import CustomDXL
 
@@ -94,7 +91,7 @@ At this point, you should be able to control your motors if you copy-paste the c
 
 
 ## Use CustomDXL in a ROS node
-In [Publisher/Subscriber lesson](https://frdedynamics.github.io/hvl_robotics_website/courses/ada526/pub-sub#creating-ros-nodes), we have learned how a simple subscriber looks like. It will look like this when we add **CustomDXL** library:
+In [Publisher/Subscriber lesson](https://frdedynamics.github.io/hvl_robotics_website/courses/ada526/pub-sub#creating-ros-nodes), we have learned how a simple subscriber looks like. It will look like this when we add **CustomDXL** library into **send_single_joint_cmd.py**:
 
 *~/ros2_ws/src/rosify_dynamixel_ros_pkg/rosify_dynamixel_ros_pkg/seld_single_joint_command.py*
 ```python
@@ -256,7 +253,7 @@ class myDynamixelVisualizer(Node):
         
     def create_visualizer(self):
         self.robot_teach = self.my_conf_robot.teach(self.my_conf_robot.q, backend='pyplot', block=False)
-        pt.plot_baseplate(self.robot_teach)
+        self.plot = pt.plot_baseplate(self.robot_teach)
 
     def listener_callback(self, msg):
         print("Received new data")
@@ -264,8 +261,7 @@ class myDynamixelVisualizer(Node):
         #Hint: if you want to give degree commands, you need to convert it to radians. Use d2r()
         print(self.my_conf_robot.q)
         # Jog the robot on base plate
-        self.robot_teach = self.my_conf_robot.teach(self.my_conf_robot.q, backend='pyplot', block=False)
-        pt.plot_baseplate(self.robot_teach)
+        self.plot.step()
     
 def main(args=None):
     rclpy.init(args=args)
@@ -277,6 +273,10 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 ```
+
+Our package now look like this:
+
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ada526-rosify1.png)
 
 Currently, we update the plot on *every* new data, even if the data is the same. It is quite unefficient. You can optimize such that you only update the plot when a different value is received. Brainstorm here on how to achieve it.
 
@@ -302,6 +302,7 @@ class myDynamixelVisualizer(Node):
         self.create_config()
         self.create_visualizer()
         self.last_q = 0.0
+        
         print("Created")
 
     def create_config(self):
@@ -311,7 +312,7 @@ class myDynamixelVisualizer(Node):
         
     def create_visualizer(self):
         self.robot_teach = self.my_conf_robot.teach(self.my_conf_robot.q, backend='pyplot', block=False)
-        pt.plot_baseplate(self.robot_teach)
+        self.plot = pt.plot_baseplate(self.robot_teach)
 
     def listener_callback(self, msg):
         print("Received new data")
@@ -324,8 +325,7 @@ class myDynamixelVisualizer(Node):
             self.my_conf_robot.q[0] = self.last_q
             print(self.my_conf_robot.q)
             # Jog the robot on base plate
-            self.robot_teach = self.my_conf_robot.teach(self.my_conf_robot.q, backend='pyplot', block=False)
-            pt.plot_baseplate(self.robot_teach)
+            self.plot.step()
     
 def main(args=None):
     rclpy.init(args=args)
@@ -340,10 +340,18 @@ if __name__ == '__main__':
     </code></pre>
 </div>
 
-# Exercise: Jog your robot via visualizer
+# Exercise: Update your robot via visualizer
 
-We have two nodes, one of which controls the real robot (send_single_joint_cmd.py) and the other visualize the robot simulation. Often, you would like to see your robot configuration according to the given joint positions. And only after you are satisfied on the safety of the robot in this configuration, you want to update the configuration of the real robot.
+We have two nodes, one of which controls the real robot (send_single_joint_cmd.py) and the other visualizes the robot simulation. Often, you would like to see your robot configuration according to the given joint positions. Only after you are satisfied with the safety of the robot in this configuration, update the configuration of the real robot.
 
 Let's do this.
 
-NOT SURE IF I SHOULD ADD THIS OR NOT. It might not be enough time during the lecture for this.
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ada526-rosify2.png)
+
+#. Modify the **send_single_joint_cmd.py** such that it subscribes to the topic `/dxl_actual_joint_cmd`.
+#. Create a new middleware node names **visualizer_to_robot.py**. It should subscribe to the same topic as the visualizer (`/dxl_joint_cmd`) does and publishes to the actual joint command topic (`dxl_actual_joint_cmd`) when a bool ROS parameter sets to `True`. The code for that looks like this: [visualizer_to_robot.py](https://github.com/frdedynamics/ros2_students/blob/master/rosify_dynamixel/visualizer_to_robot.py)
+#. Run all three nodes in the figure above. (or even better: make a launch file!)
+#. Play with your visualizer.
+#. Set update_robot parameter *True* whenever you want to send it to the robot: `ros2 param set /dynamixel_visualizer_to_controller update_robot True`
+
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ros2-param-list-update-robot.png)
