@@ -192,12 +192,14 @@ Hint:
     </code></pre>
 </div>
 
-# Plot CustomDXL in a ROS node
+# Visualize
+
+From [plot_base_plate](https://github.com/frdedynamics/adatools/blob/master/examples/plot_base_plate.py) example, we know how to visualize our custom robot. You can also rosify this.
 
 {: .notice--info}
 Create a new node called **visualize_dxl.py** in your package.
 
-From [plot_base_plate](https://github.com/frdedynamics/adatools/blob/master/examples/plot_base_plate.py) example, we know how to visualize our custom robot. For those who already modified the [adatools.config_generator](https://github.com/frdedynamics/adatools/blob/master/adatools/config_generator.py) library, you can use your version and modify the following code. I have modified it such that created a new function for a 2-DOF model. Therefore, the **visualize_dxl.py** looks like this for me:
+For those who already modified the [adatools.config_generator](https://github.com/frdedynamics/adatools/blob/master/adatools/config_generator.py) library, you can use your version and modify the following code. I have modified it such that created a new function for a 2-DOF model. Therefore, the **visualize_dxl.py** looks like this for me:
 
 *~/ros2_ws/src/rosify_dynamixel_ros_pkg/rosify_dynamixel_ros_pkg/visualize_dxl.py*
 ```python
@@ -275,3 +277,73 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 ```
+
+Currently, we update the plot on *every* new data, even if the data is the same. It is quite unefficient. You can optimize such that you only update the plot when a different value is received. Brainstorm here on how to achieve it.
+
+<button id="toggleButton">Click here to see the solution</button>
+<div id="hiddenText" style="display: none;">
+    <pre><code class="python">
+#!/usr/bin/env python
+
+from adatools import config_generator as cg
+from adatools import plotting_tools as pt
+from math import radians as d2r
+
+#TODO: Add necessary ROS libraries
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import Int32
+
+
+class myDynamixelVisualizer(Node):
+    def __init__(self) -> None:
+        super().__init__("my_dynamixel_visualizer")
+        self.sub = self.create_subscription(Int32, '/dxl_joint_cmd', self.listener_callback, 10)
+        self.create_config()
+        self.create_visualizer()
+        self.last_q = 0.0
+        print("Created")
+
+    def create_config(self):
+        #TODO: Modify according to your robot
+        self.my_conf_robot = cg.get_robot_config_2(link1=0.3, link1_offset=0.0,
+                                        link2=0.3, link2_offset=0.0)
+        
+    def create_visualizer(self):
+        self.robot_teach = self.my_conf_robot.teach(self.my_conf_robot.q, backend='pyplot', block=False)
+        pt.plot_baseplate(self.robot_teach)
+
+    def listener_callback(self, msg):
+        print("Received new data")
+        ## Optimize:
+        if d2r(int(msg.data)) == self.last_q:
+            print("No update required")
+        else:
+            print("Plot updated")
+            self.last_q = d2r(int(msg.data))
+            self.my_conf_robot.q[0] = self.last_q
+            print(self.my_conf_robot.q)
+            # Jog the robot on base plate
+            self.robot_teach = self.my_conf_robot.teach(self.my_conf_robot.q, backend='pyplot', block=False)
+            pt.plot_baseplate(self.robot_teach)
+    
+def main(args=None):
+    rclpy.init(args=args)
+    node = myDynamixelVisualizer()
+    rclpy.spin(node)
+
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+
+    </code></pre>
+</div>
+
+# Exercise: Jog your robot via visualizer
+
+We have two nodes, one of which controls the real robot (send_single_joint_cmd.py) and the other visualize the robot simulation. Often, you would like to see your robot configuration according to the given joint positions. And only after you are satisfied on the safety of the robot in this configuration, you want to update the configuration of the real robot.
+
+Let's do this.
+
+NOT SURE IF I SHOULD ADD THIS OR NOT.
