@@ -59,6 +59,9 @@ print(utils.__file__)
 
 Let's ROSify a Dynamixel script. Our end goal at this step is to make a ROS node that subscribes to a simple user command in terms of a single joint command topic and controls the respective Dynamixel motor.
 
+{: .notice--info}
+Create a new package called **rosify_dynamixel_ros_pkg.py** in your workspace: `ros2 pkg create --build-type ament_python --node-name send_single_joint_cmd rosify_dynamixel_ros_pkg`
+
 ## CustomDXL class
 
 To make things easier, I am going to create a custom Dynamixel class. Here is the dummy version just to remember creating custom classes in Python:
@@ -67,15 +70,12 @@ To make things easier, I am going to create a custom Dynamixel class. Here is th
 
 ```python
 import dynamixel_sdk as dxl
-import numpy as np
-from adatools import utils
-from sys import exit
 
 class CustomDXL:
-   def __init__(self,val):
-      self.val=val
-   def getVal(self):
-      return self.val*self.val
+   def __init__(self,dxl_ids=[1, 2, 3]):
+      self.dxl_ids=dxl_ids
+   def getIDs(self):
+      return self.dxl_ids
 
 ```
 
@@ -83,8 +83,8 @@ class CustomDXL:
 ```python
 from custom_dxl.CustomDXL import CustomDXL
 
-object_dxls = CustomDXL(5)
-print(f"Val: {object_dxls.getVal()}")
+object_dxls = CustomDXL([60, 61])
+print(f"IDs: {object_dxls.getIDs()}")
 ```
 
 You can download the full version [here](https://github.com/frdedynamics/ros2_students.git) **rosify_dynamixel** folder. Remember to change the port, baud_rate and motor IDs.
@@ -96,7 +96,7 @@ At this point, you should be able to control your motors if you copy-paste the c
 ## Use CustomDXL in a ROS node
 In [Publisher/Subscriber lesson](https://frdedynamics.github.io/hvl_robotics_website/courses/ada526/pub-sub#creating-ros-nodes), we have learned how a simple subscriber looks like. It will look like this when we add **CustomDXL** library:
 
-
+*~/ros2_ws/src/rosify_dynamixel_ros_pkg/rosify_dynamixel_ros_pkg/seld_single_joint_command.py*
 ```python
 #!/usr/bin/env python3
 
@@ -105,11 +105,13 @@ from rclpy.node import Node
 
 from custom_dxl.CustomDXL import CustomDXL
 
+#TODO
 IMPORT NECESSARY MESSAGE LIBRARIES
 
 class myDynamixelController(Node):
     def __init__(self) -> None:
         super().__init__("my_dynamixel_controller")
+        #TODO
         self.sub = self.create_subscription(MSG_TYPE, 'TOPIC_NAME', self.listener_callback, 10)
         self.dxls = CustomDXL()
         self.dxls.open_port()
@@ -118,6 +120,7 @@ class myDynamixelController(Node):
         print("Created")
 
     def listener_callback(self, msg):
+        #TODO
         pass
     
 def main(args=None):
@@ -173,8 +176,8 @@ Hint:
             print("Created")
 
         def listener_callback(self, msg):
-            print("here")
-            self.dxls.send_goal_single_joint(0,int(msg.data))
+            print("Position command received.")
+            self.dxls.send_goal_single_joint(0,int(msg.data)) # for only first motor in the id_dxl[]
             self.dxls.read_pos()
         
     def main(args=None):
@@ -189,3 +192,86 @@ Hint:
     </code></pre>
 </div>
 
+# Plot CustomDXL in a ROS node
+
+{: .notice--info}
+Create a new node called **visualize_dxl.py** in your package.
+
+From [plot_base_plate](https://github.com/frdedynamics/adatools/blob/master/examples/plot_base_plate.py) example, we know how to visualize our custom robot. For those who already modified the [adatools.config_generator](https://github.com/frdedynamics/adatools/blob/master/adatools/config_generator.py) library, you can use your version and modify the following code. I have modified it such that created a new function for a 2-DOF model. Therefore, the **visualize_dxl.py** looks like this for me:
+
+*~/ros2_ws/src/rosify_dynamixel_ros_pkg/rosify_dynamixel_ros_pkg/visualize_dxl.py*
+```python
+#!/usr/bin/env python
+
+from adatools import config_generator as cg
+from adatools import plotting_tools as pt
+
+
+my_conf2_robot = cg.get_robot_config_2(link1=0.3, link1_offset=0.0,
+                                       link2=0.3, link2_offset=0.0)
+
+# Plot the robot on base plate
+robot_plot = my_conf2_robot.plot(my_conf2_robot.q, backend='pyplot')
+pt.plot_baseplate(robot_plot)
+# robot_plot.hold()
+
+# Jog the robot on base plate
+robot_teach = my_conf2_robot.teach(my_conf2_robot.q, backend='pyplot', block=False)
+pt.plot_baseplate(robot_teach)
+robot_teach.hold()
+```
+
+It is still a simple Python script, not a ROS node yet. Therefore, `ros2 run ...` does not work yet. You can test it with the following command: `python3 visualize_dxl.py` (run this command in the path where visualize_dxl.py is located). 
+
+## Rosify visualize_dxl.py
+
+First, add visualize_dxl.py in **setup.py**.
+
+Second, modify the command such that it subscribes to the same topic as in the **send_single_joint_cmd.py**, which is `/dxl_joint_cmd`, and plots the value in this topic for the first joint.
+
+```python
+#!/usr/bin/env python
+
+from adatools import config_generator as cg
+from adatools import plotting_tools as pt
+from math import radians as d2r
+
+#TODO: Add necessary ROS libraries
+
+
+class myDynamixelVisualizer(Node):
+    def __init__(self) -> None:
+        super().__init__("my_dynamixel_visualizer")
+        #TODO: Create subscription
+        self.create_config()
+        self.create_visualizer()
+        print("Created")
+
+    def create_config(self):
+        #TODO: Modify according to your robot
+        self.my_conf_robot = cg.get_robot_config_2(link1=0.3, link1_offset=0.0,
+                                        link2=0.3, link2_offset=0.0)
+        
+    def create_visualizer(self):
+        self.robot_teach = self.my_conf_robot.teach(self.my_conf_robot.q, backend='pyplot', block=False)
+        pt.plot_baseplate(self.robot_teach)
+
+    def listener_callback(self, msg):
+        print("Received new data")
+        #TODO: Assign the msg.data to the first joint of my_conf_robot.q
+        #Hint: if you want to give degree commands, you need to convert it to radians. Use d2r()
+        print(self.my_conf_robot.q)
+        # Jog the robot on base plate
+        self.robot_teach = self.my_conf_robot.teach(self.my_conf_robot.q, backend='pyplot', block=False)
+        pt.plot_baseplate(self.robot_teach)
+    
+def main(args=None):
+    rclpy.init(args=args)
+    node = myDynamixelVisualizer()
+    rclpy.spin(node)
+
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
