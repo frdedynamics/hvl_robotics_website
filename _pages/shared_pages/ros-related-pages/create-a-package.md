@@ -6,8 +6,8 @@ A ROS package is simply a folder under your workspace. The name of the workspace
 
 Although a ROS package is a simple folder, not every folder is a ROS package. For a folder to be a ROS package, it should have these properties:
 
-1. It should be located under **~/ros2_ws/src**
-1. It should have **setup.py** file, **package.xml** file, and a **src** directory.
+1. It must be located under **~/ros2_ws/src**
+1. It must have **setup.py** file, **package.xml** file, and a **src** directory.
 
 {: .notice--info}
 Note that the second property is for Python-based ROS packages. It is possible (and very common) to create a C++ based package but we skip giving details about C++ packages in order not to make unnecessary confusion. You can read more about ROS packages in this [link](https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html).
