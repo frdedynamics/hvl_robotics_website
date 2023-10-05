@@ -46,7 +46,7 @@ or if you are already in **~/ros2_ws** directory in your terminal:
 
 By running `colcon build`, you compile all the source code under your workspace, and do little or more changes in your ROS system. To tell the Linux system what you have changed on the *ROS side*, you must source the necessary **.bash** (or **.sh**) file in your terminal.
 
-Therefore you HAVE TO source your **setup.bash** after *every time* you create a package or modify a file in your workspace and *most of the time* you do changes to an existing file. We will talk about when it is relevant later.
+Therefore you HAVE TO source your **setup.bash** after *every time* you build your workspace with `colcon build`. We will talk about when it is relevant later.
 
 <!-- https://www.youtube.com/watch?v=Gg25GfA456o&ab_channel=RoboticsBack-End -->
 
