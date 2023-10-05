@@ -6,7 +6,7 @@ A ROS package is simply a folder under your workspace. The name of the workspace
 
 Although a ROS package is a simple folder, not every folder is a ROS package. For a folder to be a ROS package, it should have these properties:
 
-1. It should be located under **~/ros2_ws**,
+1. It should be located under **~/ros2_ws/src**
 1. It should have **setup.py** file, **package.xml** file, and a **src** directory.
 
 {: .notice--info}
