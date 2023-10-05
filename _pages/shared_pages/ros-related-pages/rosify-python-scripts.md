@@ -346,4 +346,4 @@ We have two nodes, one of which controls the real robot (send_single_joint_cmd.p
 
 Let's do this.
 
-NOT SURE IF I SHOULD ADD THIS OR NOT.
+NOT SURE IF I SHOULD ADD THIS OR NOT. It might not be enough time during the lecture for this.
