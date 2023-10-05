@@ -14,6 +14,8 @@ Note that the second property is for Python-based ROS packages. It is possible (
 
 
 ## Create Your First Package
+`cd` into **~/ros2_ws/src** and  
+
 `ros2 pkg create --build-type ament_python --node-name my_package my_package`
 
 In the above command, you can replace **my_package** with the desired name for your package but we will stick to that for this tutorial. This command creates a new ROS 2 Python package with the specified name.
@@ -22,6 +24,8 @@ After running the command, you will see a new directory named my_package created
 You can then navigate into the **~/ros2_ws/src/my_package/** directory and start developing your Python code for the package. You can create Python scripts, modules, or any other necessary files within this directory to implement the functionality of your package.
 
 ## Compile Your Package
+`cd` into **~/ros2_ws** and  
+
 `colcon build`
 
 This command takes all the folders under **~/ros2_ws/src**, compiles the files within certain rules (we will not go into details), and creates/modifies **/install**, **/build** and **/log** folders so that everything is ready and executable with ROS commands. You HAVE TO source your `colcon build` after *every time* you create a package or modify a file in your workspace.
