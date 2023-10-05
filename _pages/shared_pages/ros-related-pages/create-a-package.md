@@ -28,7 +28,7 @@ You can then navigate into the **~/ros2_ws/src/my_package/** directory and start
 
 `colcon build`
 
-This command takes all the folders under **~/ros2_ws/src**, compiles the files within certain rules (we will not go into details), and creates/modifies **/install**, **/build** and **/log** folders so that everything is ready and executable with ROS commands. You HAVE TO source your `colcon build` after *every time* you create a package or modify a file in your workspace.
+This command takes all the folders under **~/ros2_ws/src**, compiles the files within certain rules (we will not go into details), and creates/modifies **/install**, **/build** and **/log** folders so that everything is ready and executable with ROS commands. You HAVE TO build your workspace *every time* you create a package or modify a file in your workspace.
 
 Now you can see a folder with your package name both under **/install** and **/build** folders.
 
