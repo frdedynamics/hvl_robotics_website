@@ -44,7 +44,7 @@ or if you are already in **~/ros2_ws** directory in your terminal:
 
 *Sourcing* is quite a Linux process, actually. It tells your system "run the commands in this file". You source a **.bash** (or sometimes **.sh**) file which is a file that contains a sequence of commands that are executed by the bash program line by line. It is mentioned in more detail on our [Linux Tutorial](https://frdedynamics.github.io/hvl_robotics_website/linux) page.
 
-The reason is that, after you run `colcon build`, you compile all the source code under your workspace, and do little or more changes in your ROS system. To tell the Linux system what you have changed on the *ROS side*, you source the necessary **.bash** (or **.sh**) file in your terminal.
+By running `colcon build`, you compile all the source code under your workspace, and do little or more changes in your ROS system. To tell the Linux system what you have changed on the *ROS side*, you must source the necessary **.bash** (or **.sh**) file in your terminal.
 
 Therefore you HAVE TO source your **setup.bash** after *every time* you create a package or modify a file in your workspace and *most of the time* you do changes to an existing file. We will talk about when it is relevant later.
 
