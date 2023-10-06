@@ -348,10 +348,10 @@ Let's do this.
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ada526-rosify2.png)
 
-#. Modify the **send_single_joint_cmd.py** such that it subscribes to the topic `/dxl_actual_joint_cmd`.
-#. Create a new middleware node names **visualizer_to_robot.py**. It should subscribe to the same topic as the visualizer (`/dxl_joint_cmd`) does and publishes to the actual joint command topic (`dxl_actual_joint_cmd`) when a bool ROS parameter sets to `True`. The code for that looks like this: [visualizer_to_robot.py](https://github.com/frdedynamics/ros2_students/blob/master/rosify_dynamixel/visualizer_to_robot.py)
-#. Run all three nodes in the figure above. (or even better: make a launch file!)
-#. Play with your visualizer.
-#. Set update_robot parameter *True* whenever you want to send it to the robot: `ros2 param set /dynamixel_visualizer_to_controller update_robot True`
+- Modify the **send_single_joint_cmd.py** such that it subscribes to the topic `/dxl_actual_joint_cmd`.
+- Create a new middleware node names **visualizer_to_robot.py**. It should subscribe to the same topic as the visualizer (`/dxl_joint_cmd`) does and publishes to the actual joint command topic (`dxl_actual_joint_cmd`) when a bool ROS parameter sets to `True`. The code for that looks like this: [visualizer_to_robot.py](https://github.com/frdedynamics/ros2_students/blob/master/rosify_dynamixel/visualizer_to_robot.py)
+- Run all three nodes in the figure above. (or even better: make a launch file!)
+- Play with your visualizer.
+- Set update_robot parameter *True* whenever you want to send it to the robot: `ros2 param set /dynamixel_visualizer_to_controller update_robot True`
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ros2-param-list-update-robot.png)
