@@ -1,3 +1,7 @@
+In this lecture, you will learn how to use custom Python libraries in your ROS package. We are going to *ROS-ify* some example Python scripts that yuou are already familiar with, which depends on the [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) and [adatools](https://github.com/frdedynamics/adatools/tree/master).
+
+# How to import custom libraries
+
 So far, you have been introduced how to control Dynamixel robots using [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK), how to plot different features of the robot using [Robotics Toolbox](https://github.com/petercorke/robotics-toolbox-python). All are using libraries written in Python3.
 
 On the other hand, recently, you have been introduced [ROS](https://docs.ros.org/en/foxy/Tutorials.html). You know that you can use Python or C++ to program nodes and launches in ROS. Today, we are going to learn how to "ROS-ify" simple Python scripts such that you can implement your Python scripts into the ROS environment.
@@ -10,8 +14,6 @@ Let's start by creating a new package.
 1. Direct to the workspace back: `cd ..`
 1. Compile the workspace: `colcon build --symlink-install`
 1. Source the workspace: `source install/setup.bash`
-
-# How to import custom libraries
 
 The ROS packages *have to be* under your ROS workspace. It is `~/ros2_ws` in the virtual machine. This might cause an issue in the beginning for some manually installed Python packages that you want to use (i.e adatools). First, you need to import the Python path of the sensors, motors, visualizer scripts etc. libraries into your `$PYTHONPATH`. Otherwise, you will get `ImportError` or `ModuleNotFoundError` when you attempt to use those libraries.
 
