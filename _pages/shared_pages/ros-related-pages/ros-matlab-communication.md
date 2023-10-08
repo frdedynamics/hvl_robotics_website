@@ -1,3 +1,5 @@
+In this section, you will learn how to connect two powerful environments: MATLAB and ROS. The knowledge that you will gain in this section will be highly used in the [Open Manipulator Lab](https://frdedynamics.github.io/hvl_robotics_website/courses/ele306/tb2) and in your semester project.
+
 The ROS-Matlab communication is way easier than many of you might think. What you need is just [MATLAB ROS Toolbox](https://www.mathworks.com/products/ros.html). Please make sure that you have the toolbox installed: Home > Add-Ons > Manage Add-Ons:
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/matlab-toolbox.png)
@@ -55,7 +57,28 @@ end
 
 This script creates a node in domain number **24** and defines it as a publisher that publishes to the topic `turtle1/cmd_vel` for 10 seconds. You should modify this code according to your ROS_DOMAIN_ID and the topic you want to interact.
 
+{: .notice--info}
+If you want to use common ROS terminal commands such as `ros2 topic list` then you can use `setenv("ROS_DOMAIN_ID","24")` in your MATLAB terminal.
+
 ## Subscribe a topic by MATLAB
+
+For this part, we will use the simple publisher that we created in the [ROS Intro](https://frdedynamics.github.io/hvl_robotics_website/courses/ele306/pub-sub#completing-the-publisher). 
+
+1. Start your publisher: `ros2 run my_package my_publisher`
+2. Decide which topic you want to subscribe to: `ros2 topic list`, `ros2 topic info `
+
+
+The subscriber MATLAB script would look like:
+
+*MATLAB_WORKSPACE/matlab_ros_subscriber.m*
+```matlab
+test_subscriber = ros2node("/test_vm_ros", 24);
+msgSub = ros2subscriber(test_subscriber, "/topic", "std_msgs/String");
+
+for cnt = 1:10
+    receivedData = receive(msgSub, 10)
+end
+```
 
  
 
@@ -129,7 +152,7 @@ if __name__ == '__main__':
 
 And then, the MATLAB subscriber for this would be like:
 
-*MATLAB_WORKSPACE/matlab_ros_subscriber.m*
+*MATLAB_WORKSPACE/matlab_turtlesim_pose_subscriber.m*
 ```matlab
 test_subscriber = ros2node("/test_vm_ros", 24);
 msgSub = ros2subscriber(test_subscriber, "/turtle1/pose_converted", "geometry_msgs/Pose");
@@ -144,3 +167,5 @@ end
 
 ## Create custom message from ROS package
 This is a better and systematic option, however, it is more cumbersome. You can learn the procedure following the [documentation](https://www.mathworks.com/help/ros/ug/create-custom-messages-from-ros-package.html).
+
+
