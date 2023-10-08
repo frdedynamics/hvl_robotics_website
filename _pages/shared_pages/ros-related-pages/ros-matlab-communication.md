@@ -85,7 +85,7 @@ end
 # Limitations
 Imagine that you want to obtain the pose of the turtlesim on MATLAB. Then you need to subscribe to `turtle1/pose` topic which has **turtlesim/msg/Pose** message type. This message type is not available in ROS Toolbox. There are two things that you can do in this case:
 
-## Create a middleware node
+## Option-1: Create a middleware node
 You can create a middleware node in the ROS environment that subscribes to the *exotic* topic and publishes the information in it using more *generic* message type. 
 
 In `turtle1/pose` example, th middleware node might look like this:
@@ -165,7 +165,7 @@ end
 ```
 
 
-## Create custom message from ROS package
+## Option-2: Create custom message from ROS package
 This is a better and systematic option, however, it is more cumbersome. You can learn the procedure following the [documentation](https://www.mathworks.com/help/ros/ug/create-custom-messages-from-ros-package.html).
 
 

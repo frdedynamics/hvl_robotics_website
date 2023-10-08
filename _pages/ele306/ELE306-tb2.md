@@ -169,22 +169,9 @@ pause(3)
 % Defining message for publisher, and joint_names component
 
 
-%% Defining the robotic arm
-L1 = ;
-L2 = ;
-L3 = ;
-L4 = ;
-L5 = ;
-L6 = sqrt(L2*L2 + L3*L3);
-beta = atan(L3/L2);
+%% Defining the robotic arm DH parameters
+%% Use the calculations from the arm kinematics lecture.
 
-
-%j1 = Revolute('d', ?, 'a', ?, 'alpha', pi/2, 'offset', pi);
-%j2 = Revolute('d', ?, 'a', ?, 'alpha', 0, 'offset', beta + pi/2);
-%j3 = Revolute('d', ?, 'a', ?, 'alpha', 0, 'offset', -beta + pi/2);
-%j4 = Revolute('d', ?, 'a', ?, 'alpha', 0, 'offset', pi/90);
-
-robot = SerialLink([j1 j2 j3 j4],'name', 'my robot');
 robot.qlim = [-3.14, +3.14; -1.57, +1.57; -1.40, +1.57; -1.57, 1.57];
 
 % Visualizing the arm on zero position to check that the definition is correct
