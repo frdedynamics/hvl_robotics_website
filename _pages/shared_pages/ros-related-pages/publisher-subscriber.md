@@ -113,6 +113,8 @@ if __name__ == '__main__':
 
 What does this node do? Can you explain? Is there anything missing?
 
+#### Completing the publisher
+
 Yes,
 
 This piece of code is a ROS node, pretty much done, but it only *prints* "Hello" but not publishes. As the last step of creating a publisher, we will publish the text "Hello" and publish it as a *String message". Here is the complete code:

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Visualization (URDF and RViz)"
+title: "ROS-MATLAB Communication"
 permalink: /courses/ele306/ros-matlab
 toc: true # The right side bar "on this page"
 breadcrumbs: true  # the directory-of-documents type of header navigation

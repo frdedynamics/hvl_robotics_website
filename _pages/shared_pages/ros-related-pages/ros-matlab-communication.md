@@ -22,10 +22,125 @@ Next:
 3. Find the line where **ROS_DOMAIN_ID** is set: (for me: line 121: ``export ROS_DOMAIN_ID=24``)
 4. Note the number somewhere. You will use this number in MATLAB.
 
-## Start a node to communicate
+## Publish a topic from MATLAB
 At this point, you are quite free to choose what you want to control. It can be `turtlesim`, your custom robot or Open Manipulator joints. For simplicity, we will only control the `turtlesim` here but the concept is the same for all.
 
 1. Start your node that you want to communicate: `ros2 run turtlesim turtlesim node`
 2. Note the ROS topic that you want to publish/subscribe: `ros2 topic list`
+3. Note the type of the message of this topic: `ros2 topic info /turtle1/cmd_vel`
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/turtlesim-topic-list.png)
+
+Now, go back to MATLAB and create a script. Paste the code below:
+
+*MATLAB_WORKSPACE/matlab_ros_publisher.m*
+```matlab
+test_publisher = ros2node("/test_vm_ros", 24);
+
+cmdPub = ros2publisher(test_publisher, "turtle1/cmd_vel", "geometry_msgs/Twist");
+cmdMsg = ros2message(cmdPub);
+cmdMsg.linear.x = -0.2;
+cmdMsg.linear.y = 0.0;
+cmdMsg.linear.z = 0.0;
+cmdMsg.angular.x = 0.0;
+cmdMsg.angular.y = 0.0;
+cmdMsg.angular.z = 0.0;
+
+
+for cnt = 1:10
+    send(cmdPub,cmdMsg)
+    pause(1)
+end
+```
+
+This script creates a node in domain number **24** and defines it as a publisher that publishes to the topic `turtle1/cmd_vel` for 10 seconds. You should modify this code according to your ROS_DOMAIN_ID and the topic you want to interact.
+
+## Subscribe a topic by MATLAB
+
+ 
+
+# Limitations
+Imagine that you want to obtain the pose of the turtlesim on MATLAB. Then you need to subscribe to `turtle1/pose` topic which has **turtlesim/msg/Pose** message type. This message type is not available in ROS Toolbox. There are two things that you can do in this case:
+
+## Create a middleware node
+You can create a middleware node in the ROS environment that subscribes to the *exotic* topic and publishes the information in it using more *generic* message type. 
+
+In `turtle1/pose` example, th middleware node might look like this:
+
+*YOUR_PREFERED_PACKAGE/turtle_pose_converter.py*
+```python
+
+#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+
+## Pose msg type is very common in ROS but it uses quaternions for orientation
+# If you want to skip the euler to quaternion conversion
+# you can use Pose2D for simplicity
+from geometry_msgs.msg import Pose 
+
+from turtlesim.msg import Pose as Turtlesim_pose
+
+import transforms3d
+
+
+class myConverterNode(Node):
+    def __init__(self) -> None:
+        super().__init__("turtlesim_pose_converter")
+        self.sub = self.create_subscription(Turtlesim_pose, '/turtle1/pose', self.listener_callback, 10)
+        self.pub = self.create_publisher(Pose, '/turtle1/pose_converted', 10)
+        self.create_timer(1.0, self.timer_callback)
+        self.listened_pose = Turtlesim_pose()
+        self.published_pose = Pose()
+
+    def listener_callback(self, msg):
+        # self.get_logger().info('turtlesim pose received')
+        self.listened_pose = msg
+
+
+    def timer_callback(self):
+        self.published_pose.position.x = self.listened_pose.x
+        self.published_pose.position.y = self.listened_pose.y
+        self.published_pose.position.z = 0.0
+
+        q = transforms3d.euler.euler2quat(0, 0, self.listened_pose.theta, 'rxyz')
+        print(q[0],q[1], q[2], q[3]) # The order: q.w - q.x - q.y - q.z
+
+        self.published_pose.orientation.w = q[0]
+        self.published_pose.orientation.x = q[1]
+        self.published_pose.orientation.y = q[2]
+        self.published_pose.orientation.z = q[3]
+
+        self.pub.publish(self.published_pose)
+        self.get_logger().info('converted turtlesim pose published')
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = myConverterNode()
+    rclpy.spin(node)
+
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+
+```
+
+And then, the MATLAB subscriber for this would be like:
+
+*MATLAB_WORKSPACE/matlab_ros_subscriber.m*
+```matlab
+test_subscriber = ros2node("/test_vm_ros", 24);
+msgSub = ros2subscriber(test_subscriber, "/turtle1/pose_converted", "geometry_msgs/Pose");
+
+for cnt = 1:10
+    poseData = receive(msgSub, 10)
+    poseData.position
+    poseData.orientation
+end
+```
+
+
+## Create custom message from ROS package
+This is a better and systematic option, however, it is more cumbersome. You can learn the procedure following the [documentation](https://www.mathworks.com/help/ros/ug/create-custom-messages-from-ros-package.html).
