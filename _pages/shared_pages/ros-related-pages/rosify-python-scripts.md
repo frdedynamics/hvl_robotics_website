@@ -1,8 +1,8 @@
-In this lecture, you will learn how to use custom Python libraries in your ROS package. We are going to *ROS-ify* some example Python scripts that yuou are already familiar with, which depends on the [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) and [adatools](https://github.com/frdedynamics/adatools/tree/master).
+In this lecture, you will learn how to use custom Python libraries in your ROS package. We are going to *ROS-ify* some example Python scripts that you are already familiar with, which depends on the [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) and [adatools](https://github.com/frdedynamics/adatools/tree/master) libraries.
 
 # How to import custom libraries
 
-So far, you have been introduced how to control Dynamixel robots using [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK), how to plot different features of the robot using [Robotics Toolbox](https://github.com/petercorke/robotics-toolbox-python). All are using libraries written in Python3.
+So far, you have been introduced to how to control Dynamixel robots using [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK), how to plot different features of the robot using [Robotics Toolbox](https://github.com/petercorke/robotics-toolbox-python). All are using libraries written in Python3.
 
 On the other hand, recently, you have been introduced [ROS](https://docs.ros.org/en/foxy/Tutorials.html). You know that you can use Python or C++ to program nodes and launches in ROS. Today, we are going to learn how to "ROS-ify" simple Python scripts such that you can implement your Python scripts into the ROS environment.
 
