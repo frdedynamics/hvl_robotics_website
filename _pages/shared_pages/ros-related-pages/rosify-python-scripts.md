@@ -1,5 +1,6 @@
 In this lecture, you will learn how to use custom Python libraries in your ROS package. We are going to *ROS-ify* some example Python scripts that you are already familiar with, which depends on the [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK) and [adatools](https://github.com/frdedynamics/adatools/tree/master) libraries.
 
+
 # How to import custom libraries
 
 So far, you have been introduced to how to control Dynamixel robots using [DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK), how to plot different features of the robot using [Robotics Toolbox](https://github.com/petercorke/robotics-toolbox-python). All are using libraries written in Python3.
@@ -193,6 +194,7 @@ Hint:
     </code></pre>
 </div>
 
+
 # Visualize
 
 From [plot_base_plate](https://github.com/frdedynamics/adatools/blob/master/examples/plot_base_plate.py) example, we know how to visualize our custom robot. You can also rosify this.
@@ -233,7 +235,7 @@ First, add visualize_dxl.py in **setup.py**.
 Second, modify the command such that it subscribes to the same topic as in the **send_single_joint_cmd.py**, which is `/dxl_joint_cmd`, and plots the value in this topic for the first joint.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from adatools import config_generator as cg
 from adatools import plotting_tools as pt
@@ -282,58 +284,42 @@ Our package now look like this:
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ada526-rosify1.png)
 
-Currently, we update the plot on *every* new data, even if the data is the same. It is quite unefficient. You can optimize such that you only update the plot when a different value is received. Brainstorm here on how to achieve it.
+Currently, we update the plot on *every* new data, even if the data is the same. It is quite inefficient. You can optimize such that you only update the plot when a different value is received. Brainstorm here on how to achieve it.
 
-<button id="toggleButton">Click here to see the solution</button>
+
+
+<button id="toggleButton">Solution</button>
 <div id="hiddenText" style="display: none;">
     <pre><code class="python">
-    #!/usr/bin/env python3
 
-    from adatools import config_generator as cg
-    from adatools import plotting_tools as pt
-    from math import radians as d2r
-
-    #TODO: Add necessary ROS libraries
     import rclpy
     from rclpy.node import Node
+
+    from custom_dxl.CustomDXL import CustomDXL
+
     from std_msgs.msg import Int32
+    import time
+    import sys
 
-
-    class myDynamixelVisualizer(Node):
+    class myDynamixelController(Node):
         def __init__(self) -> None:
-            super().__init__("my_dynamixel_visualizer")
+            super().__init__("my_dynamixel_controller")
             self.sub = self.create_subscription(Int32, '/dxl_joint_cmd', self.listener_callback, 10)
-            self.create_config()
-            self.create_visualizer()
-            self.last_q = 0.0
-            
+            self.dxls = CustomDXL()
+            self.dxls.open_port()
+            self.dxls.send_goal_all_joints(goal=[1000, 2665]) ## Random initial positions to all motors
+            self.dxls.read_pos()
+
             print("Created")
 
-        def create_config(self):
-            #TODO: Modify according to your robot
-            self.my_conf_robot = cg.get_robot_config_2(link1=0.3, link1_offset=0.0,
-                                            link2=0.3, link2_offset=0.0)
-            
-        def create_visualizer(self):
-            self.robot_teach = self.my_conf_robot.teach(self.my_conf_robot.q, backend='pyplot', block=False)
-            self.plot = pt.plot_baseplate(self.robot_teach)
-
         def listener_callback(self, msg):
-            print("Received new data")
-            ## Optimize:
-            if d2r(int(msg.data)) == self.last_q:
-                print("No update required")
-            else:
-                print("Plot updated")
-                self.last_q = d2r(int(msg.data))
-                self.my_conf_robot.q[0] = self.last_q
-                print(self.my_conf_robot.q)
-                # Jog the robot on base plate
-                self.plot.step()
+            print("Position command received.")
+            self.dxls.send_goal_single_joint(0,int(msg.data)) # for only first motor in the id_dxl[]
+            self.dxls.read_pos()
         
     def main(args=None):
         rclpy.init(args=args)
-        node = myDynamixelVisualizer()
+        node = myDynamixelController()
         rclpy.spin(node)
 
         rclpy.shutdown()
@@ -342,6 +328,8 @@ Currently, we update the plot on *every* new data, even if the data is the same.
         main()
     </code></pre>
 </div>
+
+If the button doesn't work: [optimized_visualize_dxl.py](https://github.com/frdedynamics/ros2_students/blob/master/rosify_dynamixel_ros_pkg/optimized_visualize_dxl.py)
 
 # Voluntary Exercise: Update your robot via visualizer
 
@@ -354,7 +342,7 @@ Let's do this.
 - Modify the **send_single_joint_cmd.py** such that it subscribes to the topic `/dxl_actual_joint_cmd`.
 - Create a new middleware node names **visualizer_to_robot.py**. It should subscribe to the same topic as the visualizer (`/dxl_joint_cmd`) does and publishes to the actual joint command topic (`dxl_actual_joint_cmd`) when a bool ROS parameter sets to `True`. The code for that looks like this: [visualizer_to_robot.py](https://github.com/frdedynamics/ros2_students/blob/master/rosify_dynamixel/visualizer_to_robot.py)
 - Run all three nodes in the figure above. (or even better: make a launch file!)
-- Play with your visualizer.
+- Either modify the existing visualizer node or create a new one [visualization_publisher.py](https://github.com/frdedynamics/ros2_students/blob/master/rosify_dynamixel_ros_pkg/visualization_publisher.py)
 - Set update_robot parameter *True* whenever you want to send it to the robot: `ros2 param set /dynamixel_visualizer_to_controller update_robot True`
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ros2-param-list-update-robot.png)
