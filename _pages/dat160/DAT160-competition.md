@@ -151,13 +151,32 @@ Points are allocated according to the following rules:
 
 - id: 0,1,3 are small fires (+100pt)
 - id: 2 is the human (+100pt)
-- id: 4 is the big fire. For this tag the both robots should meet up
+- id: 4 is the big fire. For this tag both robots should meet up
   (+100pt finding, +300pt if two robots meet there, i.e. if at any
   point after reporting id:4 the two robots are within a 2 meter radius of this Aruco tag location)
 
 ### Reporting targets
 
-To receive points your robots have to report their findings. More information on this will follow.
+To receive points your robots have to report their findings. This is done using a ROS service communication structure. To run the scoring system you can either run the following lines in a terminal:
+```bash
+ros2 run scoring scoring
+```
+or add the following lines to a launch file:
+```python
+launch_ros.actions.Node(
+  package='scoring',
+  executable='scoring',
+  name='scoring'),
+```
+
+The scoring system runs a service server which uses the SetMarkerPosition type which is from the scoring_interfaces package and is defined as:
+```
+int8 marker_id
+geometry_msgs/Point marker_position
+---
+bool accepted
+```
+
 
 ### Final competition
 
