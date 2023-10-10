@@ -95,7 +95,7 @@ At this point, you should be able to control your motors if you copy-paste the c
 ## Use CustomDXL in a ROS node
 In [Publisher/Subscriber lesson](https://frdedynamics.github.io/hvl_robotics_website/courses/ada526/pub-sub#creating-ros-nodes), we have learned how a simple subscriber looks like. It will look like this when we add **CustomDXL** library into **send_single_joint_cmd.py**:
 
-*~/ros2_ws/src/rosify_dynamixel_ros_pkg/rosify_dynamixel_ros_pkg/seld_single_joint_command.py*
+*~/ros2_ws/src/rosify_dynamixel_ros_pkg/rosify_dynamixel_ros_pkg/send_single_joint_command.py*
 ```python
 #!/usr/bin/env python3
 
@@ -112,14 +112,16 @@ class myDynamixelController(Node):
         super().__init__("my_dynamixel_controller")
         #TODO
         self.sub = self.create_subscription(MSG_TYPE, 'TOPIC_NAME', self.listener_callback, 10)
-        self.dxls = CustomDXL()
+        self.dxls = CustomDXL(dxl_ids=[60, 61])
         self.dxls.open_port()
-        self.dxls.send_goal_all_joints(goal=[1000, 2665]) ## Random initial positions to all motors
+        self.dxls.send_goal_all_joints(goal=[1000, 2665]) ## TODO Adjust position commands according to your motors
         self.dxls.read_pos()
         print("Created")
 
     def listener_callback(self, msg):
         #TODO
+        # listen to the message,
+        # set it to the respective motor
         pass
     
 def main(args=None):
@@ -202,7 +204,7 @@ For those who already modified the [adatools.config_generator](https://github.co
 
 *~/ros2_ws/src/rosify_dynamixel_ros_pkg/rosify_dynamixel_ros_pkg/visualize_dxl.py*
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from adatools import config_generator as cg
 from adatools import plotting_tools as pt
@@ -342,7 +344,7 @@ if __name__ == '__main__':
     </code></pre>
 </div>
 
-# Exercise: Update your robot via visualizer
+# Voluntary Exercise: Update your robot via visualizer
 
 We have two nodes, one of which controls the real robot (send_single_joint_cmd.py) and the other visualizes the robot simulation. Often, you would like to see your robot configuration according to the given joint positions. Only after you are satisfied with the safety of the robot in this configuration, update the configuration of the real robot.
 
