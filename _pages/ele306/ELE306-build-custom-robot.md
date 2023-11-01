@@ -16,6 +16,8 @@ In this chapter we will look at how to build a gazebo simulation model of a robo
 If you have time to do so, we recommend you to create a [CAD](https://www.autodesk.de/solutions/cad-software) model of your robot before you create the simulation model as it will make this process easier. You can install [Fusion 360](https://www.autodesk.com/education/edu-software/overview?sorting=featured&filters=individual#card-f360) from Autodesk for free if you create an account with you HVL email and [verify your student status](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-verify-your-student-eligibility.html). [Learn Fusion 360 in 90 Minutes](https://www.autodesk.com/certification/learn/course/learn-fusion-360-in-90-minutes) is recommended to get started and if you are interested in more in-depth tutarials you can find them [here](https://www.autodesk.com/certification/learn/catalog/product/Fusion%20360). 
 
 ## Setup Process
+**If you do this setup process for the lecture example make sure to use `custom_robot_sim` as the package name.**
+
 Before we can start defining our robot model, we have to create and configure a new ROS package:
 1. Open a new terminal window by pressing: Ctrl+Alt+T
 2. Navigate into the src folder of your ros2 workspace:
