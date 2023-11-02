@@ -159,6 +159,11 @@ CONTROLER_NAME:
 ### Launch File adjustments
 To startup your controllers during launch, add the following lines to the launch file for each controller definition:
 ```python
+#ADD IN THE BEGINNING OF THE FILE
+from launch.actions import ExecuteProcess
+
+#ADD AFTER: def generate_launch_description():
+#BUT BEFORE: return LaunchDescription([
 LOAD_CONTROLLER_VARIABLE_NAME = ExecuteProcess(
     cmd=['ros2', 'control', 'load_controller', '--set-state', 'start','CONTROLLER_NAME'],
     output='screen'
