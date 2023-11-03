@@ -40,8 +40,10 @@ ele306:
         url: /courses/ele306/ros-comm-pattern
       - title: "ROS - Matlab Communication"
         url: /courses/ele306/ros-matlab
-      - title: "Build a Custom Robot"
+      - title: "Build a Custom Robot Simulation"
         url: /courses/ele306/build-custom-robot
+      - title: "Control a Custom Robot Simulation"
+        url: /courses/ele306/control-custom-robot
   - title: "Lab Exercises"
     children:
       - title: "UR Intro"
