@@ -236,3 +236,4 @@ The final competition will run on a dedicated computer provided by the organizer
 - Obligatory log of what each group member worked on during the
   project, in terms of theory, code, presentations, and report
   writing. All members of the group have to sign this log.
+- Answers to assignment 4 on Robot Teams should be consolidated and added as an appendix to the final report.
