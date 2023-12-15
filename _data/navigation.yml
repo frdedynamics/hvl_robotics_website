@@ -101,13 +101,13 @@ dat160:
         url: /courses/dat160/competition
   - title: "Assignments"
     children:
-      - title: "Braitenberg Vehicle"
+      - title: "A1: Braitenberg Vehicle"
         url: /courses/dat160/a1
-      - title: "Wall Follower and Go-To-Point"
+      - title: "A2: Wall Follower and Go-To-Point"
         url: /courses/dat160/a2
-      - title: "Bug2"
+      - title: "A3: Bug2"
         url: /courses/dat160/a3
-      - title: "Robot Teams"
+      - title: "A4: Robot Teams"
         url: /courses/dat160/a4
   - title: "Lab Exercises"
     children:
