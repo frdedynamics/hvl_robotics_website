@@ -13,10 +13,10 @@ my_variable: scripts.html
 
 Semester projects on Search & Rescue robot competition
 
-*This project represents 25% of your overall DAT160 grade. For more
-info:*
+*Here you will find the technical information about your semester project.  For
+grading and other details, check Canvas:*
 
-[https://www.hvl.no/studier/studieprogram/emne/2023/dat160](https://www.hvl.no/studier/studieprogram/emne/2023/dat160)
+[https://www.hvl.no/studier/studieprogram/emne/2024/dat160](https://www.hvl.no/studier/studieprogram/emne/2023/dat160)
 
 ## Introduction
 
@@ -26,13 +26,6 @@ skills to be acquired/demonstrated in the project include mobile robot
 control, navigation, robot teams, robot software
 architectures and Robot Operating System 2 (ROS2).
 
-## Group assignment
-You will be asked to form groups of 2-3 students. **It is expected that
-all group members contribute across all the parts of the group project,
-as far as is feasible.** Note that the final report should include an
-appendix with a log of what each group member worked on during the
-project, in terms of theory, code, presentations, and report writing.
-Inactive members of a group may fail the project.
 
 :-----:|:-----:
 ![]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/competition/gazebo_world.png) | ![]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/competition/rviz_world.png)
@@ -81,34 +74,7 @@ you implemented those elements. The navigation algorithm needs to be one
 where you have done significant implementation yourself, and not an
 existing one downloaded as is from the internet.
 
-## Report content and structure
-
-The report should contain extensive and well-explained figures, but also
-links to supplementary material supporting your project. The recommended
-way to achieve this is to set up a free GitHub repository for the
-project (<https://github.com>), where you can share code, printable
-files, instructions and other material that helps document your project
-fully.
-
-**Good-quality videos, for example shared on YouTube, are required to
-document the successful movement of the robot platforms, and should be
-linked to from the report.**
-
-Please note that you are yourself responsible for not publishing
-copyrighted or illegal material on such channels, and you are advised to
-only include content you yourself have produced, or material that is
-under a suitable open source license, and where you have given suitable
-attribution. For more information on the Creative Commons open source
-licences: <https://creativecommons.org>
-
-**Please note that the report will be submitted on WiseFlow, and that
-there will be a plagiarism check.**
-
-The report assignment should be submitted as a group, as **a single pdf
-document**. It should be 3000 words plus/minus 10%. It should contain
-the sections and suggested content (as a minimum) shown in appendix B.
-
-## Appendix A -- Competition rules
+## Competition rules
 
 ### Introduction
 
@@ -123,8 +89,6 @@ Aruco tags representing 3 features:
 | Big Fire (AruCo-ID: 4)|
 |:------:|
 | ![]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/competition/big-fire-ar.png)|
-
-
   
 
 Your aim is to detect all the Aruco tags in the environment, inform
@@ -134,16 +98,6 @@ successfully detected Aruco tag will give you points.
 
 You can spawn as many robots as you want. But all robots have to start in the starting zone. Big fire requires at least 2 robots to meet at the fire location to extinguish. Therefore, robots should communicate with each other.
   
-
-### Usage of software libraries and existing code
-
-You are allowed to use existing libraries and external code, as long as
-is documented in the report, and that you clearly explain (1) what the
-library or piece of codes does, (2) how it is integrated with your own
-code (include code in an appendix, and clearly label code that has been
-copied from other sources), and (3) why what you actually have written in
-terms of code is still is of suitable complexity for third year
-information technology studies.
 
 ### Point system
 
@@ -181,59 +135,3 @@ bool accepted
 ### Final competition
 
 The final competition will run on a dedicated computer provided by the organizers. In the last week before the competition you will have the chance to try your project on the competition PC. For this we will require you to make an appointment and provide us with your git repository. Make sure that your repository also contains instruction on how to run your project. The environment is randomly chosen by the organizers from the given map pool. The score will be maintained by a dedicated score-counting node controlled by the organizers. The winner of the competition will be the group that has got the best score in the chosen environment. Note that we will also be watching during the competition, to ensure that the score is actually correct in case of bugs.
-
-## Appendix B - Suggested report structure
-
-### Introduction
-  
-- Brief introduction of robot teams for Search & Rescue, based on
-  a literature search
-- Description of the task to perform, and requirements/rules in
-  competition
-- A brief overview of your approach to the problem
-    
-### Design Process
-  
-- What design iterations have you gone through? 
-- Who worked on what, and when?
-- What problems did you encounter, and how did you solve them?
-    
-### Final implementation
-  
-- Describe the final implementation of your robot software
-- Include figures with images/drawings/diagrams etc.
-- Be brief, include support material in appendices, if need be
-    
-### Experiments
-  
-- What testing have you performed?
-- How well have you been able to perform the goal task during your
-  testing? Show statistics if possible (i.e. average points on
-  each environment, or similar), preferably in the form of a
-  table.
-- What was the performance in the final competition? What went
-  well, and what did not? Why?
-    
-### Conclusion
-
-- Briefly conclude on the work done
-- How would you make your solution better?
-    
-
-### References
-
-- Here you should put a numbered list of references to all sources you
-  have used in the report, using IEEE referencing style
-- These references should be cited from the text, using the IEEE
-  citation format with citation number in square brackets, e.g. [3]
-  for the third reference in the list
-- For guidance on the IEEE referencing style, see for example:
-  <https://www.bath.ac.uk/publications/library-guides-to-citing-referencing/attachments/ieee-style-guide.pdf>
-  
-
-### Appendices
-
-- Obligatory log of what each group member worked on during the
-  project, in terms of theory, code, presentations, and report
-  writing. All members of the group have to sign this log.
-- Answers to assignment 4 on Robot Teams should be consolidated and added as an appendix to the final report.
