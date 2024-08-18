@@ -18,5 +18,7 @@ You will start the ROS lectures with [installing the VMware](https://frdedynamic
 
 Otherwise, you can start selecting the subject you want to learn on the left bar, or search box below.
 
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/ros_plan.png)
+
 
 {% include_absolute '_includes/search/search_form.html' %}
