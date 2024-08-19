@@ -29,10 +29,18 @@ virtual appliance (aka. a virtual copy of a system). We suggest you download VMw
 
 ### VMware Install
 
-You can download VMware here: [Windows/Linux
-download](https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html),
-[Mac
-download](https://www.vmware.com/products/fusion/fusion-evaluation.html).
+To install VMware, you need to go to create an account at [Broadcom.com](https://profile.broadcom.com/web/registration)
+
+*Please use only international characters to while you enter your name and adress*
+
+After the registration is completed, login to your account and click to the correct link below that is compatible to your PC.
+
+- For Windows/Linux: [VMware Workstation Pro 17](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro) 
+- For Mac: [VMware Fusion 13](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware+Fusion) 
+
+Video tutorial for installation is [here](https://www.youtube.com/watch?v=kTO810vbF_E&t=3s).
+
+
 After installing it you can import the virtual appliance by clicking
 **Open a Virtual Machine** and choose the .vmx file from inside the
 previously downloaded and extracted folder.

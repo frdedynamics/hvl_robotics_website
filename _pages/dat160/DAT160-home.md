@@ -14,7 +14,7 @@ taxonomy: markup
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/home/dat160-logo-eng.png)
 Welcome to DAT160 page. Please refer to Canvas while using the content in this category. Here is the [course plan](https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/dat160). 
 
-You will start the ROS lectures with [installing the VMware](https://frdedynamics.github.io/hvl_robotics_website/courses/da160/install-vm)
+You will start the ROS lectures with installing the VMware.
 
 Otherwise, you can start selecting the subject you want to learn on the left bar, or search box below.
 
