@@ -214,6 +214,9 @@ Now we have a publisher and a subscriber nodes. It is time to run them and obser
 1. Run subscriber: `ros2 run my_package my_subsciber`
 
 
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ros_pkg_overview.png)
+
+
 ## Understanting topics/messages
 
 A **message is data** and a **topic is the channel** where nodes are subscribed to read messages or where the nodes publish those messages.
