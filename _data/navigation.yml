@@ -103,11 +103,13 @@ dat160:
     children:
       - title: "A1: Braitenberg Vehicle"
         url: /courses/dat160/a1
-      - title: "A2: Wall Follower and Go-To-Point"
+      - title: "A2: Robot Vision"
         url: /courses/dat160/a2
-      - title: "A3: Bug2"
-        url: /courses/dat160/a3
-      - title: "A4: Robot Teams"
+      - title: "A3a: Wall Follower and Go-To-Point"
+        url: /courses/dat160/a3a
+      - title: "A3b: Bug2"
+        url: /courses/dat160/a3b
+      - title: "A4: Machine Learning"
         url: /courses/dat160/a4
   - title: "Lab Exercises"
     children:

@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Wall Follower and Go-To-Point"
-permalink: /courses/dat160/a2
+permalink: /courses/dat160/a3a
 toc: true # The right side bar "on this page"
 breadcrumbs: true  # the directory-of-documents type of header navigation
 sidebar:
