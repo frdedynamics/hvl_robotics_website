@@ -30,8 +30,8 @@ cd ~/ros2_ws/src
 ```bash
 ros2 pkg create --build-type ament_python braitenberg_vehicle 
 ```
-* Copy the folders **launch**, **urdf** and **worlds** from the **ros2_students/braitenberg_vehicle** git repository to your newly created package (ros2_ws/src/braitenberg_vehicle)
-* In ROS2 the python scripts of packages are located in a folder with the same name as the package. Copy the file **controller.py** from the **ros2_students/braitenberg_vehicle** git repository to the scripts folder of your package (ros2_ws/src/braitenberg_vehicle/braitenberg_vehicle)
+* Copy the folders **launch**, **urdf** and **worlds** from the **ros2_students_24/braitenberg_vehicle** git repository to your newly created package (ros2_ws/src/braitenberg_vehicle)
+* In ROS2 the python scripts of packages are located in a folder with the same name as the package. Copy the file **controller.py** from the **ros2_students_24/braitenberg_vehicle** git repository to the scripts folder of your package (ros2_ws/src/braitenberg_vehicle/braitenberg_vehicle)
 - In the **setup.py** file of your package add the following lines:
 ```python
 # Add after: from setuptools import setup
