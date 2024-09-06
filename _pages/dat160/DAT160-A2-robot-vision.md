@@ -9,13 +9,16 @@ sidebar:
 taxonomy: markup
 ---
 
-In this assignment you will implement and tune a blob tracker that is used to make a robot follow a red ball moving through a cluttered environment and into a goal. Similar to the previous assignment, the steps to complete this task will be outlined but the exact code/commands needed you will have to figure out yourself using what you have learned in the lecture, the information available on this website or what you can find on the internet.
+In this assignment you will implement and tune a blob tracker that is used to make a robot follow a red ball into a goal. The environment is cluttered with other balls of different colors and sizes, and the illumination changes along the way - your blob tracker must be sufficiently tuned to be robust to these challenges.
+
+Similar to the previous assignment, the steps to complete this task will be outlined but the exact code/commands needed you will have to figure out yourself using what you have learned in the lecture, the information available on this website or what you can find on the internet.
 
 
-You will work with a Turtlebot in a simulated environment. The robot is equipped with a camera that provides a stream of images to a ```'/camera/image_raw'``` topic. Your task is to implement a blob detector pipline in a ROS2 node that subscribes to the camera topic. The output of the blob detector must be image coordinates (pixels) of a single blob, that are then fed into controller that navigates the robot towards the blob. The controller is already implemented in the provided node.
+You will work with a Turtlebot in a simulated environment. The robot is equipped with a camera that provides a stream of images to a ```'/camera/image_raw'``` topic. Your task is to implement a blob detector pipeline in a ROS2 node that subscribes to the camera topic. The output of the blob detector must be a single blob that is passed to a controller. The controller uses the pixel coordinates and the size of the blob to navigates the robot towards the blob. The controller is already implemented in the provided node.
 Controlling a robot based on camera input is a common approach in robotics and is often referred to as visual servoing.
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/robot_vision/rv_1.gif)
+_Successful execution of the task: Turtlebot tracks the red ball all the way through the two goal posts._
 
 ## Setup Process
 * Open a new terminal by pressing: Ctrl+Alt+T
@@ -71,7 +74,7 @@ You will find comments marked with **TODO**, where you need to modify or add cod
 ```bash
 ros2 launch robot_vision spawn_robot.launch.py
 ```
-and in another terminal run the **tb3_blob_tracker.py** node.
+and in another terminal run the **tb3_blob_tracker.py** node:
  ```bash
 ros2 run robot_vision tb3_blob_tracker
 ```
