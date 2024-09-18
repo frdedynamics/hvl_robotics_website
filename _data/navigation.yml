@@ -93,8 +93,6 @@ dat160:
         url: /courses/dat160/ros-comm-pattern
       - title: "ROS Namespaces"
         url: /courses/dat160/namespace
-      - title: "Camera and AR"
-        url: /courses/dat160/camera-ar
       - title: "Robot Vision"
         url: /courses/dat160/robot-vision
       - title: "Occupancy Grids"
