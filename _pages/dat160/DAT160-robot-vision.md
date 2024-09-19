@@ -41,12 +41,12 @@ cv2.waitKey(0)
 ## Convert color space
 - In OpenCV we can easily convert the color space of an image:
 
-```python
-hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-lab_image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
+  ```python
+  hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+  lab_image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
 
-image = cv2.cvtColor(image, cv2.COLOR_LAB2BGR)
-```
+  image = cv2.cvtColor(image, cv2.COLOR_LAB2BGR)
+  ```
 
 - Layers in CIELAB:
 ```python
@@ -94,24 +94,20 @@ image[:,:,1].mean()
 161.83708245877062
 image[:,:,2].mean()
 166.78244977511244
-```
-
-```python
 image[:,:,1].max()
 214
 image[:,:,1].min()
 27
 ```
 
-- Histogram: frequency of pixel values
+
+## calcHist
 ```python
 histr = cv2.calcHist([image], [0], None, [256], [0, 256])
 plt.plot(histr)
 plt.show()
 ```
-For color images: one histogram per layer
-
-## calcHist
+Get an impression of the pixel value distribution in an image by plotting it in a histogram showing the frequency of pixel values. For color images: one histogram per layer.
 ```python
 cv2.calcHist(images, channels, mask, histSize, ranges[, hist[, accumulate]])
 ```
@@ -178,8 +174,8 @@ The function checks if elements in the ```src``` array lie between ```lowerb``` 
 (white). If they dont't, the function sets the corresponding element in the output array to 0 (black).
 
 ## Dyadic Operations
--  Common examples: arithmetic operators such as addition, subtraction, element-wise
-multiplication, … 
+Common examples: arithmetic operators such as addition, subtraction, element-wise
+multiplication. Also logic operations such as AND, OR, XOR. Here we apply a mask to an image with the bitwise AND operator:
 
 ```python
 thresholded_image = cv2.inRange(image, np.array([5, 20, 80]), np.array([60, 130, 190]))
@@ -187,56 +183,58 @@ res = cv2.bitwise_and(image, image, mask=thrasholded_image)
 cv2.imshow("Result", res)
 ```
 ## Blob detection
-- OpenCV comes with a blob detector that is easy to use
+OpenCV comes with a blob detector that is easy to use:
 - We first define the filter parameters
+
+  ```python
+  params = cv2.SimpleBlobDetector_Params()
+
+  # Filter by Area.
+  params.filterByArea = True
+  params.minArea = 150
+  params.maxArea = 6000
+
+  # Filter by Circularity
+  params.filterByCircularity = False
+  params.minCircularity = 0.1
+
+  # Filter by Convexity
+  params.filterByConvexity = False
+  params.minConvexity = 0.87
+
+  # Filter by Inertia
+  params.filterByInertia = False
+  params.minInertiaRatio = 0.01
+  ```
+
 - With the parameters object we create the blob detector
 
-```python
-params = cv2.SimpleBlobDetector_Params()
-
-# Filter by Area.
-params.filterByArea = True
-params.minArea = 150
-params.maxArea = 6000
-
-# Filter by Circularity
-params.filterByCircularity = False
-params.minCircularity = 0.1
-
-# Filter by Convexity
-params.filterByConvexity = False
-params.minConvexity = 0.87
-
-# Filter by Inertia
-params.filterByInertia = False
-params.minInertiaRatio = 0.01
-
-# Create a detector with the parameters
-detector = cv2.SimpleBlobDetector_create(params)
-```
+  ```python
+  # Create a detector with the parameters
+  detector = cv2.SimpleBlobDetector_create(params)
+  ```
 
 - Detect blobs and visualize them
 
-```python
-# Create a detector with the parameters
-detector = cv2.SimpleBlobDetector_create(params)
+  ```python
+  # Create a detector with the parameters
+  detector = cv2.SimpleBlobDetector_create(params)
 
-# Detect blobs
-keypoints = detector.detect(~thresholded_image)
+  # Detect blobs
+  keypoints = detector.detect(~thresholded_image)
 
-im_with_keypoints = cv2.drawKeypoints(image, keypoints, np.array([]), (0, 0, 255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+  im_with_keypoints = cv2.drawKeypoints(image, keypoints, np.array([]), (0, 0, 255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
 
-cv2.imshow("Blobs", im_with_keypoints)
-cv2.waitKey(0)
-```
+  cv2.imshow("Blobs", im_with_keypoints)
+  cv2.waitKey(0)
+  ```
 
-- Keypoints?
+- Keypoints:
+  The blob detector returns a list of keypoints. Each keypoint is a special structure whitch contains information about the detected feature. Here's a brief overview of the properties of a keypoint:
 
-The blob detector returns a list of keypoints. Each keypoint is a special structure whitch contains information about the detected feature. Here's a brief overview of the properties of a keypoint:
-
-- ```pt```: The coordinates of the detected feature in the format (x, y).
-- ```size```: The diameter of the meaningful keypoint neighborhood.
-- ```angle```: Computed orientation of the keypoint (-1 if not applicable); it's the angle that the keypoint vector is pointing in.
-- ```response```: The response by witch the most strong keypoints have been selected. Can be used for futher sorting or subsampling.
-- ```ovtave```: The octave (pyramid layer) from witch the keypoint has been extracted.
-- ```class_id```: Can be used to cluster keypoints by an  object the belong to.
+  - ```pt```: The coordinates of the detected feature in the format (x, y).
+  - ```size```: The diameter of the meaningful keypoint neighborhood.
+  - ```angle```: Computed orientation of the keypoint (-1 if not applicable); it's the angle that the keypoint vector is pointing in.
+  - ```response```: The response by witch the most strong keypoints have been selected. Can be used for futher sorting or subsampling.
+  - ```ovtave```: The octave (pyramid layer) from witch the keypoint has been extracted.
+  - ```class_id```: Can be used to cluster keypoints by an  object the belong to.
