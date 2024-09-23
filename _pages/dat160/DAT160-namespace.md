@@ -13,6 +13,9 @@ In ROS, Namespaces are used to allow multiple topics with the same name to exist
 
 Inside a launch file you can use the following code to launch a node inside a namepsace. **Don’t forget to replace the in uppercase written names.**
 ```python
+import launch
+import launch_ros
+
 def generate_launch_description():
     return launch.LaunchDescription([
         launch_ros.actions.Node(
