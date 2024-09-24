@@ -14,7 +14,7 @@ In this assignment you will create a controller which uses the Bug2 algorithm fo
 ## Bug2 Algorithm
 The bug2 algorithm requires a known starting and goal position. It will start by computing a line between the start and the goal positions and then basically operates in 2 modes:
 
-1. In default the robot will try to use the go-to-point algorithm to get to the goal as quickly as possible. If the robot encounters an obstacle it will switch into wall-following and remeber at what point it left the intially computed line.
+1. In default the robot will try to use the go-to-point algorithm to get to the goal as quickly as possible. If the robot encounters an obstacle it will switch into wall-following and remember at what point it left the intially computed line.
 2. It will follow the wall until it hits a point on the line that is closer to the goal then when the robot left the line. At which point the robot changes back into go-to-point.
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/bug2_p2/bug2_algorithm.jpg)
@@ -31,7 +31,9 @@ geometry_msgs/Point target_position
 ---
 bool success
 ```
+* Create the bug2 controller script in which you write the algorithm that decides when either the go-to-point or the wall follower script is supposed to control the robot.
 * In the bug2 controller script create two *ROS2 service clients* that connect to the servers from wall follower and go-to-point.
+* **Optional:**
 * Create a *ROS2 action server* in the bug2 controller script.
 * Create a **custom action message** in the bug2_interfaces package with the following structure:
 ```c
