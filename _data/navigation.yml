@@ -117,8 +117,8 @@ dat160:
         url: /courses/dat160/tb1
       - title: "Lab-2: Better Wall Follower with TB3"
         url: /courses/dat160/tb2
-      - title: "Lab-3: Robot Teams"
-        url: /courses/dat160/lab3
+    #  - title: "Lab-3: Robot Teams"
+    #    url: /courses/dat160/lab3
   - title: "Optional labs and exercices"
     children:
       - title: "UR Intro"
