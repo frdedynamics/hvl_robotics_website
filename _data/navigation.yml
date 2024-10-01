@@ -160,5 +160,13 @@ ada526:
         url: /courses/ada526/gazebo
       - title: "ROS Communication Patterns"
         url: /courses/ada526/ros-comm-pattern 
+      - title: "Namespace"
+        url: /courses/ada526/namespace 
+      - title: "Services"
+        url: /courses/ada526/services
+      - title: "Actions"
+        url: /courses/ada526/actions 
       - title: "ROS-ify Python Scripts"
         url: /courses/ada526/rosify-python-scripts
+      - title: "Qt libraries with ROS"
+        url: /courses/ada526/rqt

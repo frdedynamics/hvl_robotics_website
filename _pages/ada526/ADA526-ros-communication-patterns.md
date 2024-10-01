@@ -12,4 +12,7 @@ my_variable: scripts.html
 ---
 
 
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ros-comm-patterns-together.png)
+
+
 {% include_absolute '_pages/shared_pages/ros-related-pages/ros-communication-patterns.md' %}
