@@ -29,4 +29,3 @@ Two integer add via services [here](https://www.roboticsunveiled.com/ros2-servic
 # References
 1. [ros.org](https://docs.ros.org/en/foxy/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html)
 2. [foxglove.dev](https://foxglove.dev/blog/creating-ros2-services)
-3. (Advanced)[design.ros2](https://design.ros2.org/articles/actions.html)
