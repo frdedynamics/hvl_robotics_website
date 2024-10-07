@@ -11,47 +11,51 @@ taxonomy: markup
 my_variable: scripts.html
 ---
 ## Installation
-This is a tutorial for installation of Qt 5.7.0 to Ubuntu 12.10. It may be used for some newer versions of Qt and Ubuntu.
+This is a tutorial for installation of Qt 5.7.0 to Ubuntu 20.04. It may be used for some newer versions of Qt and Ubuntu.
 
-Install Qt 5: 
-sudo apt install build-essential qtcreator qt5-default qtbase5-examples
-
-Install Qt to Python converter:
-sudo apt install pyqt5-dev-tools
+1. Install Qt 5: `sudo apt install build-essential qtcreator qt5-default qtbase5-examples`
+2. Install Qt to Python converter: `sudo apt install pyqt5-dev-tools`
 
 
-If error: g++: Command not found
+**If error: g++: Command not found**: 
+```console
 sudo apt-get purge build-essential
 sudo apt-get install build-essential
-
-If error: GL/gl.h: No such file or directory
+```
+**If error: GL/gl.h: No such file or directory**
+```console
 sudo apt-get install mesa-common-dev
+```
 
 ## Tutorial start
 In this tutorial, we will create a GUI package and interact with ROS nodes and messages via this package.
 
-### Create a package
-You can jump to the next section if you don't want to use Qt with ROS. Otherwise, you need to have your files in your ros2_ws. Therefore, we start by creating a new ROS package for this tutorial.
+### Create a ROS package
+Since in this tutorial our aim is to use the Qt libraries together with ROS, we will have eveything in our `ros2_ws`. However, please remember that you don't need to have ROS to use the Qt libraries in any Python script. For the sake of the tutorial, we will learn the usage of Qt in a ROS scenario - but the steps would be the same for another scenarios, as well.
 
+You need to have your files in your r`os2_ws`. Therefore, we start by creating a new ROS package for this tutorial.
+
+```console
 cd ~/ros2_ws/src
 ros2 pkg create --build-type ament_python --node-name my_gui_pkg my_gui_pkg
 cd ..
 colcon build
-cd ~/ros2_ws/src/m
+cd ~/ros2_ws/src/my_gui_pkg
 mkdir ui
+```
 
-### Design your widget
-Open Qt Designer
-Select Widget and default screen size
-Press create
-Select two "Push Button"s and one "Plain Text Edit", and place them somewhere in the Widget window.
-Change their name something nice, and give a representative class names.
+### Design your widget/app
+1. Open Qt Designer
+2. Select Widget and default screen size
+3. Press create
+4. Select two "Push Button"s and one "Plain Text Edit", and place them somewhere in the Widget window.
+5. Change their name something nice, and give a representative class names.
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/qt-push-button.png)
 
-Save by hitting Ctrl+s
-Select the "ui" folder in your ROS package.
-Change the file name to "main.ui"
+6. Save by hitting Ctrl+s
+7. Select the "ui" folder in your ROS package.
+8. Change the file name to "main.ui"
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/qt-main-ui.png)
 
@@ -60,34 +64,134 @@ Change the file name to "main.ui"
 There are four steps:
 
 1. Converting UI to Python script.
-2. We will create a dummy publisher for test purposes and an actual node to run our GUI.
-3. We will start this publisher with "Run ROS node" button.
-4. We will set a value a for an action wit "Set action" button by reading from the plain text edit.
-
-
+2. We will create (or copy) a publisher for test purposes. We will start this publisher with "Run ROS node" button.
+3. (Maybe) We will set a value a for an action with "Set action" button by reading from the plain text edit.
 
 
 #### Converting UI to Python script
-
-Go to the direction where your "main.ui" is:
+1. Go to the direction where your "main.ui" is:
+```console
 ~/ros2_ws/src/my_gui_pkg/ui
+```
 
-Convert the UI file into a Python file:
+2. Convert the UI file into a Python file:
+```console
 pyuic5 -x main.ui -o main.py
+```
 
+{: .notice--info}
 Note that whenever you change something in your design, you must convert it into the Python file.
 
-Open VS code and find your package in the explorer.
-Add this line at the top: #!/usr/bin/env python3
+3. Open VS code and find your package in the explorer.
+Add this line at the top: `#!/usr/bin/env python3`. At this point, if you run the script via VS code, you should see your widget app :)
+
+4. Move your `main.py` into `my_gui_pkg/my_gui_pkg`, where you would normally place all your ROS nodes.
+
+5. Since `main.py` is a simple Python class, we can just import it like this: `from main import Ui_Form as Main_Widget`. To do that, we will use `my_gui_pkg.py`. Copy the codes below in `my_gui_pkg.py`.
+
+```python
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+
+import sys
+import subprocess
+```
+
+*I know there seem to be redundant imports but I find it easier to use it like that. Feel free to optimize it if it hurts your brain.*
+
+6. Since we don't want to modify the code that is generated by the `pyuc5`, we will actually make a subclass from what we have in `main.py`. It will look like this:
+```python
+class GUI_Window(QWidget, Main_Widget):
+    def __init__(self, parent=None):
+        super(GUI_Window, self).__init__(parent)
+        self.setupUi(self)
+        # self.resize(854, 480)
+        self.setWindowTitle("My GUI app")
+        self.show()
+```
+7. And finally we will add these lines so that we can run the script as we press the *play* button.
+```python
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    w = GUI_Window()
+    sys.exit(app.exec_())
+```
 
 
 #### Creating necessary nodes:
-TODO
-we have my_gui_pkg already. We will
+1. You can use any ROS node for this step. I will just copy paste `my_publisher.py` from the previous tutorials into *my_gui_pkg/my_gui_pkg*. It is a simple *hello world* publisher. Make sure that you do the necessary changes in `setup.py`.
 
-add the ui folder path
-Add as a class -- never change the generated python code manually, otherwise you will lose everything you have done when you edit your UI via Qt Designer.
+2. We need to create a function that will start a subprocess of `ros2 run my_gui_pkg my_publisher`. Additionally, we need to *connect* this function with our button click. To do that we need this code inside the class constructor **after `self.setWindowTitle("My GUI app")`**.
 
+```python
+self.rosNodeBtn.clicked.connect(self.start_ros_node)
+self.my_publisher_proc = None
+```
+The `self.rosNodeBtn` is the object taken from our UI class. You can reach each object in your UI like this.
+
+3. Now it is time to define the function. Copy the code after the class constructior and before `if __name__ == __main__:`
+
+```python
+def start_ros_node(self):
+    if self.my_publisher_proc == None: # because you don't want to start several processes in each click
+        self.my_publisher_proc = subprocess.Popen(["ros2", "run", "my_gui_pkg", "my_publisher"], text=True)
+    else:
+        print("The node is already exist")
+```
+
+Pay attention how similar subprocess.Popen syntax with the regular terminal command.
+
+You will experince lots of simultaneously running processes of the same type. You need to pay attention that you actually kill the ROS node process as you press exit button.
+
+```python
+  def kill_processes(self):
+      # This is to kill rosnodes as you close the windiw
+      try:
+          self.my_publisher_proc.kill()
+      except Exception as e:
+          print(e)
+
+  def closeEvent(self, event):
+      self.kill_processes()
+      event.accept() # let the window close
+```
+
+Don't forget to `colcon build` before you test it. Otherwise, you will get the error `No executable found`.
+
+#### Setting an action with the text edit data
+*(Note, sorry that I haven't had enough time to modify it into an action server exercise, but I hope passing the data into a publisher will give you enough idea to implement it when/if you need to do it with action server/client)*
+
+The method with subprocess is easy, rather clean and effective. However, sometimes you want to interact the data that you have an access through the UI. You can very well set a ROS parameter with this data before you start the relevant node, and use this ROS parameter inside this node. 
+
+But I have a better idea.
+
+1. Let's start adding necessary lines for this task into the class construstor:
+
+```python
+## Set Action button
+self.msg_data = None
+self.setActionBtn.clicked.connect(self.set_action)
+self.my_action_proc = None
+```
+
+2. Create a new `set_action(self)` function in this class. For now, put a dummy data to see that we can actually ready the TextEdit data correctly.
+
+```python
+def set_action(self):
+    self.msg_data = self.actionTextEdit.toPlainText() # we read the data
+    print(self.msg_data)
+```
+
+If you run the script, you should be able to see what you write in the text edit as you press the "set action" button.
+
+
+## Extra
+While I was preparing this tutorial, I found some extra resources that might be helpful. I list them here:
+
+1. [Qt with camera](https://discourse.ros.org/t/create-stunning-uis-for-ros2-using-the-newly-released-qml-ros2-plugin/25906)
+2. [QML ROS2 plugin](https://github.com/StefanFabian/qml_ros2_plugin)
 
 
 
