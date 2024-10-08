@@ -115,8 +115,7 @@ class myDynamixelController(Node):
         self.sub = self.create_subscription(MSG_TYPE, 'TOPIC_NAME', self.listener_callback, 10)
         self.dxls = CustomDXL(dxl_ids=[60, 61])
         self.dxls.open_port()
-        self.dxls.send_goal_all_joints(goal=[1000, 2665]) ## TODO Adjust position commands according to your motors
-        self.dxls.read_pos()
+        self.dxls.send_goal(goal=[1000, 2665]) ## TODO Adjust position commands according to your motors
         print("Created")
 
     def listener_callback(self, msg):
@@ -163,8 +162,6 @@ Hint:
     from custom_dxl.CustomDXL import CustomDXL
 
     from std_msgs.msg import Int32
-    import time
-    import sys
 
     class myDynamixelController(Node):
         def __init__(self) -> None:
@@ -172,15 +169,15 @@ Hint:
             self.sub = self.create_subscription(Int32, '/dxl_joint_cmd', self.listener_callback, 10)
             self.dxls = CustomDXL()
             self.dxls.open_port()
-            self.dxls.send_goal_all_joints(goal=[1000, 2665]) ## Random initial positions to all motors
-            self.dxls.read_pos()
+            self.dxls.send_goal(goal_pos=[1000]) ## Random initial positions to all motors
 
             print("Created")
+            print("Publish data between [0, 4095] to the topic /dxl_joint_cmd")
 
         def listener_callback(self, msg):
             print("Position command received.")
-            self.dxls.send_goal_single_joint(0,int(msg.data)) # for only first motor in the id_dxl[]
-            self.dxls.read_pos()
+            self.dxls.send_single_goal(motor_order=0, goal_pos=[msg.data])
+            
         
     def main(args=None):
         rclpy.init(args=args)
@@ -292,34 +289,53 @@ Currently, we update the plot on *every* new data, even if the data is the same.
 <div id="hiddenText" style="display: none;">
     <pre><code class="python">
 
+    #!/usr/bin/env python
+
+    from adatools import config_generator as cg
+    from adatools import plotting_tools as pt
+    from math import radians as d2r
+
+    #TODO: Add necessary ROS libraries
     import rclpy
     from rclpy.node import Node
-
-    from custom_dxl.CustomDXL import CustomDXL
-
     from std_msgs.msg import Int32
-    import time
-    import sys
 
-    class myDynamixelController(Node):
+
+    class myDynamixelVisualizer(Node):
         def __init__(self) -> None:
-            super().__init__("my_dynamixel_controller")
+            super().__init__("my_dynamixel_visualizer")
             self.sub = self.create_subscription(Int32, '/dxl_joint_cmd', self.listener_callback, 10)
-            self.dxls = CustomDXL()
-            self.dxls.open_port()
-            self.dxls.send_goal_all_joints(goal=[1000, 2665]) ## Random initial positions to all motors
-            self.dxls.read_pos()
-
+            self.create_config()
+            self.create_visualizer()
+            self.last_q = 0.0
+            
             print("Created")
 
+        def create_config(self):
+            #TODO: Modify according to your robot
+            self.my_conf_robot = cg.get_robot_config_2(link1=0.3, link1_offset=0.0,
+                                            link2=0.3, link2_offset=0.0)
+            
+        def create_visualizer(self):
+            self.robot_teach = self.my_conf_robot.teach(self.my_conf_robot.q, backend='pyplot', block=False)
+            self.plot = pt.plot_baseplate(self.robot_teach)
+
         def listener_callback(self, msg):
-            print("Position command received.")
-            self.dxls.send_goal_single_joint(0,int(msg.data)) # for only first motor in the id_dxl[]
-            self.dxls.read_pos()
+            print("Received new data")
+            ## Optimize:
+            if d2r(int(msg.data)) == self.last_q:
+                print("No update required")
+            else:
+                print("Plot updated")
+                self.last_q = d2r(int(msg.data))
+                self.my_conf_robot.q[0] = self.last_q
+                print(self.my_conf_robot.q)
+                # Jog the robot on base plate
+                self.plot.step()
         
     def main(args=None):
         rclpy.init(args=args)
-        node = myDynamixelController()
+        node = myDynamixelVisualizer()
         rclpy.spin(node)
 
         rclpy.shutdown()

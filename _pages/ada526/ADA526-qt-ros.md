@@ -71,7 +71,7 @@ There are four steps:
 #### Converting UI to Python script
 1. Go to the direction where your "main.ui" is:
 ```console
-~/ros2_ws/src/my_gui_pkg/ui
+cd ~/ros2_ws/src/my_gui_pkg/ui
 ```
 
 2. Convert the UI file into a Python file:
@@ -161,6 +161,7 @@ You will experince lots of simultaneously running processes of the same type. Yo
 Don't forget to `colcon build` before you test it. Otherwise, you will get the error `No executable found`.
 
 #### Setting an action with the text edit data
+(NOT COMPLETE)
 *(Note, sorry that I haven't had enough time to modify it into an action server exercise, but I hope passing the data into a publisher will give you enough idea to implement it when/if you need to do it with action server/client)*
 
 The method with subprocess is easy, rather clean and effective. However, sometimes you want to interact the data that you have an access through the UI. You can very well set a ROS parameter with this data before you start the relevant node, and use this ROS parameter inside this node. 
