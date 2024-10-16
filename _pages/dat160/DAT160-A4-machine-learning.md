@@ -66,7 +66,7 @@ ros2 run robot_ml camera_viz
  ```bash
 rqt
 ```
-* In **rqt**, navigator top top menu and select Plugins->Visualization->Image View
+* In **rqt**, navigate to the top menu and select Plugins->Visualization->Image View
 * If the camera view does not automatically appear, select the correct topic from the drop-down list
 * In a separate terminal run a teleoperation node, for example:
  ```bash
