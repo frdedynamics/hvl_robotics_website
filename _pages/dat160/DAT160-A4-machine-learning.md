@@ -19,3 +19,18 @@ Your task is TODO.
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/robot_vision/rv_1.gif)
 _TODO._
+
+## Setup Process
+* Open a new terminal by pressing: Ctrl+Alt+T
+* Change directory into the source folder of your ROS2 workspace:
+```bash
+cd ~/ros2_ws/src
+```
+* Create a ROS2 python package with the name robot_ml:
+```bash
+ros2 pkg create --build-type ament_python robot_ml
+```
+* Copy the folders **launch**, **models** and **worlds** from the **ros2_students_24/robot_ml** git repository to your newly created package (ros2_ws/src/robot_ml)
+* In ROS2 the python scripts of packages are located in a folder with the same name as the package. Copy the files **camera_viz.py** and **project_ml_idea.py** from the **ros2_students_24/robot_ml** git repository to the scripts folder of your package (ros2_ws/src/robot_ml/robot_ml)
+- In the **setup.py** file of your package add the following lines:
+TODO
