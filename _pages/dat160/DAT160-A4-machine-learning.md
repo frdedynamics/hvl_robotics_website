@@ -46,3 +46,8 @@ from glob import glob
   'camera_viz = robot_ml.camera_viz:main',
   'project_ml_idea = robot_ml.project_ml_idea:main',
 ```
+* Move to workspace directory, build your workspace and source it:
+```bash
+cd ~/ros2_ws
+colcon build --symlink-install
+source install/setup.bash 
