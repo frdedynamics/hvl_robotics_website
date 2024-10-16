@@ -56,3 +56,13 @@ source install/setup.bash
 ```bash
 ros2 launch robot_vision spawn_robot.launch.py
 ```
+
+## Assignment Steps
+* In a separate terminal run the **camera_viz.py** node to visualize the camera stream from the Turtlebot:
+ ```bash
+ros2 run robot_ml camera_viz
+```
+* In a separate terminal run a teleoperation node, for example:
+ ```bash
+ros2 run turtlebot3_teleop teleop_keyboard
+```
