@@ -58,11 +58,18 @@ ros2 launch robot_vision spawn_robot.launch.py
 ```
 
 ## Assignment Steps
-* In a separate terminal run the **camera_viz.py** node to visualize the camera stream from the Turtlebot:
+* In a separate terminal run the **camera_viz** node to visualize the camera stream from the Turtlebot, and to read off RGB values with the mouse pointer:
  ```bash
 ros2 run robot_ml camera_viz
 ```
+* In a separate terminal run **rqt**, which will enable you to save images from the camera stream to file:
+ ```bash
+rqt
+```
+* In **rqt**, navigator top top menu and select Plugins->Visualization->Image View
+* If the camera view does not automatically appear, select the correct topic from the drop-down list
 * In a separate terminal run a teleoperation node, for example:
  ```bash
 ros2 run turtlebot3_teleop teleop_keyboard
 ```
+* TODO
