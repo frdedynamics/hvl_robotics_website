@@ -28,7 +28,7 @@ cd ~/ros2_ws/src
 ```bash
 ros2 pkg create --build-type ament_python PACKAGE_NAME 
 ```
-4. Copy the folders **launch**, **meshes** and **urdf** from the **ros2_students/custom_robot_sim** git repository to your newly created package (ros2_ws/src/PACKAGE_NAME)
+4. Copy the folders **launch**, **meshes** and **urdf** from the **[ros2_students_24](https://github.com/frdedynamics/ros2_students_24)/custom_robot_sim** git repository to your newly created package (ros2_ws/src/PACKAGE_NAME)
 5. In the **setup.py** file of your package add the following lines:
 ```python
 # ADD AFTER: from setuptools import setup
