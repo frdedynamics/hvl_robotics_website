@@ -33,4 +33,16 @@ ros2 pkg create --build-type ament_python robot_ml
 * Copy the folders **launch**, **models** and **worlds** from the **ros2_students_24/robot_ml** git repository to your newly created package (ros2_ws/src/robot_ml)
 * In ROS2 the python scripts of packages are located in a folder with the same name as the package. Copy the files **camera_viz.py** and **project_ml_idea.py** from the **ros2_students_24/robot_ml** git repository to the scripts folder of your package (ros2_ws/src/robot_ml/robot_ml)
 - In the **setup.py** file of your package add the following lines:
-TODO
+```python
+# Add after: from setuptools import setup
+import os
+from glob import glob
+# In order to be able to access the added files during runtime we add we add them to data_files
+# Add after: ('share/' + package_name, ['package.xml']),
+(os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*.launch.py'))),
+(os.path.join('share', package_name, 'worlds'), glob(os.path.join('worlds', '*.world'))),
+# To make our python script excecutable with ros2 run, we add a entry_points definition
+# Add after: 'console_scripts': [
+  'camera_viz = robot_ml.camera_viz:main',
+  'project_ml_idea = robot_ml.project_ml_idea:main',
+```
