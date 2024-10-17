@@ -101,5 +101,5 @@ image = keras.utils.load_img("cat1.jpg")
 | Shadowed wall | R,G,B | R,G,B | R,G,B | R,G,B |
 
 * Discussion: Include a brief discussion of the results, minimum 1 paragraph. Discuss how well you think the prediction was overall, and the robustness to e.g. different colour backgrounds, different lighting, different perspectives, and different resolutions used. Compare with the differences in RGB values between lit and shadowed images, and comment on how well a simple detector based on colour in the RGB colour space would work.
-* Submit the assignement as a single pdf document, showing the 8x images, the 3x tables, and the discussion on Canvas by the deadline.
+* Submit the assignment as a single pdf document, showing the 8x images, the 3x tables, and the discussion on Canvas by the deadline.
 
