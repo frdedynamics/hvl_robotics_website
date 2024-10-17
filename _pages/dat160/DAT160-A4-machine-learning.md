@@ -88,7 +88,7 @@ image = keras.utils.load_img("cat1.jpg")
 * Run a prediction for each image with 640x480 size,and note down the prediction results (class detected and confidence value, 0.00 to 1.00)
 * Re-run a prediction for each image with 320x240 size,and note down the prediction results (class detected and confidence value, 0.00 to 1.00)
 
-* ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/robot_ml/ml_dog_colab.png)
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/robot_ml/ml_dog_colab.png)
 _One of the dogs detected with KerasCV in Google Colab._
 
 ## Presenting your results
