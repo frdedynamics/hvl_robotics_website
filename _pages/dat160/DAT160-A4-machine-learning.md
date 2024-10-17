@@ -85,7 +85,7 @@ image = keras.utils.load_img("cat1.jpg")
 * Re-run a prediction for each image with 320x240 size,and note down the prediction results (class detected and confidence value, 0.00 to 1.00)
 
 ## Presenting your results
-* To document your experiment you need to make two tabels and a small discussion paragraph
+* To document your experiment you need to make 3x tabels and a small discussion paragraph
 * 2x prediction tables: Present your prediction results like this, one for each resolution used:
   
 |       | Cat 1 | Cat 2 | Dog 1 | Dog 2 |
