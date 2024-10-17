@@ -15,8 +15,8 @@ You will explore how well this pretrained YOLOv8 network can detect images of ca
 
 Your task is to gather a set of images with the robot under different conditions, to use a pretrained YOLOv8 in KerasCV to detect the animals, to show under what conditions the predictions gets worse, and to show the robustness of the deep learning regardless of significant changes in raw RGB values. 
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/robot_vision/rv_1.gif)
-_TODO._
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/robot_ml/ml_overview.png)
+_The Gazebo environment for the robot learning assignment._
 
 ## Setup Process
 * Open a new terminal by pressing: Ctrl+Alt+T
