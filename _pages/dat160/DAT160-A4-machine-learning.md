@@ -77,7 +77,7 @@ ros2 run turtlebot3_teleop teleop_keyboard
 
 ## Assignment Steps in Google Colab
 * Upload the set of 16 images into Google Drive to access them in Google Colab (Files, symbol of folder in left menu->Upload to session storage)
-* Load each image using for example:
+* Modify the code example with KerasCV to load image "locally", using for example:
 ```python3
 image = keras.utils.load_img("cat1.jpg")
 ```
