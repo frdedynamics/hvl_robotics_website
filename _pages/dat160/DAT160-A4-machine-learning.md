@@ -13,7 +13,7 @@ In this assignment you will work with the code example with KerasCV in Google Co
 
 You will explore how well this pretrained YOLO network can detect images of cats and dogs on the walls of a virtual environment in Gazebo, from the point of view of the Turtlebot robot. You will work with a teleoperated Turtlebot in a simulated environment. The robot is equipped with a camera that provides a stream of images to a ```'/camera/image_raw'``` topic. 
 
-Your task is TODO.
+Your task is explore how well a pretrained YOLOv8 can detect the cats and dogs, under what conditions the predictions gets worse, and to show the robustness of the deep learning regardless of significant changes in raw RGB values.
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/robot_vision/rv_1.gif)
 _TODO._
