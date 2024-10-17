@@ -70,6 +70,10 @@ rqt
  ```bash
 ros2 run turtlebot3_teleop teleop_keyboard
 ```
+
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/robot_ml/ml_in_position.png)
+_The robot in position to take an image with **rqt**, and sample the RGB values with the **camera_viz** node._
+
 * Teleoperate the robot to one of the 8 animal pictures in the environments. On each wall there is two images of cats, and two of dogs. Half on a light background, half on a dark background. One wall is well-lit, the other is more in shadow.
 * Save an image file using **rqt** of each picture on the wall, at a distance where animla is clearly visible while not including other animals in image
 * For each picture use the **camera_viz** node to sample the RGB values at a point you choose in each image. For example in a corner of the image, in a white patch of fur, or similar. Note down the values for each image. Avoid black areas as will not change much with lighting. Values +- 10 are ok, they will oscillate unless robot is completely still.
