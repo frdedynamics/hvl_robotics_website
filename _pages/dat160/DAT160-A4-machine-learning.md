@@ -71,14 +71,23 @@ rqt
 ros2 run turtlebot3_teleop teleop_keyboard
 ```
 * Teleoperate the robot to one of the 8 animal pictures in the environments. On each wall there is two images of cats, and two of dogs. Half on a light background, half on a dark background. One wall is well-lit, the other is more in shadow.
-* Save two image files using **rqt** of each picture on the wall, one as close as you get while filling the image, and one further away (while not including other animals in image)
+* Save an image file using **rqt** of each picture on the wall, at a distance where animla is clearly visible while not including other animals in image
 * For each picture use the **camera_viz** node to sample the RGB values at a point you choose in each image. For example in a corner of the image, in a white patch of fur, or similar. Note down the values for each image. Avoid black areas as will not change much with lighting.
-* You should now have 16 images, and 16 RGB value sets.
+* You should now have 8 images, and 8 RGB value sets.
 
 ## Assignment Steps in Google Colab
-* Upload the set of 16 images into Google Drive to access them in Google Colab (Files, symbol of folder in left menu->Upload to session storage)
+* Upload the set of 8 images into Google Drive to access them in Google Colab (Files, symbol of folder in left menu->Upload to session storage)
 * Modify the code example with KerasCV to load image "locally", using for example:
 ```python
 image = keras.utils.load_img("cat1.jpg")
 ```
+* Run a prediction for each image with 640x480 size,and note down the prediction results (class detected and confidence value, 0.00 to 1.00)
+
+## Presenting results
+* To document your experiment you need to make two tabels and a small discussion paragraph
+* Prediction table: Present your prediction results like this:
+* TODO
+* RGB table: Present your RGB calues like this:
+* TODO
+* Discussion: TODO
 
