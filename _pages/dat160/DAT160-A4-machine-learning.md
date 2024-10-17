@@ -11,9 +11,9 @@ taxonomy: markup
 
 In this assignment you will work with the code example with KerasCV in Google Collab found here: [Object detection with KerasCV in Google Collab](https://colab.research.google.com/github/keras-team/keras-io/blob/master/guides/ipynb/keras_cv/object_detection_keras_cv.ipynb).
 
-You will explore how well this pretrained YOLO network can detect images of cats and dogs on the walls of a virtual environment in Gazebo, from the point of view of the Turtlebot robot. You will work with a teleoperated Turtlebot in a simulated environment. The robot is equipped with a camera that provides a stream of images to a ```'/camera/image_raw'``` topic. 
+You will explore how well this pretrained YOLOv8 network can detect images of cats and dogs on the walls of a virtual environment in Gazebo, from the point of view of the Turtlebot robot. You will work with a teleoperated Turtlebot in a simulated environment. The robot is equipped with a camera that provides a stream of images to a ```'/camera/image_raw'``` topic. 
 
-Your task is explore how well a pretrained YOLOv8 can detect the cats and dogs, under what conditions the predictions gets worse, and to show the robustness of the deep learning regardless of significant changes in raw RGB values.
+Your task is to gather a set of images with the robot under different conditions, to use a pretrained YOLOv8 in KerasCV to detect the animals, to show under what conditions the predictions gets worse, and to show the robustness of the deep learning regardless of significant changes in raw RGB values. 
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/robot_vision/rv_1.gif)
 _TODO._
@@ -55,7 +55,7 @@ source install/setup.bash
 ros2 launch robot_vision spawn_robot.launch.py
 ```
 
-## Assignment Steps
+## Assignment Steps in Gazebo
 * In a separate terminal run the **camera_viz** node to visualize the camera stream from the Turtlebot, and to read off RGB values with the mouse pointer:
  ```bash
 ros2 run robot_ml camera_viz
@@ -70,4 +70,12 @@ rqt
  ```bash
 ros2 run turtlebot3_teleop teleop_keyboard
 ```
+* Teleoperate the robot to one of the 8 animal pictures in the environments. On each wall there is two images of cats, and two of dogs Half on a light background, half on a dark background. One wall is well-lit, the other is more in shadow.
+* Save two image files using **rqt** of each picture on the wall, one as close as you get while filling the image, and one further away (while not including other animals in image)
+* For each picture use the **camera_viz** node to sample the RGB values at a point you choose in each image. For example in a corner, in the nose of the animal, or similar. Note down the values for each image.
+* You should now have 16 images, and 16 RGB value sets.
+
+## Assignment Steps in Google Colab
+* Upload the set of 16 images into Google Drive to access them in Google Colab
 * TODO
+
