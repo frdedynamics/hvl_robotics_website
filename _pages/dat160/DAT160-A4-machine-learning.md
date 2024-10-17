@@ -82,10 +82,11 @@ ros2 run turtlebot3_teleop teleop_keyboard
 image = keras.utils.load_img("cat1.jpg")
 ```
 * Run a prediction for each image with 640x480 size,and note down the prediction results (class detected and confidence value, 0.00 to 1.00)
+* Re-run a prediction for each image with 320x240 size,and note down the prediction results (class detected and confidence value, 0.00 to 1.00)
 
-## Presenting results
+## Presenting your results
 * To document your experiment you need to make two tabels and a small discussion paragraph
-* Prediction table: Present your prediction results like this:
+* 2x prediction tables: Present your prediction results like this, one for each resolution used:
   
 |       | Cat 1 | Cat 2 | Dog 1 | Dog 2 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -99,5 +100,6 @@ image = keras.utils.load_img("cat1.jpg")
 | Lit wall | R,G,B | R,G,B | R,G,B | R,G,B |
 | Shadowed wall | R,G,B | R,G,B | R,G,B | R,G,B |
 
-* Discussion: TODO
+* Discussion: Include a brief discussion of the results, minimum 1 paragraph. Discuss how well you think the prediction was overall, and the robustness to e.g. different colour backgrounds, different lighting, different perspectives, and different resolutions used. Compare with the differences in RGB values between lit and shadowed images, and comment on how well a simple detector based on colour in the RGB colour space would work.
+* Submit the assignement as a single pdf document, showing the 8x images, the 3x tables, and the discussion on Canvas by the deadline.
 
