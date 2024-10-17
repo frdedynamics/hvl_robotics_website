@@ -81,7 +81,7 @@ _The robot in position to take an image with **rqt**, and sample the RGB values 
 
 ## Assignment Steps in Google Colab
 * Upload the set of 8 images into Google Drive to access them in Google Colab (Files, symbol of folder in left menu->Upload to session storage)
-* Modify the code example with KerasCV to load image "locally", using for example:
+* Modify the code example with KerasCV (linked to at top) to load an image "locally", using for example:
 ```python
 image = keras.utils.load_img("cat1.jpg")
 ```
