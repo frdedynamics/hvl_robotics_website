@@ -1,12 +1,16 @@
 In this section, you will learn how to connect two powerful environments: MATLAB and ROS. The knowledge that you will gain in this section will be highly used in the [Open Manipulator Lab](https://frdedynamics.github.io/hvl_robotics_website/courses/ele306/tb2) and in your semester project.
 
+By the end of this tutorial, you will be able to send commands from **Matlab installed your HOST PC** to your robot in **ROS in your virtual machine**, as well as receiving them.
+
+# Prepare Matlab
+
+You don't need to install Matlab on your VM. You will be using the Matlab on your host PC, which you have been using throughout the semester.
+
 The ROS-Matlab communication is way easier than many of you might think. What you need is just [MATLAB ROS Toolbox](https://www.mathworks.com/products/ros.html). Please make sure that you have the toolbox installed: Home > Add-Ons > Manage Add-Ons:
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/matlab-toolbox.png)
 
 # Prepare Virtual Machine
-
-## Connections
 1. Select your virtual machine on the left bar
 2. Click Edit virtual machine settings
 3. Select Network Adapter
@@ -24,7 +28,7 @@ Next:
 3. Find the line where **ROS_DOMAIN_ID** is set: (for me: line 121: ``export ROS_DOMAIN_ID=24``)
 4. Note the number somewhere. You will use this number in MATLAB.
 
-## Publish a topic from MATLAB
+# Publish a topic from MATLAB
 At this point, you are quite free to choose what you want to control. It can be `turtlesim`, your custom robot or Open Manipulator joints. For simplicity, we will only control the `turtlesim` here but the concept is the same for all.
 
 1. Start your node that you want to communicate: `ros2 run turtlesim turtlesim node`
@@ -60,7 +64,7 @@ This script creates a node in domain number **24** and defines it as a publisher
 {: .notice--info}
 If you want to use common ROS terminal commands such as `ros2 topic list` then you can use `setenv("ROS_DOMAIN_ID","24")` in your MATLAB terminal.
 
-## Subscribe a topic by MATLAB
+# Subscribe a topic by MATLAB
 
 For this part, we will use the simple publisher that we created in the [ROS Intro](https://frdedynamics.github.io/hvl_robotics_website/courses/ele306/pub-sub#completing-the-publisher). 
 

@@ -113,9 +113,9 @@ class myDynamixelController(Node):
         super().__init__("my_dynamixel_controller")
         #TODO
         self.sub = self.create_subscription(MSG_TYPE, 'TOPIC_NAME', self.listener_callback, 10)
-        self.dxls = CustomDXL(dxl_ids=[60, 61])
+        self.dxls = CustomDXL(dxl_ids=[60, 61]) ## TODO set your own dynamixel motor IDs
         self.dxls.open_port()
-        self.dxls.send_goal(goal=[1000, 2665]) ## TODO Adjust position commands according to your motors
+        self.dxls.send_goal(goal_pos=[1000, 2000]) ## TODO Adjust position commands according to your motors, give a list of all joints.
         print("Created")
 
     def listener_callback(self, msg):
