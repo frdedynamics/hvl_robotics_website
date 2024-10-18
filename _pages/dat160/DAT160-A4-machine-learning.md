@@ -52,7 +52,7 @@ source install/setup.bash
 ```
 * To launch the Gazebo simulation with the Turtlebot in an environment with images of cats and dogs on the walls use:
 ```bash
-ros2 launch robot_vision spawn_robot.launch.py
+ros2 launch robot_ml spawn_robot.launch.py
 ```
 
 ## Assignment Steps in Gazebo
