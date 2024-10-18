@@ -76,7 +76,7 @@ ros2 run turtlebot3_teleop teleop_keyboard
 * For each picture use the **camera_viz** node to sample the RGB values at a point you choose in each image. For example in a corner of the image, in a white patch of fur, or similar. Note down the values for each image. Avoid black areas as will not change much with lighting. Values +- 10 are ok, they will oscillate unless robot is completely still.
 * You should now have 8 images, and 8 RGB value sets.
 
-  ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/robot_ml/ml_in_position.png)
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/robot_ml/ml_in_position.png)
 _The robot in position to take an image with **rqt**, and sample the RGB values with the **camera_viz** node._
 
 ## Assignment Steps in Google Colab
