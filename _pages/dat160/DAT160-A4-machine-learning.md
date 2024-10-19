@@ -39,6 +39,8 @@ from glob import glob
 # Add after: ('share/' + package_name, ['package.xml']),
 (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*.launch.py'))),
 (os.path.join('share', package_name, 'worlds'), glob(os.path.join('worlds', '*.world'))),
+(os.path.join('share', package_name, 'models', 'painting', 'materials', 'scripts'), glob('models/painting/materials/scripts/*')),
+(os.path.join('share', package_name, 'models', 'painting', 'materials', 'textures'), glob('models/painting/materials/textures/*')),
 # To make our python script excecutable with ros2 run, we add a entry_points definition
 # Add after: 'console_scripts': [
   'camera_viz = robot_ml.camera_viz:main',
