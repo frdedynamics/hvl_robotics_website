@@ -13,8 +13,4 @@ my_variable: scripts.html
 
 KerasCV install on the DAT160 VM
 
-*TODO*
-
-TODO
-
-## TODO
+Coming soon...
