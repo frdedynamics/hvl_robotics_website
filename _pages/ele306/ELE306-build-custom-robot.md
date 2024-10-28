@@ -124,9 +124,9 @@ The official documentation on how to define a link in urdf can be found [here](h
             <!-- ADD COLLISION GEOMETRY HERE -->
         </geometry>
     </collision>
-    <interial>
+    <inertial>
         <!-- ADD INERTIAL PARAMETERS HERE -->
-    </interial>
+    </inertial>
 </link>
 ```
 
