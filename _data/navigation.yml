@@ -97,7 +97,7 @@ dat160:
         url: /courses/dat160/robot-vision
       - title: "Occupancy Grids"
         url: /courses/dat160/occupancy-grid
-      - title: "KerasCV install on the DAT160 VM"
+      - title: "KerasCV install on VM"
         url: /courses/dat160/kerascv
       - title: "Competition"
         url: /courses/dat160/competition
