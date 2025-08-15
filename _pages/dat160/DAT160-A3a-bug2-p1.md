@@ -54,12 +54,11 @@ For setting up the assignment follow these steps:
 * Create a ROS2 python package with the name **bug2_navigation**
 * Copy the folders **launch**, **rviz** and **worlds** from the **ros2_students_24/bug2_navigation** git repository to your newly created package.
 * Don't forget to adjust your **setup.py** file so that it copies the files from the previously copied folder into the install folder during *colcon build*. Look at braitenberg_vehicle assignment on how to do that.
-* In order to use ros2 run to start any scripts you make, use the following syntax in your **setup.py** file:
+* Add any script you make under 'console_scripts' in your **setup.py** file. This allows you to use ros2 run to start the script. For this assignment you will need one script for the wall follower algorithm and one for the go-to-point algorithm. The syntax for adding scripts in the **setup.py** file is as follows:
 ```python
 #Add after: 'console_scripts': [
 'ROS_RUN_NAME = PACKAGE_NAME.SCRIPT_NAME:main',
 ``` 
-* Also add any script you make under 'console_scripts'. In this assignment you will probably have one script for the wall_follower and one for the go_to_point algorithm.
 * To launch the simulation environment use:
 ```bash
 ros2 launch bug2_navigation spawn_robot.launch.py
