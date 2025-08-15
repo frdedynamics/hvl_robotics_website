@@ -52,7 +52,7 @@ def clbk_odom(self, msg):
 For setting up the assignment follow these steps:
 
 * Create a ROS2 python package with the name **bug2_navigation**
-* Copy the folders **launch**, **rviz** and **worlds** from the **ros2_students_24/bug2_navigation** git repository to your newly created package.
+* Copy the folders **launch**, **rviz** and **worlds** from the **ros2_students_25/bug2_navigation** git repository to your newly created package.
 * Don't forget to adjust your **setup.py** file so that it copies the files from the previously copied folder into the install folder during *colcon build*. Look at braitenberg_vehicle assignment on how to do that.
 * Add any script you make under 'console_scripts' in your **setup.py** file. This allows you to use ros2 run to start the script. For this assignment you will need one script for the wall follower algorithm and one for the go-to-point algorithm. The syntax for adding scripts in the **setup.py** file is as follows:
 ```python

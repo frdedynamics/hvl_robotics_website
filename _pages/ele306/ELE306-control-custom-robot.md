@@ -23,7 +23,7 @@ In the previous lecture we created a gazebo simulation model of a custom robot. 
 (os.path.join('share', package_name, 'config'), glob(os.path.join('config', '*.yaml'))),
 ```
 4. Create new file in the `urdf` folder of your ROS package called `robot_control.gazebo.xacro`.
-5. If you want to use the example robot from the lecture, copy the `robot_description.urdf.xacro` file from the **ros2_students/custom_robot_sim/urdf** repository and paste it into the urdf folder of your ROS package. In case you already have a robot_description file in your urdf folder either rename the old file or replace it with the new file.
+5. If you want to use the example robot from the lecture, copy the `robot_description.urdf.xacro` file from the **ros2_students_25/custom_robot_sim/urdf** repository and paste it into the urdf folder of your ROS package. In case you already have a robot_description file in your urdf folder either rename the old file or replace it with the new file.
 6. Inside the `robot_description.urdf.xacro` file add a reference to the newly created `robot_control.gazebo.xacro` (rember to add this line after the `<robot>` tag):
 
 ```xml

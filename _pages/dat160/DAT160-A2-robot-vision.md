@@ -30,8 +30,8 @@ cd ~/ros2_ws/src
 ```bash
 ros2 pkg create --build-type ament_python robot_vision
 ```
-* Copy the folders **launch**, **urdf** and **worlds** from the **ros2_students_24/robot_vision** git repository to your newly created package (ros2_ws/src/robot_vision)
-* In ROS2 the python scripts of packages are located in a folder with the same name as the package. Copy the files **tb3_blob_tracker.py** and **command_sphere.py** from the **ros2_students_24/robot_vision** git repository to the scripts folder of your package (ros2_ws/src/robot_vision/robot_vision)
+* Copy the folders **launch**, **urdf** and **worlds** from the **ros2_students_25/robot_vision** git repository to your newly created package (ros2_ws/src/robot_vision)
+* In ROS2 the python scripts of packages are located in a folder with the same name as the package. Copy the files **tb3_blob_tracker.py** and **command_sphere.py** from the **ros2_students_25/robot_vision** git repository to the scripts folder of your package (ros2_ws/src/robot_vision/robot_vision)
 - In the **setup.py** file of your package add the following lines:
 ```python
 # Add after: from setuptools import setup

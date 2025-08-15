@@ -18,7 +18,7 @@ sudo apt upgrade
 ```
 
 ## Modify XACRO
-With the current URDF model we cannot visualize our robot in Gazebo because we haven’t defined any physical properties. We need to improve the URDF model by adding some <collision/> and <inertial/> properties. Since the main purpose of this lecture is not to teach how to create a URDF/XACRO file, you can just download the additional folders (config, meshes, urdf) in the [my_robot_pkg](https://github.com/frdedynamics/ros2_students) folder package and keep following rest of the tutorial.
+With the current URDF model we cannot visualize our robot in Gazebo because we haven’t defined any physical properties. We need to improve the URDF model by adding some <collision/> and <inertial/> properties. Since the main purpose of this lecture is not to teach how to create a URDF/XACRO file, you can just download the additional folders (config, meshes, urdf) in the [my_robot_pkg](https://github.com/frdedynamics/ros2_students_25) folder package and keep following rest of the tutorial.
 
 ## Add Gazebo elements in launch
 
