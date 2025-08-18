@@ -8,36 +8,6 @@ Recent statistics show that there are **32.8 million Linux users worldwide**. 96
 
 
 
-# TODO:
+# Suggested intro
+Since we will use sone basic Linux knowledge to to things in ROS, we highly suggest you to watch our [Linux intro videos here](https://youtube.com/playlist?list=PLCGXHlZcvbOXYxcDD6T_bNAtgZOtCQCVv&si=CHtFs8X3egSf7u6K).
 
-- What is terminal vs IDE
-    - Divide terminal, new tab, running terminal
-    - Ctrl+C
-- How to open terminal
-    - Alt+Ctrl+T
-    - Left bar
-    - Right click in the folder
-    - In VS code
-- Commands
-    - cd
-      - ~ is home
-    - ls
-    - pwd
-    - find
-    - grep
-    - history
-    - mkdir
-    - touch
-    - gedit
-    - code
-    - cat
-- Shortcuts
-    - Tab autocomplete
-    - ctrl+R
-
-    * bashrc and source sh files.
-
-## Useful materials:
-Python books
-Websites
-Youtube videos
