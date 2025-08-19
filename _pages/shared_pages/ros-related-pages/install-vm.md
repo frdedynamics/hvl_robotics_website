@@ -35,8 +35,8 @@ To install VMware, you need to go to create an account at [Broadcom.com](https:/
 
 After the registration is completed, login to your account and click to the correct link below that is compatible to your PC.
 
-- For Windows/Linux: [VMware Workstation Pro 17](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro) 
-- For Mac: [VMware Fusion 13](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware+Fusion) 
+- For Windows/Linux: [VMware Workstation Pro 17](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true) 
+- For Mac: [VMware Fusion 13](https://support.broadcom.com/group/ecx/productfiles?subFamily=VMware%20Fusion&displayGroup=VMware%20Fusion%2013&release=13.6.4&os=&servicePk=&language=EN&freeDownloads=true) 
 
 Video tutorial for installation is [here](https://www.youtube.com/watch?v=kTO810vbF_E&t=3s).
 
