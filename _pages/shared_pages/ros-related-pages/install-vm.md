@@ -29,7 +29,13 @@ virtual appliance (aka. a virtual copy of a system). We suggest you download VMw
 
 ### VMware Install
 
-To install VMware, you need to go to create an account at [Broadcom.com](https://profile.broadcom.com/web/registration)
+**Option 1**
+
+If you use Windows, try [this link first](https://hvl365.sharepoint.com/:u:/s/RobotikkUndervisningHVL/EeHPrAvNv6tGozFNRKIK4_cBeEq8WiFOb_EeNgjxsmIYbQ?e=21RVQw). At the installation step, it will ask if you want to install Windows Hypervisior, do not install it. Afterwards, select "enable enhanced keyboard" option. Follow the regular installation gut feelings and you are done. 
+
+**Option 2**
+
+If the link above didn't work, or you are using Linux/Mac, to install VMware, you need to go to create an account at [Broadcom.com](https://profile.broadcom.com/web/registration)
 
 *Please use only international characters to while you enter your name and adress*
 
@@ -40,6 +46,7 @@ After the registration is completed, login to your account and click to the corr
 
 Video tutorial for installation is [here](https://www.youtube.com/watch?v=kTO810vbF_E&t=3s).
 
+### Running VMware
 
 After installing it you can import the virtual appliance by clicking
 **Open a Virtual Machine** and choose the .vmx file from inside the
