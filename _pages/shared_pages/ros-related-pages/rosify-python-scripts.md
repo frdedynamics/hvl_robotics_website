@@ -87,10 +87,10 @@ object_dxls = CustomDXL([60, 61])
 print(f"IDs: {object_dxls.getIDs()}")
 ```
 
-You can download the full version [here](https://github.com/frdedynamics/ros2_students.git) **rosify_dynamixel** folder. Remember to change the port, baud_rate and motor IDs.
+You can download the full version [here](https://github.com/frdedynamics/ros2_students_25.git) **rosify_dynamixel** folder. Remember to change the port, baud_rate and motor IDs.
 
 {: .notice--info}
-At this point, you should be able to control your motors if you copy-paste the content in [test_CustomDXL.py](https://github.com/frdedynamics/ros2_students/blob/master/rosify_dynamixel/test_CustomDXL.py) into the node `~/ros2_ws/src/rosify_dynamixel_ros_pkg/rosify_dynamixel_ros_pkg/send_single_joint_cmd.py`.
+At this point, you should be able to control your motors if you copy-paste the content in [test_CustomDXL.py](https://github.com/frdedynamics/ros2_students_25/blob/master/rosify_dynamixel/test_CustomDXL.py) into the node `~/ros2_ws/src/rosify_dynamixel_ros_pkg/rosify_dynamixel_ros_pkg/send_single_joint_cmd.py`.
 
 
 ## Use CustomDXL in a ROS node
@@ -345,7 +345,7 @@ Currently, we update the plot on *every* new data, even if the data is the same.
     </code></pre>
 </div>
 
-If the button doesn't work: [optimized_visualize_dxl.py](https://github.com/frdedynamics/ros2_students/blob/master/rosify_dynamixel_ros_pkg/optimized_visualize_dxl.py)
+If the button doesn't work: [optimized_visualize_dxl.py](https://github.com/frdedynamics/ros2_students_25/blob/master/rosify_dynamixel_ros_pkg/optimized_visualize_dxl.py)
 
 # Voluntary Exercise: Update your robot via visualizer
 
@@ -356,9 +356,9 @@ Let's do this.
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ada526-rosify2.png)
 
 - Modify the **send_single_joint_cmd.py** such that it subscribes to the topic `/dxl_actual_joint_cmd`.
-- Create a new middleware node names **visualizer_to_robot.py**. It should subscribe to the same topic as the visualizer (`/dxl_joint_cmd`) does and publishes to the actual joint command topic (`dxl_actual_joint_cmd`) when a bool ROS parameter sets to `True`. The code for that looks like this: [visualizer_to_robot.py](https://github.com/frdedynamics/ros2_students/blob/master/rosify_dynamixel/visualizer_to_robot.py)
+- Create a new middleware node names **visualizer_to_robot.py**. It should subscribe to the same topic as the visualizer (`/dxl_joint_cmd`) does and publishes to the actual joint command topic (`dxl_actual_joint_cmd`) when a bool ROS parameter sets to `True`. The code for that looks like this: [visualizer_to_robot.py](https://github.com/frdedynamics/ros2_students_25/blob/master/rosify_dynamixel/visualizer_to_robot.py)
 - Run all three nodes in the figure above. (or even better: make a launch file!)
-- Either modify the existing visualizer node or create a new one [visualization_publisher.py](https://github.com/frdedynamics/ros2_students/blob/master/rosify_dynamixel_ros_pkg/visualization_publisher.py)
+- Either modify the existing visualizer node or create a new one [visualization_publisher.py](https://github.com/frdedynamics/ros2_students_25/blob/master/rosify_dynamixel_ros_pkg/visualization_publisher.py)
 - Set update_robot parameter *True* whenever you want to send it to the robot: `ros2 param set /dynamixel_visualizer_to_controller update_robot True`
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ros2-param-list-update-robot.png)
