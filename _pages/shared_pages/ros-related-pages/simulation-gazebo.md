@@ -69,11 +69,15 @@ We are going to add a differential drive controller and joint state broadcaster 
 
 This part is a bit more complicated to describe each detail in such a short time. Therefore, we provide you the necessary template files, go throught the process and focus only on the key points so that you can use them if you need in your project.
 
-There are a couple of different ways adding controllers to your robot. We will use `ros2_contror` but be aware that there are different ways if you use other tutorials. The official documentation for `ros2_control` is [here](https://control.ros.org/foxy/index.html). You need to choose the necessary driver for your robot in your semester project.
+There are a couple of different ways adding controllers to your robot. We will use `ros2_contror` but be aware that there are different ways if you use other tutorials. The official documentation for `ros2_control` is [here](https://control.ros.org/foxy/index.html). You need to choose the necessary driver for your robot in your semester project if you use another robot than a differential robot.
 
+These are already fixed for you:
 1. Define controller parameters. This is done in */config/my_controllers.yaml*.
 1. Define `command_interface` and `state_interface` for ros2_control in your robot model. To keep things clean, we defined them in */urdf/gazebo_control.xacro*. We already added this into */urdf/my_mobile_robot_inertia_collision.xacro* which is our main URDF.
 1. Tell Gazebo to use ros2_control. This is **already done** in  */urdf/gazebo_control.xacro*.
+
+You should do these changes:
+1. Modify your launch file such that use the controller+sensor XACRO file: `my_mobile_robot_sensor.xacro`
 1. Start controllers in the launch file. Add the following part at the end of your launch file. Remember to add them in the `LaunchDescription()`, as well.
 
 ```python
@@ -177,7 +181,7 @@ To add sensors, we will use gazebo plugins. Camera is probably one of the most c
       </sensor>
     </gazebo>
 ```
-2.Add a camera link to your URDF (*/urdf/my_mobile_robot_inertia_collision.xacro*):
+2.It is already added a camera link to your URDF (*/urdf/my_mobile_robot_sensor.xacro*):
 
 ```xml
   <joint name="camera_joint" type="fixed">
@@ -219,6 +223,9 @@ ros2 launch  my_robot_pkg my_mobile_robot.launch.py
 - `ros2 run rqt_image_view rqt_image_view`
 - Observe on Rviz
 - Put some obstacles.
+
+{: .notice--info}
+**Note:** If your robot doesn't spawn in Gazebo, but is was spawning before, you might be missing some ros2_control packages. Please run these commands in your terminal: `sudo apt install ros-foxy-ros2-control*` and `sudo apt install ros-foxy-gazebo-*`
 
 
 ## Adding world
