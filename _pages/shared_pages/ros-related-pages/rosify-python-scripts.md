@@ -72,7 +72,7 @@ To make things easier, I am going to create a custom Dynamixel class. Here is th
 import dynamixel_sdk as dxl
 
 class CustomDXL:
-   def __init__(self,dxl_ids=[1, 2, 3]):
+   def __init__(self,dxl_ids=[1, 2, 3]): # Put your motor IDs from Dynamixel SDK
       self.dxl_ids=dxl_ids
    def getIDs(self):
       return self.dxl_ids
@@ -83,7 +83,7 @@ class CustomDXL:
 ```python
 from custom_dxl.CustomDXL import CustomDXL
 
-object_dxls = CustomDXL([60, 61])
+object_dxls = CustomDXL([0, 4]) # Put your motor IDs from Dynamixel SDK
 print(f"IDs: {object_dxls.getIDs()}")
 ```
 
@@ -113,7 +113,7 @@ class myDynamixelController(Node):
         super().__init__("my_dynamixel_controller")
         #TODO
         self.sub = self.create_subscription(MSG_TYPE, 'TOPIC_NAME', self.listener_callback, 10)
-        self.dxls = CustomDXL(dxl_ids=[60, 61]) ## TODO set your own dynamixel motor IDs
+        self.dxls = CustomDXL(dxl_ids=[0, 4]) ## TODO set your own dynamixel motor IDs
         self.dxls.open_port()
         self.dxls.send_goal(goal_pos=[1000, 2000]) ## TODO Adjust position commands according to your motors, give a list of all joints.
         print("Created")
@@ -167,9 +167,9 @@ Hint:
         def __init__(self) -> None:
             super().__init__("my_dynamixel_controller")
             self.sub = self.create_subscription(Int32, '/dxl_joint_cmd', self.listener_callback, 10)
-            self.dxls = CustomDXL()
+            self.dxls = CustomDXL([0, 4])
             self.dxls.open_port()
-            self.dxls.send_goal(goal_pos=[1000]) ## Random initial positions to all motors
+            self.dxls.send_goal(goal_pos=[250, 500]) ## Random initial positions to all motors
 
             print("Created")
             print("Publish data between [0, 4095] to the topic /dxl_joint_cmd")
