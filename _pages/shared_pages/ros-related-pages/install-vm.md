@@ -17,8 +17,7 @@ The admin password inside the virtual appliance is: **student**
 
 A virtual appliance is a copy of a working operating system and its
 programs. We provide you ready-to-use virtual copy of what you need. To
-download it, use [this
-link](https://drive.google.com/file/d/15QU57vWVVieqcQ1c6Yy_SgfXyAmGCMJW/view?usp=sharing)
+download it, use [Windows](https://drive.google.com/file/d/15QU57vWVVieqcQ1c6Yy_SgfXyAmGCMJW/view?usp=sharing) or [Mac](https://hvl365.sharepoint.com/:f:/s/RobotikkUndervisningHVL/EkCS9QvAaWFPlu3s2AWu-XQBGP-_d9Wvr245Lh3aFpyyZA?e=y6dWpo)
 with your HVL credentials. After downloading, extract the folder inside
 the .zip file.
 
@@ -44,7 +43,7 @@ After the registration is completed, login to your account and click to the corr
 - For Windows/Linux: [VMware Workstation Pro 17](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true) 
 - For Mac: [VMware Fusion 13](https://support.broadcom.com/group/ecx/productfiles?subFamily=VMware%20Fusion&displayGroup=VMware%20Fusion%2013&release=13.6.4&os=&servicePk=&language=EN&freeDownloads=true) 
 
-Video tutorial for installation is [here](https://www.youtube.com/watch?v=kTO810vbF_E&t=3s).
+Video tutorial for installation is [here](https://www.youtube.com/watch?v=kTO810vbF_E&t=3s). Installation tutorial is for Windows. You can use "Virtual Disk.vmdk" file instead for Mac.
 
 ### Running VMware
 
