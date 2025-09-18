@@ -286,3 +286,42 @@ You can change the position and orientation of any object which you have added w
 
 {: .notice--info}
 Don't forget to add your /world folder directory in the **setup.py**
+
+# Troubleshooting
+
+## Cannot do "sudo apt update"
+The problem is either about your internet connection or ROS 2 GPG Key. First make sure that you have internet. Afterwards open a new terminal and paste this command: `sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg`
+
+
+Now you can:
+```
+sudo apt update
+sudo apt upgrade
+```
+
+## Getting "cache lock" error
+It might be your **lock-frontend** process blocking the system. Find its process id (PID) and kill the process:
+
+```
+sudo lsof /var/lib/dpkg/lock-frontend
+```
+
+Use this PID and replace \<PID\> in the next command:
+
+```
+sudo kill -9 <PID>
+```
+
+## Robot looks weird on Gazebo
+That is such an annoying problem but let's try. Probably your ros2-control packages are outdated and ´sudo apt upgrade´ cannot fix them - IDK why. We can remove them and reinstall them. Try using these commands:
+
+```
+sudo apt remove  ros-foxy-ros2-control*
+sudo apt remove ros-foxy-gazebo-*
+sudo apt update
+sudo apt upgrade
+sudo apt install ros-foxy-ros2-control*
+sudo apt install ros-foxy-gazebo-*
+```
+
+and then restart the VM.
