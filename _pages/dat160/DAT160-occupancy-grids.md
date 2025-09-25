@@ -11,7 +11,7 @@ taxonomy: markup
 
 In ROS, Occupancy Grid is a data type which represents a 2 dimensional grid map in which each cell gives the probability of an obstacle being at that position. Normally this type of map is produced with a robot moving through an environment and mapping it using a SLAM algorithm. The Occupancy grid data is given in a 1 dimensional array in row-major order starting at the bottom right corner of the map. The data values have the following meaning:
 
-* -1 = unkown
+* -1 = unknown
 * 0-100 = probability of occupancy. Which means 0 is definitely no obstacle and 100 is definitely an obstacle.
 
 The Occupancy Grids also carry other useful meta data:
@@ -19,7 +19,7 @@ The Occupancy Grids also carry other useful meta data:
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/occupancy_grid/occupancy_grid.PNG)
 
 ## Useful helper functions
-This section gives you a view usefull code-snippets that you might want to use during your semester project. It is expected that you use the code in a class environment.
+This section gives you a view useful code-snippets that you might want to use during your semester project. It is expected that you use the code in a class environment.
 
 ### Subscribing to the map topic
 To subscribe to the map topic, use the following code. The qos_profile (Quality of Service) allows you to more finely tune the communication in ROS2. It is out of the scope of this course to explain what it does in detail but if you are interested you can read more [here](https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Quality-of-Service-Settings.html).
@@ -104,7 +104,7 @@ class MapMarkerClass(Node):
         self.marker_msg.color.g = 255.0/255.0
         self.marker_msg.color.b = 0.0/255.0
         self.marker_msg.color.a = 1.0
-        #Define how long the object should last before being automaticcally deleted, where 0 idicates forever
+        #Define how long the object should last before being automatically deleted, where 0 indicates forever
         self.marker_msg.lifetime = rclpy.duration.Duration().to_msg()
 
         timer_period = 1.0  # seconds
@@ -151,6 +151,28 @@ Select **Marker** as the type and press okay:
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/occupancy_grid/rviz_marker_step_2.png)
 
-Remember to change the **topic name** to which the object is subsribing to:
+Remember to change the **topic name** to which the object is subscribing to:
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/occupancy_grid/rviz_marker_step_3.png)
+
+
+## Exercise
+Create an algorithm that finds a bounding box around the outer walls of the map and draws the corners of the bounding box in rviz. To find the bounding box find the following values:
+- the minimum and maximum positions of a wall on the x-axis 
+- the minimum and maximum position of a wall on the y-axis
+
+Then draw the following position combinations:
+- x_min, y_min
+- x_min, y_max
+- x_max, y_min
+- x_max, y_max
+
+Inside the given ROS package **multi_robot_challenge_23** do the following steps:
+* In the **ros2_students_25/occupancy_grid_exercise** repository you will find the following file: `map_filter.py`. Copy it to **ros2_ws/src/multi_robot_challenge_23/multi_robot_challenge_23**.
+* Make sure that `map_filter.py` is configured as a console script in `setup.py` similar to what you have done to set up the `braitenberg_vehicle` assignment.
+* Complete the exercise by following the **TODOs** in the `map_filter.py` script.
+* To test your solution do the following steps:
+  - Launch one of the semester project maps. E.g. `ros2 launch multi_robot_challenge_23 rescue_robots_w1.launch.py`.
+  - Run the marker detection script. E.g. `ros2 run multi_robot_challenge_23 map_filter`.
+  - Check in rviz if you can see 4 green points.<br/>
+    **Note:** In order to see the green points you need to do the setup described in the previous section (**Setup in RViz**).
