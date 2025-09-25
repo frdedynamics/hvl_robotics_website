@@ -89,14 +89,16 @@ dat160:
         url: /courses/dat160/gazebo
       # - title: "Controllers and Sensors"
       #   url: /courses/dat160/ros2control
-      - title: "ROS Communication Patterns"
-        url: /courses/dat160/ros-comm-pattern
-      - title: "ROS Namespaces"
-        url: /courses/dat160/namespace
       - title: "Robot Vision"
         url: /courses/dat160/robot-vision
+      - title: "ROS Namespaces"
+        url: /courses/dat160/namespace
+      - title: "ArUco Markers"
+        url: /courses/dat160/aruco-markers
       - title: "Occupancy Grids"
         url: /courses/dat160/occupancy-grid
+      - title: "ROS Communication Patterns"
+        url: /courses/dat160/ros-comm-pattern
       - title: "KerasCV install on VM"
         url: /courses/dat160/kerascv
       - title: "Competition"
