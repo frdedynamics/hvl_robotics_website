@@ -1,7 +1,7 @@
 ---
 layout: single
-title: "github Tutorial"
-permalink: /ada526/github
+title: "Linux Tutorial"
+permalink: /ada526/linux
 toc: true # The right side bar "on this page"
 breadcrumbs: true  # the directory-of-documents type of header navigation
 sidebar:
@@ -13,5 +13,5 @@ my_variable: scripts.html
 ---
 
 
-{% include_absolute '_pages/shared_pages/github-tutorial.md' %}
+{% include_absolute '_pages/shared_pages/linux-tutorial.md' %}
 

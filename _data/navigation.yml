@@ -16,6 +16,8 @@ ele306:
         url: /ele306/python
       - title: "Linux Tutorial"
         url: /ele306/linux
+      - title: "Github Tutorial"
+        url: /ele306/github
   - title: "ROS Lecture Notes"
     children:
       - title: "Install VM"
@@ -69,6 +71,8 @@ dat160:
         url: /dat160/python
       - title: "Linux Tutorial"
         url: /dat160/linux
+      - title: "Github Tutorial"
+        url: /dat160/github
   - title: "ROS Lecture Notes"
     children:
       - title: "Install VM"
@@ -144,6 +148,14 @@ ros:
 
 
 ada526:
+  - title: "Useful Tutorials"
+    children:
+      - title: "Python Tutorial"
+        url: /ada526/python
+      - title: "Linux Tutorial"
+        url: /ada526/linux
+      - title: "Github Tutorial"
+        url: /ada526/github
   - title: "ROS Lecture Notes"
     children:
       - title: "Install VM"
