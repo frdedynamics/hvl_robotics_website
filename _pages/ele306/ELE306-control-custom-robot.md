@@ -24,7 +24,8 @@ In the previous lecture we created a gazebo simulation model of a custom robot. 
 ```
 4. Create new file in the `urdf` folder of your ROS package called `robot_control.gazebo.xacro`.
 5. If you want to use the example robot from the lecture, copy the `robot_description.urdf.xacro` file from the **ros2_students_25/custom_robot_sim/urdf** repository and paste it into the urdf folder of your ROS package. In case you already have a robot_description file in your urdf folder either rename the old file or replace it with the new file.
-6. Inside the `robot_description.urdf.xacro` file add a reference to the newly created `robot_control.gazebo.xacro` (rember to add this line after the `<robot>` tag):
+6. If you want to try the example publishers, copy `mobile_base_pub.py`, `robot_arm_pub.py` and `gripper_pub.py` from the  **ros2_students_25/custom_robot_sim** repository and paste the files into **ros2_ws/src/PACKAGE_NAME/PACKAGE_NAME**. **Note:** in the lecture example PACKAGE_NAME = custom_robot_sim. Also, don't forget to reference the file in `setup.py` in the `console_scripts` section like we did with `reload_robot_model.py` in the [Build a Custom Robot Simulation](https://frdedynamics.github.io/hvl_robotics_website/courses/ele306/build-custom-robot) Setup.
+7. Inside the `robot_description.urdf.xacro` file add a reference to the newly created `robot_control.gazebo.xacro` (remember to add this line after the `<robot>` tag):
 
 ```xml
 <xacro:include filename="$(find PACKAGE_NAME)/urdf/robot_control.gazebo.xacro" />
@@ -41,15 +42,6 @@ The base structure of the `robot_control.gazebo.xacro` file should look like thi
 ```
 
 ### Gazebo Config
-Each joint that you plan to use a position command interface with should have the following definition:
-```xml
-<gazebo reference="JOINT_NAME">
-    <implicitSpringDamper>true</implicitSpringDamper>
-</gazebo>
-```
-
-
-
 We want to be able to move the joints of the robot using ROS2 and therefore define that we want to use the `gazebo_ros2_control` plugin. As a parameter we have to define the location of the `.yaml` file that contains configurations for the controller.
 
 ```xml
@@ -61,7 +53,7 @@ We want to be able to move the joints of the robot using ROS2 and therefore defi
 </gazebo>
 ```
 
-We also have to define what joints will be commandeble by `ros2_control`. The basic structure of this definition looks like this:
+We also have to define what joints will be commandable by `ros2_control`. The basic structure of this definition looks like this:
 ```xml
 <ros2_control name="GazeboSystem" type="system">
     <hardware>
@@ -87,8 +79,10 @@ For each joint we then add a definition of the command and state interfaces avai
 </joint>
 ```
 
+**Note:** You can define multiple command interfaces in case you want the joint to also be able to control the velocity or effort (torque) of the joint. Also, the `min` and `max` parameters are optional.
+
 #### Gripper
-Another example of defining the command interface of a joint is that we can make one joint simpli mimic another e.g. for a gripper where both fingers are supposed to move together:
+Another example of defining the command interface of a joint is that we can make one joint simply mimic another e.g. for a gripper where both fingers are supposed to move together:
 
 ```xml
 <joint name="gripper_finger_left_joint">
@@ -121,34 +115,15 @@ controller_manager:
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
-    CONTROLER_NAME:
-      type: joint_trajectory_controller/JointTrajectoryController
-
-    CONTROLER_NAME:
+    CONTROLLER_NAME:
       type: forward_command_controller/ForwardCommandController
 ```
 
-#### Joint Trajectory Controller
-An example difinition of a joint trajectory controller
-```yaml
-CONTROLER_NAME:
-  ros__parameters:
-    joints:
-      - JOINT_NAME
-      - JOINT_NAME
-      # ...
 
-    command_interfaces:
-      - position
-
-    state_interfaces:
-      - position
-      - velocity
-```
-#### Gripper Controller
+#### Forward Command Controller
 An example definition of a forward command controller:
 ```yaml
-CONTROLER_NAME:
+CONTROLLER_NAME:
   ros__parameters:
     joints:
       - JOINT_NAME
@@ -176,14 +151,14 @@ LOAD_CONTROLLER_VARIABLE_NAME = ExecuteProcess(
 
 
 ## Mobile Platform
-Depending on what type of robot you have this part more or less tricky. For a robot with 2 or 4 wheels you can use the plugins in Sections Differential Drive and Skid Steer Drive respectivly. If you have a drone or boat, gazebo classic does not have standard plugins for you. In this case you have 2 options:
+Depending on what type of robot you have this part more or less tricky. For a robot with 2 or 4 wheels you can use the plugins in Sections Differential Drive and Skid Steer Drive respectively. If you have a drone or boat, gazebo classic does not have standard plugins for you. In this case you have 2 options:
 
 1. Install and setup the [PX4 Gazebo Classic Simulations](https://docs.px4.io/main/en/sim_gazebo_classic/). They different implementations already available, but the setup process can be time consuming.
 2. Abstract the movement behavoiur of your model e.g. if you have a boat add wheels to it to move it around or if you have a drone add 3 primatic joint to move the drone around.
 
 ### Increasing Friction
 
-If you want to change friction values for a link (e.g. for wheels) you can use the following code snippet:
+If you want to change friction values for a link (e.g. for wheels) you can use the following code snippet. More information on what each of these parameters do can be found [here](https://classic.gazebosim.org/tutorials?tut=physics_params).
 
 ```xml
 <gazebo reference="LINK_NAME">
@@ -198,7 +173,7 @@ If you want to change friction values for a link (e.g. for wheels) you can use t
 </gazebo>
 ```
 
-### Differential Drive
+### Differential Drive Plugin
 
 ```xml
 <gazebo>
@@ -235,7 +210,7 @@ If you want to change friction values for a link (e.g. for wheels) you can use t
 </gazebo>
 ```
 
-### Skid Steer Drive
+### Skid Steer Drive Plugin
 
 ```xml
 <gazebo>
@@ -276,3 +251,21 @@ If you want to change friction values for a link (e.g. for wheels) you can use t
     </plugin>
 </gazebo>
 ```
+
+## Control the Robot
+After doing the configurations described before you should now be able to control your robot through ROS. If you added the example script into your package as described in the [Setup]() section, you can now test controlling the wheels, arm joints and gripper fingers using the following commands. **Note:** don't forget to launch your robot simulation first!
+
+```bash
+ros2 run custom_robot_sim mobile_base_pub
+```
+
+```bash
+ros2 run custom_robot_sim robot_arm_pub
+```
+
+```bash
+ros2 run custom_robot_sim gripper_pub
+```
+
+### Matlab
+To control you robot through matlab you will find the example script `robot_arm_pub.m` in the **ros2_students_25/custom_robot_sim** repository. Instructions on how to setup the matlab to be able to communicate through ROS you can find [here](https://frdedynamics.github.io/hvl_robotics_website/courses/ele306/ros-matlab).
