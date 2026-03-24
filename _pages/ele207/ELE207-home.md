@@ -11,7 +11,7 @@ sidebar:
 taxonomy: markup
 ---
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/home/ada527-logo-eng.png)
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/home/ele207-logo-eng.png)
 Welcome to ELE207 page. Please refer to Canvas while using the content in this category. Here is the [course plan](https://www.hvl.no/studier/studieprogram/emne/ele207). 
 
 
