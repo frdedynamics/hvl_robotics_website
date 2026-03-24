@@ -23,8 +23,9 @@ Our maze is set, your vehicle awaits. Get ready to program and fine-tune those P
 ## Equipment
 1. Your personal PC with the Virtual Machine running
 2. Matlab R2022a to R2024b (not newer, not older)
-3. A real life Turtlebot 3
-4. Good mood!🌈
+3. Matlab will need the ROS Toolbox
+4. A real life Turtlebot 3
+5. Good mood!🌈
 
 ## Before the lab 
 1. Get together in a group of 2-3 people
