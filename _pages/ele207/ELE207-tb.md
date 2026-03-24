@@ -22,8 +22,8 @@ Our maze is set, your vehicle awaits. Get ready to program and fine-tune those P
 
 ## Equipment
 1. Your personal PC with the Virtual Machine running
-2. Matlab R2022a to R2024b (not newer, not older)
-3. Matlab will need the ROS Toolbox
+2. Matlab **R2022a to R2024b (not newer, not older)**
+3. Matlab will need the **ROS Toolbox**
 4. A real life Turtlebot 3
 5. Good mood!🌈
 
@@ -112,6 +112,7 @@ Your turtlebot is now ready to get commands from your script!
 
 ### Implementing a simple navigation algorithm that uses a PID
 Open the given Matlab script and implement the PID controller which navigates your Turtlebot robot through the maze.
+[This is the link to the Matlab script](https://github.com/frdedynamics/ros2_students_25/tree/master/labs/turtlebot%20-%20matlab)
 The steps to complete this task are outlined in the script, follow the TODOs and other comments and you'll be able to control the turtlebot.
 
 The current script uses a simple **wall following algorithm** that controles the distance to the left wall. The distance is controlled through the angular velocity of the robot. So the PID controller will decide how the robot corrects its distance to the left wall, with more or less reactivity, oscillations, steady-state error, etc
