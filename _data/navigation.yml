@@ -1,4 +1,6 @@
 main:
+  - title: "ELE207"
+    url: /courses/ele207
   - title: "ELE306"
     url: /courses/ele306
   - title: "DAT160"
@@ -7,6 +9,24 @@ main:
     url: /courses/ada526
   - title: "ADA527"
     url: /courses/ada527
+
+ele207:
+  - title: "Useful Tutorials"
+    children:
+      - title: "ROS-Matlab Communication"
+        url: /ele207/ros-matlab
+      - title: "Linux Tutorial"
+        url: /ele207/linux
+      - title: "Github Tutorial"
+        url: /ele207/github
+  - title: "ROS Lecture Notes"
+    children:
+      - title: "Install VM"
+        url: /courses/ele207/install-vm
+  - title: "Lab Exercises"
+    children:
+      - title: "TB with PID"
+        url: /courses/ele207/tb
 
 
 ele306:
