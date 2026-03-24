@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "ELE320 Turtlebot Lab"
+title: "ELE207 Turtlebot Lab"
 permalink: /courses/ele207/tb
 toc: true # The right side bar "on this page"
 breadcrumbs: true  # the directory-of-documents type of header navigation
