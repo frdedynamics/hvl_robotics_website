@@ -11,7 +11,7 @@ Here is a simple dictionary of all the new terms/tools/programs you will be usin
 ## Robot model using URDF
 What is a model? How can we define a *robot model*?
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/modelling.png) #TODO: Update picture
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/modelling.png)
 
 To tell this to the ROS system, we are using URDF files which are written in XML format.
 
@@ -20,7 +20,34 @@ URDF (Unified Robot Description Format) contains links, joints and basic materia
 A simple URDF file looks like this. Let’s first understand it line by line.
 
 ```xml
-  #TODO: Update manipulator XML
+<?xml version="1.0"?>
+<robot name="myrobot">
+  <link name="body">
+    <visual>
+    <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <geometry>
+        <box size="0.6 0.1 0.2"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel1">
+    <visual>
+    <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder length="0.6" radius="0.2"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="body_to_wheel1" type="revolute">
+    <axis xyz="0 0 1"/>
+    <origin xyz="0.1 0.15 0" rpy="0 0 0"/>
+    <parent link="body"/>
+    <child link="wheel1"/>
+  </joint>
+
+</robot>
 ```
 
 {: .notice--info}
@@ -36,7 +63,7 @@ You can use XACRO files in *almost* anywhere that you need a URDF file. Therefor
 
 ## Create your first robot
 
-In this part of the tutorial, you are supposed to create a 2 DOF robot arm in simulation.
+In this part of the tutorial, you are supposed to create a mobile robot with 2 individually actuated wheels. 
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/mobile_robot.png)
 

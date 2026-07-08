@@ -40,21 +40,18 @@ If the link above didn't work, or you are using Linux/Mac, to install VMware, yo
 
 After the registration is completed, login to your account and click to the correct link below that is compatible to your PC.
 
-- For Windows/Linux: [VMware Workstation Pro 17](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true) 
+- For Windows/Linux: [VMware Workstation Pro 17 (or a higher version)](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true) 
 - For Mac: [VMware Fusion 13](https://support.broadcom.com/group/ecx/productfiles?subFamily=VMware%20Fusion&displayGroup=VMware%20Fusion%2013&release=13.6.4&os=&servicePk=&language=EN&freeDownloads=true) 
 
 Video tutorial for installation is [here](https://www.youtube.com/watch?v=kTO810vbF_E&t=3s). Installation tutorial is for Windows. You can use "Virtual Disk.vmdk" file instead for Mac.
 
 ### Running VMware
 
-After installing it you can import the virtual appliance by clicking
-**Open a Virtual Machine** and choose the .vmx file from inside the
-previously downloaded and extracted folder.
+After installing it you should import the virtual appliance in the VMware Player/Workstation. Start VMWare > click File > Scan for Virtual Machines > Browse to where your virtual appliance folder is (Ubuntu_24_02_jazzy). The VMware workstation will find import the appliance automatically.
 
 After you finished importing the virtual appliance, go to **Edit virtual
-machine settings** and in Display settings enable **Accelerate 3D
-graphics** and choose recommended Graphics Memory from the dropdown box
-as shown in the pictures.
+machine settings** and in Display settings and make sure that **Accelerate 3D
+graphics** is enabled and choose recommended Graphics Memory from the dropdown box as shown in the pictures. Based on your version of VMware, the images might be slightly different.
 
 ![image-center]({{ site.url }}{{ site.baseurl}}/assets/images/shared/vm/VM-settings.png)
 
@@ -108,6 +105,19 @@ Then this command in the terminal of the VM might help you:
 ```
 sudo nmcli networking on
 ```
+
+### VMware freezes
+It might be about the hardware resource usage of your host PC. You can try:
+1. Edit virtual machione settings > and reduce the number of cores to 4, and ram to 4 GB as well.
+2. Update the VMware tools: After starting your Ubuntu VM, open a new terminal and run these: 
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install -y open-vm-tools open-vm-tools-desktop
+sudo reboot now
+```
+3. Try another VM player. If you are running on version 17, just try 16 or 25. It will not affect what you have already done in your Ubuntu guest. You can change the VM Player/Workstation version anytime you want!
+
 
 ### Standalone installation
 
