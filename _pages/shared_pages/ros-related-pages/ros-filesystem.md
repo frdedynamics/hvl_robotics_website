@@ -46,7 +46,7 @@ So, what you need to know about ROS filesystem so far that:
 * You place/create all the packages in **~/ros2_ws/src/** folder.
 * The folders **/install**, **build** and **/log** are automatically created by `colcon build`.
 
-
+#TODO: Edit bashrc such that all changes in your ROS framework is automatically visible everytime you open a new terminal window: `code ~/.bashrc`> Open in restricted mode >
 
 ## Troubleshooting
 
