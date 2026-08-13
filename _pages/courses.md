@@ -15,8 +15,9 @@ taxonomy: markup
 
 - [ADA526](/courses/ada526)
 - [ADA527](/courses/ada527)
-- [ELE306](/courses/ele306)
+- [ELE208](/courses/ele208)
 - [DAT160](/courses/dat160)
+- [ELE207](/courses/ele207)
 - [ROS Specific Content](/ros)
 
 

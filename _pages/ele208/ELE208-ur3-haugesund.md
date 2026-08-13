@@ -1,11 +1,11 @@
 ---
 layout: single
 title: "URCap External Control"
-permalink: /courses/ele306/ur3-external
+permalink: /courses/ele208/ur3-external
 toc: true # The right side bar "on this page"
 breadcrumbs: true  # the directory-of-documents type of header navigation
 sidebar:
-  nav: "ele306"  # the left navigation bar. Choose which category you want.
+  nav: "ele208"  # the left navigation bar. Choose which category you want.
 taxonomy: markup
 
 my_variable: scripts.html

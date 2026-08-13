@@ -1,11 +1,11 @@
 ---
 layout: single
 title: "Git Tutorial"
-permalink: /ele306/github
+permalink: /ada526/github
 toc: true # The right side bar "on this page"
 breadcrumbs: true  # the directory-of-documents type of header navigation
 sidebar:
-  nav: "ele306"  # the left navigation bar. Choose which category you want.
+  nav: "ada526"  # the left navigation bar. Choose which category you want.
 taxonomy: markup
 hide_header: true
 
