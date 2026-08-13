@@ -79,9 +79,9 @@ ele208:
       - title: "Lab-3b: URCap External Control"
         url: /courses/ele208/ur3-external
       - title: "Lab-4: ROS2 intro"
-        url: /courses/ele208/ros2-intro
+        url: /courses/ele208/ros2-intro-lab
       - title: "Lab-5: ROS2 manipulator control"
-        url: /courses/ele208/ros2-manip-control
+        url: /courses/ele208/ros2-manip-control-lab
 
 
 dat160:
