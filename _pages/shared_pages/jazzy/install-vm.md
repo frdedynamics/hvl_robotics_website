@@ -11,15 +11,17 @@ There will be two components:
 1. The virtual appliance (the file you open in a virtual machine player)
 2. A software to run the virtual appliance (VMware)
 
-The admin password inside the virtual appliance is: **student**
+The admin password inside the virtual appliance is: **robotics**
 
 ## Virtual Appliance
 
 A virtual appliance is a copy of a working operating system and its
 programs. We provide you ready-to-use virtual copy of what you need. To
-download it, use [Windows](https://drive.google.com/file/d/15QU57vWVVieqcQ1c6Yy_SgfXyAmGCMJW/view?usp=sharing) or [Mac](https://hvl365.sharepoint.com/:f:/s/RobotikkUndervisningHVL/Egp7iLh5sTZMk2K_SZI_WFABNwTUOAJVkQUJW47zsEQO-w?e=cEVaC8)
-with your HVL credentials. After downloading,  Windows users must extract the folder inside
-the .zip file.
+download it, use [this link](https://hvl365-my.sharepoint.com/:f:/g/personal/rati_hvl_no/IgCDuCaqrle3S5Vr87NhcWmiAWnsK55j2pogQVHuiU5ov9Y?e=XCU68H)
+with your HVL credentials. After downloading,  Windows users must extract the folder inside the .zip file.
+
+Virtual appliances are usually big files, so we recommend you make space on your hard drive before downloading. 
+The virtual appliance is about max 20 GB in size.
 
 ## Virtual Appliance Player
 
@@ -47,7 +49,7 @@ Video tutorial for installation is [here](https://www.youtube.com/watch?v=kTO810
 
 ### Running VMware
 
-After installing it you should import the virtual appliance in the VMware Player/Workstation. Start VMWare > click File > Scan for Virtual Machines > Browse to where your virtual appliance folder is (Ubuntu_24_02_jazzy). The VMware workstation will find import the appliance automatically.
+After installing it you should import the virtual appliance in the VMware Player/Workstation. Start VMWare > click File > Scan for Virtual Machines > Browse to where your virtual appliance folder is (Ubuntu_24_04_jazzy). The VMware workstation will find import the appliance automatically.
 
 After you finished importing the virtual appliance, go to **Edit virtual
 machine settings** and in Display settings and make sure that **Accelerate 3D
@@ -65,6 +67,8 @@ When first opening the virtual machine, the following window will pop-up. Select
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/vm_installation_popup.PNG)
 
+Quick reminder, the admin password inside the virtual appliance is: **student**.
+
 ## Troubleshooting
 
 ### Copy-paste doesn't work
@@ -74,7 +78,7 @@ When first opening the virtual machine, the following window will pop-up. Select
 First try VM tools auto update:
 
 1. Start VMware.
-1. Select the virtual appliance *Ubuntu20_04_foxy* BUT DON'T RUN YET.
+1. Select the virtual appliance *Ubuntu24_04_jazzy* BUT DON'T RUN YET.
 1. Edit virtual machine settings > Options > VMware tools.
 1. Select update automatically and click Synchronize guest time with host.
 
@@ -119,12 +123,13 @@ sudo reboot now
 3. Try another VM player. If you are running on version 17, just try 16 or 25. It will not affect what you have already done in your Ubuntu guest. You can change the VM Player/Workstation version anytime you want!
 
 
-### Standalone installation
+## Matlab ROS Toolbox
+As you will see later in this course, you can control and communicate with robots in ROS using Matlab, even if the MAtlab is running on your host PC and ROS is running in your virtual machine. For this, you will need Matlab installed of course, but not any version! To be able to communicate with ROS2 Foxy, you will need Matlab **R2025a to R2026a** (not older, not newer). You will also need to have [MATLAB ROS Toolbox](https://www.mathworks.com/products/ros.html) installed on your host PC. Please make sure that you have the toolbox installed: Home > Add-Ons > Manage Add-Ons. 
+
+## Standalone installation
 
 For those who don't use the given virtual copy and choose to install
 the necessary software and packages by themselves use the following
-links: [Ubuntu 20.04 LTS](https://releases.ubuntu.com/20.04/), [ROS2 Foxy](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html), [Necessary
-Turtlebot
-packages](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/),
-[MATLAB
-2020a](https://se.mathworks.com/products/new_products/release2020a.html).
+links: [Ubuntu 24.04 LTS](https://releases.ubuntu.com/24.04/), [ROS2 Jazzy](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html) and a lot of libraries.
+Please contact the course instructor if you choose to make a standalone installation, a list of requirements will be provided to you. But we cannot guarantee that it will work since we won't have time to fully test your installation.
+
