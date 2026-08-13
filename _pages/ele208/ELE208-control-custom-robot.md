@@ -1,11 +1,11 @@
 ---
 layout: single
 title: "Control a Custom Robot Simulation"
-permalink: /courses/ele306/control-custom-robot
+permalink: /courses/ele208/control-custom-robot
 toc: true # The right side bar "on this page"
 breadcrumbs: true  # the directory-of-documents type of header navigation
 sidebar:
-  nav: "ele306"  # the left navigation bar. Choose which category you want.
+  nav: "ele208"  # the left navigation bar. Choose which category you want.
 taxonomy: markup
 # {% include_absolute '_pages/shared_pages/ros-related-pages/build-custom-robot.md' %}
 ---
@@ -24,7 +24,7 @@ In the previous lecture we created a gazebo simulation model of a custom robot. 
 ```
 4. Create new file in the `urdf` folder of your ROS package called `robot_control.gazebo.xacro`.
 5. If you want to use the example robot from the lecture, copy the `robot_description.urdf.xacro` file from the **ros2_students_25/custom_robot_sim/urdf** repository and paste it into the urdf folder of your ROS package. In case you already have a robot_description file in your urdf folder either rename the old file or replace it with the new file.
-6. If you want to try the example publishers, copy `mobile_base_pub.py`, `robot_arm_pub.py` and `gripper_pub.py` from the  **ros2_students_25/custom_robot_sim** repository and paste the files into **ros2_ws/src/PACKAGE_NAME/PACKAGE_NAME**. **Note:** in the lecture example PACKAGE_NAME = custom_robot_sim. Also, don't forget to reference the file in `setup.py` in the `console_scripts` section like we did with `reload_robot_model.py` in the [Build a Custom Robot Simulation](https://frdedynamics.github.io/hvl_robotics_website/courses/ele306/build-custom-robot) Setup.
+6. If you want to try the example publishers, copy `mobile_base_pub.py`, `robot_arm_pub.py` and `gripper_pub.py` from the  **ros2_students_25/custom_robot_sim** repository and paste the files into **ros2_ws/src/PACKAGE_NAME/PACKAGE_NAME**. **Note:** in the lecture example PACKAGE_NAME = custom_robot_sim. Also, don't forget to reference the file in `setup.py` in the `console_scripts` section like we did with `reload_robot_model.py` in the [Build a Custom Robot Simulation](https://frdedynamics.github.io/hvl_robotics_website/courses/ele208/build-custom-robot) Setup.
 7. Inside the `robot_description.urdf.xacro` file add a reference to the newly created `robot_control.gazebo.xacro` (remember to add this line after the `<robot>` tag):
 
 ```xml
@@ -268,4 +268,4 @@ ros2 run custom_robot_sim gripper_pub
 ```
 
 ### Matlab
-To control you robot through matlab you will find the example script `robot_arm_pub.m` in the **ros2_students_25/custom_robot_sim** repository. Instructions on how to setup the matlab to be able to communicate through ROS you can find [here](https://frdedynamics.github.io/hvl_robotics_website/courses/ele306/ros-matlab).
+To control you robot through matlab you will find the example script `robot_arm_pub.m` in the **ros2_students_25/custom_robot_sim** repository. Instructions on how to setup the matlab to be able to communicate through ROS you can find [here](https://frdedynamics.github.io/hvl_robotics_website/courses/ele208/ros-matlab).

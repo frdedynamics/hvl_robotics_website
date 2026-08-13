@@ -1,8 +1,8 @@
 main:
   - title: "ELE207"
     url: /courses/ele207
-  - title: "ELE306"
-    url: /courses/ele306
+  - title: "ELE208"
+    url: /courses/ele208
   - title: "DAT160"
     url: /courses/dat160
   - title: "ADA526"
@@ -29,59 +29,59 @@ ele207:
         url: /courses/ele207/tb
 
 
-ele306:
+ele208:
   - title: "Useful Tutorials"
     children:
       - title: "Python Tutorial"
-        url: /ele306/python
+        url: /ele208/python
       - title: "Linux Tutorial"
-        url: /ele306/linux
+        url: /ele208/linux
       - title: "Github Tutorial"
-        url: /ele306/github
+        url: /ele208/github
   - title: "ROS Lecture Notes"
     children:
       - title: "Install VM"
-        url: /courses/ele306/install-vm
+        url: /courses/ele208/install-vm
       - title: "ROS Introduction"
-        url: /courses/ele306/ros-intro
+        url: /courses/ele208/ros-intro
       - title: "ROS Filesystem"
-        url: /courses/ele306/ros-filesystem
+        url: /courses/ele208/ros-filesystem
       - title: "Create a Package"
-        url: /courses/ele306/create-a-package
+        url: /courses/ele208/create-a-package
       - title: "Publisher/Subscriber"
-        url: /courses/ele306/pub-sub
+        url: /courses/ele208/pub-sub
       - title: "Launch"
-        url: /courses/ele306/launch
+        url: /courses/ele208/launch
       - title: "Visualization (URDF and RViz)"
-        url: /courses/ele306/rviz
+        url: /courses/ele208/rviz
       - title: "Simulation (Gazebo)"
-        url: /courses/ele306/gazebo
+        url: /courses/ele208/gazebo
       # - title: "Controllers and Sensors"
-      #   url: /courses/ele306/ros2control
+      #   url: /courses/ele208/ros2control
       - title: "ROS Communication Patterns"
-        url: /courses/ele306/ros-comm-pattern
+        url: /courses/ele208/ros-comm-pattern
       - title: "ROS - Matlab Communication"
-        url: /courses/ele306/ros-matlab
+        url: /courses/ele208/ros-matlab
       - title: "Build a Custom Robot Simulation"
-        url: /courses/ele306/build-custom-robot
+        url: /courses/ele208/build-custom-robot
       - title: "Control a Custom Robot Simulation"
-        url: /courses/ele306/control-custom-robot
+        url: /courses/ele208/control-custom-robot
   - title: "Lab Exercises"
     children:
       - title: "UR Intro"
-        url: /courses/ele306/ur0
+        url: /courses/ele208/ur0
       - title: "Lab-1: UR Basics"
-        url: /courses/ele306/ur1
+        url: /courses/ele208/ur1
       - title: "Lab-2: UR Features and Safety Planes"
-        url: /courses/ele306/ur2
-      - title: "Lab-3: UR Machine Tending"
-        url: /courses/ele306/ur3
-      - title: "Lab-3: URCap External Control"
-        url: /courses/ele306/ur3-external
-      - title: "Lab-4: Simple Wall Follower with TB3"
-        url: /courses/ele306/tb1
-      - title: "Lab-5: Pick and Place with TB3"
-        url: /courses/ele306/tb2
+        url: /courses/ele208/ur2
+      - title: "Lab-3a: UR Machine Tending"
+        url: /courses/ele208/ur3
+      - title: "Lab-3b: URCap External Control"
+        url: /courses/ele208/ur3-external
+      - title: "Lab-4: ROS2 intro"
+        url: /courses/ele208/ros2-intro
+      - title: "Lab-5: ROS2 manipulator control"
+        url: /courses/ele208/ros2-manip-control
 
 
 dat160:

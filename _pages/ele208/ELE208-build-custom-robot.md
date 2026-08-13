@@ -1,11 +1,11 @@
 ---
 layout: single
 title: "Build a Custom Robot Simulation"
-permalink: /courses/ele306/build-custom-robot
+permalink: /courses/ele208/build-custom-robot
 toc: true # The right side bar "on this page"
 breadcrumbs: true  # the directory-of-documents type of header navigation
 sidebar:
-  nav: "ele306"  # the left navigation bar. Choose which category you want.
+  nav: "ele208"  # the left navigation bar. Choose which category you want.
 taxonomy: markup
 # {% include_absolute '_pages/shared_pages/ros-related-pages/build-custom-robot.md' %}
 ---
@@ -139,7 +139,7 @@ It is good practice to define the first link of your robot definition as an empt
 ### Geometries
 The geometry defines the shape of the visual object. This can be a simple shape (box, cylinder or sphere) or a mesh geometry. A mesh uses a combination of triangles to create shapes that are not simple shapes. The more complex the geometry and the higher the resolution the more triangles are needed:
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/ele306/build_custom_robot_model/husky_mesh.png)
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/ele208/build_custom_robot_model/husky_mesh.png)
 
 #### Box
 
@@ -273,8 +273,8 @@ Fixed joints are not really joints because all degrees of freedom are blocked.
 ## Exercises
 Before starting the exercises make sure you have gone through the **setup process** in the beginning of this page. Cope the exercise code into the `robot_description.urdf.xacro` file that you created.
 ### Mechanical Drawing
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/ele306/build_custom_robot_model/mobile_robot_plan.png)
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/ele306/build_custom_robot_model/robot_arm_plan.png)
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/ele208/build_custom_robot_model/mobile_robot_plan.png)
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/ele208/build_custom_robot_model/robot_arm_plan.png)
 ### Exercise 1
 For the first exercise you are given the model of the mobile base with 2 wheels attached. Your job is to add the remaining 2 wheels. Use the mechanical drawing of the robot for the right placements.
 ```xml
