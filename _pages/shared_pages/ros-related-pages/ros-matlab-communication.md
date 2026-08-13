@@ -66,7 +66,7 @@ If you want to use common ROS terminal commands such as `ros2 topic list` then y
 
 # Subscribe a topic by MATLAB
 
-For this part, we will use the simple publisher that we created in the [ROS Intro](https://frdedynamics.github.io/hvl_robotics_website/courses/ele306/pub-sub#completing-the-publisher). 
+For this part, we will use the simple publisher that we created in the [ROS Intro](https://frdedynamics.github.io/hvl_robotics_website/courses/ele208/pub-sub#completing-the-publisher). 
 
 1. Start your publisher: `ros2 run my_package my_publisher`
 2. Decide which topic you want to subscribe to: `ros2 topic list`, `ros2 topic info `

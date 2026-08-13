@@ -1,4 +1,4 @@
-In this course, we are using [Ubuntu 20.04 LTS](https://releases.ubuntu.com/focal/) and [ROS2 Foxy](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html) as development tools. We will talk about what these *tools* mean later but for now you just need to know that these are not regular programs which you simply write the name in Microsoft Store (or App Store) and get. Therefore, we are using virtual machines.
+In this course, we are using [Ubuntu 24.04 LTS](https://releases.ubuntu.com/focal/) and [ROS2 Jazzy](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html) as development tools. We will talk about what these *tools* mean later but for now you just need to know that these are not regular programs which you simply write the name in Microsoft Store (or App Store) and get. Therefore, we are using virtual machines.
 
 Virtual machines are basically some software which run just like a
 regular PC but without any physical components. They use the *host*\'s
