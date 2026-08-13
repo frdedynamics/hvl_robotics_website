@@ -123,7 +123,10 @@ sudo reboot now
 3. Try another VM player. If you are running on version 17, just try 16 or 25. It will not affect what you have already done in your Ubuntu guest. You can change the VM Player/Workstation version anytime you want!
 
 
-### Standalone installation
+## Matlab ROS Toolbox
+As you will see later in this course, you can control and communicate with robots in ROS using Matlab, even if the MAtlab is running on your host PC and ROS is running in your virtual machine. For this, you will need Matlab installed of course, but not any version! To be able to communicate with ROS2 Foxy, you will need Matlab **R2022a to R2024b** (not older, not newer). You will also need to have [MATLAB ROS Toolbox](https://www.mathworks.com/products/ros.html) installed on your host PC. Please make sure that you have the toolbox installed: Home > Add-Ons > Manage Add-Ons. 
+
+## Standalone installation
 
 For those who don't use the given virtual copy and choose to install
 the necessary software and packages by themselves use the following
@@ -131,3 +134,4 @@ links: [Ubuntu 20.04 LTS](https://releases.ubuntu.com/20.04/), [ROS2 Foxy](https
 Turtlebot
 packages](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/) and some more libraries.
 Please contact the course instructor if you choose to make a standalone installation, a list of requirements will be provided to you. But we cannot guarantee that it will work since we won't have time to fully test your installation.
+
