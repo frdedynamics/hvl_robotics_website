@@ -18,7 +18,7 @@ The admin password inside the virtual appliance is: **student**
 A virtual appliance is a copy of a working operating system and its
 programs. We provide you ready-to-use virtual copy of what you need. To
 download it, use [this link](https://hvl365-my.sharepoint.com/:f:/g/personal/rati_hvl_no/IgAbxQsCzBoxSYVhQkLnb6S7ATzGBVNc9jn60ZaUozVXsEA?e=9IFFM4)
-with your HVL credentials. After downloading,  Windows users must extract the folder inside the .zip file.
+with your HVL credentials. After downloading, Windows users must extract the folder inside the .zip file. For MacOS users, the file will be a `.vmwarevm` which can directly be opened in VMware Fusion.
 
 Virtual appliances are usually big files, so we recommend you make space on your hard drive before downloading. 
 The virtual appliance is about max 20 GB in size.
@@ -49,6 +49,8 @@ Video tutorial for installation is [here](https://www.youtube.com/watch?v=kTO810
 
 ### Running VMware
 
+#### Windows
+
 After installing it you should import the virtual appliance in the VMware Player/Workstation. Start VMWare > click File > Scan for Virtual Machines > Browse to where your virtual appliance folder is (Ubuntu_20_02_foxy). The VMware workstation will find import the appliance automatically.
 
 After you finished importing the virtual appliance, go to **Edit virtual
@@ -69,7 +71,29 @@ When first opening the virtual machine, the following window will pop-up. Select
 
 Quick reminder, the admin password inside the virtual appliance is: **student**.
 
+
+#### MacOS
+
+After installing VMWare you can either open the `.vmwarevm` through the "Open" option in the VMware Fusion, or you can double click the `.vmwarevm` file and it will automatically open in VMware Fusion. 
+
+When first opening the virtual machine, a window will pop-up. Select **I Copied It** to continue.
+
+Close the virtual machine and go to **Virtual Machine > Settings** and in "Display settings" and make sure that **Accelerate 3D graphics** is enabled. In the "Network Adapter" settings, make sure that **Connect Network Adapter** is enabled and "Share with my mac" is selected.
+
+You are now ready to start the virtual machine. Quick reminder, the admin password inside the virtual appliance is: **student**.
+
+
 ## Troubleshooting
+
+### Unpacking/Unzipping the virtual appliance does not work (MacOS)
+
+Large files from OneDrive (>4GB) are encoded in a way that the default MacOS unzipping tool cannot handle. The easiest way to solve this issue is to use this perl script to correct the field that is causing the error:
+
+- clone the repository: `git clone https://github.com/pmgs/Fix-OneDrive-Zip.git` or download as a zip file and extract it
+- run the script: `perl fix-onedrive-zip <path-to-your-zip-file>` in the terminal
+- unzip the fixed zip file by double clicking it or using the command line: `unzip <path-to-your-fixed-zip-file>`
+
+You should now be able to open the virtual appliance in VMware Fusion (`.vmwarevm` file).
 
 ### Copy-paste doesn't work
 
