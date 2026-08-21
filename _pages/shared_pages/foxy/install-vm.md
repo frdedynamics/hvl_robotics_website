@@ -89,7 +89,7 @@ You are now ready to start the virtual machine. Quick reminder, the admin passwo
 
 Large files from OneDrive (>4GB) are encoded in a way that the default MacOS unzipping tool cannot handle. The easiest way to solve this issue is to use this perl script to correct the field that is causing the error:
 
-- clone the repository: `git clone https://github.com/pmgs/Fix-OneDrive-Zip.git` or download as a zip file and extract it
+- clone the repository: `git clone https://github.com/pmqs/Fix-OneDrive-Zip` or download as a zip file and extract it
 - run the script: `perl fix-onedrive-zip <path-to-your-zip-file>` in the terminal
 - unzip the fixed zip file by double clicking it or using the command line: `unzip <path-to-your-fixed-zip-file>`
 
