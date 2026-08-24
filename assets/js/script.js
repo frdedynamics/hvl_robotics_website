@@ -1,13 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var toggleButton = document.getElementById("toggleButton");
-    var hiddenText = document.getElementById("hiddenText");
-  
-    toggleButton.addEventListener("click", function() {
-      if (hiddenText.style.display === "none") {
-        hiddenText.style.display = "block";
-      } else {
-        hiddenText.style.display = "none";
+  var toggleButtons = document.querySelectorAll("#toggleButton");
+  var hiddenTexts = document.querySelectorAll("#hiddenText");
+
+  toggleButtons.forEach(function(button, index) {
+    button.addEventListener("click", function() {
+      var content = hiddenTexts[index];
+      if (content) {
+        if (content.style.display === "none") {
+          content.style.display = "block";
+        } else {
+          content.style.display = "none";
+        }
       }
     });
   });
+});
   

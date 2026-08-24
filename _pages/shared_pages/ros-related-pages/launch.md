@@ -2,11 +2,7 @@ Launch files are very common in ROS. They provide a convenient way to start up m
 
 There are a few ways to create launch files in ROS2;  Python Launch Files, XML Launch Files, Composable Launch Files, Launch Configuration Files, Launch Configuration Files, etc. We will only learn how to create** Python launch files**.
 
-<!-- [https://www.youtube.com/watch?v=dY9aZVMC-JM&ab_channel=HummingbirdRobotics](https://www.youtube.com/watch?v=dY9aZVMC-JM&ab_channel=HummingbirdRobotics)
-
-or
-
-[https://www.youtube.com/watch?v=xJ3WAs8GndA&ab_channel=RoboticsBack-End](https://www.youtube.com/watch?v=xJ3WAs8GndA&ab_channel=RoboticsBack-End) -->
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ros-filesystem-launch.png)
 
 
 ## Create a launch file

@@ -1,5 +1,7 @@
 In this tutorial, you will learn ROS Nodes (as publisher and subscriber), and create your first two nodes which communicate with each other.
 
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ros-filesystem-pub-sub.png)
+
 ## How does publisher/subscriber work?
 
 ![image-center](https://docs.ros.org/en/humble/_images/Nodes-TopicandService.gif)
@@ -9,11 +11,41 @@ Nodes are the simplest executable files of a ROS package. They are either writte
 In the ROS framework, there are various ways that nodes communicate with each other such as via *topic*, *request/response* or *parameter*. All have advantages and disadvantages but we will focus on *topic*s in this tutorial.
 
 ## Creating ROS nodes
-A ROS node can publish a topic, subscribe to a topic or can to both with several topics. We just need to define it in the code. A regular ROS node (as a publisher) would look like this:
+A ROS node can publish a topic, subscribe to a topic or can to both with several topics. We just need to define it in the code.
+
+### Simple Python script
+
+This is a simple Python script.
+
+```python
+import a-fancy-library
+
+class myFancyClass():
+    # This is what automatically runs when you create an object from this class
+    def __init__(self):
+        print("initialized")
+
+    # This you can call anywhere after you create the object
+    def another_method(self):
+        print('Hi from my method')
+
+def main():
+    print("Do something nice here.")
+    my_object = MyFancyClass() # Output: initialized
+    my_object.another_method() # Output: Hi from my method
+
+if __name__ == '__main__':
+    main()
+```
+
+So now we would like to add ROS elements to this simple code structure to make it a publisher and/or subscriber.
+
+
+<!-- A regular ROS node (as a publisher) would look like this:
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/node-overview.png)
 
-Maybe this is too overwhelming for the start. Let's go step by step.
+Maybe this is too overwhelming for the start. Let's go step by step. -->
 
 ### Create a publisher
 
@@ -21,105 +53,56 @@ Create a Python script in the package:
 
 `touch ~/ros2_ws/src/my_package/my_package/my_publisher.py`
 
-#### Simple Python script
-
-This is a simple Python script.
-
-*ros2_ws/src/my_package/my_publisher.py*
-
-```python
-def main():
-    print('Hi from my_package.')
-
-if __name__ == '__main__':
-    main()
-```
-
 #### Simple publisher
-This is a simple publisher node that does nothing:
+This is a simple publisher has five main things on top of this simple Python script:
+
+1. Proper ros-python imports:
+    ```python
+    # Those two are a-must
+    import rclpy
+    from rclpy.node import Node
+
+    # Depending on what topics you want to publish/subscribe, more libraries are needed
+    from std_msgs.msg import String
+    ```
+
+2. A class from the ROS Node parent class:
+    ```python
+    class myPublisherNode(Node):
+        def __init__(self) -> None:
+            super().__init__("my_publisher") # This is what your node name would be
+            self.pub = self.create_publisher(String, 'my_topic', 10) # This is what you's publish
+            self.create_timer(1.0, self.timer_callback) # How often to publish - this publishes every second 
+    ```
+
+3. A method to do something periodically (*Psst: we have already connected this method to a timer in the __init__ function in the last line*):
+    ```python
+        def timer_callback(self): # or you can rename the method - it doesn't need to be called "timer"
+            msg = String() # A msg type
+            msg.data = 'Hello World' # Fill all the fields of the msg with meaningful info
+            self.pub.publish(msg) # Publish it
+            self.get_logger().info('Publishing: "%s"' % msg.data) # Optionally print things out in the terminal
+    ```
+
+4. A main function to gather all the tasks to be done in this publisher:
+    ```python
+    def main(args=None):
+        rclpy.init(args=args)
+        node = myPublisherNode()
+        rclpy.spin(node)
+
+        rclpy.shutdown()
+    ```
+
+5. And finally *boilerplate script execution check* or *main guard*, which is a fancy technical term referring a special conditional block for controlling code execution based on how a Python file is invoked. If you run this file as a regular Python script (using the file name like `python my_publisher.py`), the code here would run. However, if you import this as `from my_publisher import myPublisherNode`, it doesn't run this conditional block. It is very common thing in Python and particularly useful in ROS if you want to test your node without actually calling in your overall system.
+    ```python
+    if __name__ == '__main__':
+        main()    
+    ```
+
+That's it! Let's gather everything in one Python script. You can just copy-paste the code below.
 
 *ros2_ws/src/my_package/my_publisher.py*
-
-```python
-#!/usr/bin/env python3
-
-import rclpy
-from rclpy.node import Node
-
-class myPublisherNode(Node):
-    def __init__(self) -> None:
-        super().__init__("my_publisher")
-
-def main(args=None):
-    rclpy.init(args=args)
-    node = myPublisherNode()
-
-    rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
-```
-
-At the moment, it works as a regular Python script but not as a ROS node. There is no autocomplete and `ros2 run` does not work.
-
-We need to add an entry point in `setup.py`. This will tell the ROS what to run as an executable node.
-
-```python
-entry_points={
-        'console_scripts': [
-            'my_publisher = my_package.my_publisher:main'
-        ],
-    },
-```
-
-and then compile: `colcon build` and source `source install/setup.bash`
-
-{: .notice--info}
-
-Note that 1) File name of the node, 2) Node name in the code, and 3) Executable name in the `setup.py` are not necessarily the same. Nonetheless, it is easier to follow if we keep all the same for now.
-
-#### Create a timer in the publisher
-
-Timers are the functions that are called periodically. If we want to publish something, let's say every second, we need to use a timer.
-
-**What to do:** Create a timer function, call it in the init() and spin in the main()
-
-*ros2_ws/src/my_package/my_publisher.py*
-
-```python
-#!/usr/bin/env python3
-
-import rclpy
-from rclpy.node import Node
-
-class myPublisherNode(Node):
-    def __init__(self) -> None:
-        super().__init__("my_publisher")
-        self.create_timer(1.0, self.timer_callback)
-
-    def timer_callback(self):
-        self.get_logger().info("Hello")
-
-def main(args=None):
-    rclpy.init(args=args)
-    node = myPublisherNode()
-    rclpy.spin(node)
-
-    rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
-```
-
-What does this node do? Can you explain? Is there anything missing?
-
-#### Completing the publisher
-
-Yes,
-
-This piece of code is a ROS node, pretty much done, but it only *prints* "Hello" but not publishes. As the last step of creating a publisher, we will publish the text "Hello" and publish it as a *String message". Here is the complete code:
-
-*ros2_ws/src/my_package/my_publisher.py* (Completed)
 
 ```python
 #!/usr/bin/env python3
@@ -132,7 +115,7 @@ from std_msgs.msg import String
 class myPublisherNode(Node):
     def __init__(self) -> None:
         super().__init__("my_publisher")
-        self.pub = self.create_publisher(String, 'topic', 10)
+        self.pub = self.create_publisher(String, 'my_topic', 10)
         self.create_timer(1.0, self.timer_callback)
 
     def timer_callback(self):
@@ -152,9 +135,31 @@ if __name__ == '__main__':
     main()
 ```
 
+#### Updating the package with the new publisher
+At the moment, it works as a regular Python script but not as a ROS node. There is no autocomplete and `ros2 run` does not work.
+
+We need to add an entry point in `setup.py`. This will tell the ROS what to run as an executable node.
+
+```python
+entry_points={
+        'console_scripts': [
+            'my_publisher = my_package.my_publisher:main'
+        ],
+    },
+```
+
+and then compile: `colcon build` and source `source install/setup.bash`
+
+{: .notice--info}
+
+Note that 1) File name of the node, 2) Node name in the code, and 3) Executable name in the `setup.py` are not necessarily the same. Nonetheless, it is easier to follow if we keep all the same for now.
+
+
 ### Create a subscriber
 
 We have a node publishing the string `"Hello`"` at the moment. To make it more meaningful, we can create another node that listens to this string. We call these types of nodes **Subscriber**s. Let's copy-paste the code piece below and discuss how it works.
+
+#### Simple subscriber
 
 1.Create the Python script: `touch ~/ros2_ws/src/my_package/my_package/my_subscriber.py`
 
@@ -173,7 +178,7 @@ from std_msgs.msg import String
 class mySubscriberNode(Node):
     def __init__(self) -> None:
         super().__init__("my_subscriber")
-        self.sub = self.create_subscription(String, 'topic', self.listener_callback, 10)
+        self.sub = self.create_subscription(String, 'my_topic', self.listener_callback, 10)
         print("Created")
 
     def listener_callback(self, msg):
@@ -190,13 +195,16 @@ if __name__ == '__main__':
     main()
 ```
 
-3.Add an entry point in `setup.py`.
+We are done with the content of the subscriber. Make sure that `my_topic` is the same as your publisher!
+
+#### Updating the package with the new subscriber
+Again, the ROS package `my_package` has no idea that it has a new executable! `ros2 run` does not work yet. We need to let them know. Add an entry point in `setup.py`.
 
 ```python
 entry_points={
         'console_scripts': [
             'my_publisher = my_package.my_publisher:main',
-            'my_subscriber = my_package.my_subscriber:main'
+            'my_subscriber = my_package.my_subscriber:main' # This line is new - you can just copy-paste this
         ],
     },
 ```
@@ -288,6 +296,27 @@ This part is voluntary.
 
 Can you write a publisher that makes the turtle draw a circle?
 
+<button id="toggleButton">Hint 1</button>
+<div id="hiddenText" style="display: none; font-size: 0.5rem; line-height: 1.5;">
+    Run both  <code>ros2 run turtlesim turtlesim_node</code> and <code>ros2 run turtlesim turtle_teleop_key</code>, and then check with <code>ros2 run rqt_graph rqt_graph</code> to see which topic might be relevant to publish?
+</div>
+
+<button id="toggleButton">Hint 2</button>
+<div id="hiddenText" style="display: none; font-size: 0.5rem; line-height: 1.5;">
+    Yes! Correct. It is **/turtle1/cmd_vel**. It means that you need to figure out the type (i.e message type) of this topic. You can now in a new terminal run <code>ros2 topic info /turtle1/cmd_vel</code>. When you find the message type, just Google it to see what fields this message type has.
+</div>
+
+<button id="toggleButton">Hint 3</button>
+<div id="hiddenText" style="display: none; font-size: 0.5rem; line-height: 1.5;">
+    You see that /turtle1/cmd_vel has two **Vector3** fields for *linear* and *angular*. If you click on Vector3 type, you see that it has *x*, *y* and *z* float fields. These are basic types we can just fill in in our Python script.
+</div>
+
+<button id="toggleButton">Hint 4: What values to write for a circle</button>
+<div id="hiddenText" style="display: none; font-size: 0.5rem; line-height: 1.5;">
+    The *linear* and *angular* velocity follows the frame system you learned in Peter Corke Chapter 2&3. If you think about the turtle as if it is a car or a *mobile robot*, then forward would be x-axis, right side would be y-axis and towards the screen would be the z-axis. You want your turtle move forward and rotate about the imaginary z-axis to draw a circle in 2D. It means your <code>msg.linear.x = 1.0</code> and <code>msg.angular.z = 1.0</code> another non-zero value depending on how fast you want your turtle to move and how big of a circle it should draw.
+</div>
+
+
 <button id="toggleButton">Click here to see the solution</button>
 <div id="hiddenText" style="display: none;">
     <pre><code class="python">
@@ -319,4 +348,11 @@ Can you write a publisher that makes the turtle draw a circle?
     if __name__ == '__main__':
         main()
     </code></pre>
+</div>
+
+<button id="toggleButton">Doesn't it work?</button>
+<div id="hiddenText" style="display: none; font-size: 0.5rem; line-height: 1.5;">
+    1. Have you updated the setup.py?
+    2. Have you colcon build and source (if you created a new file)?
+    3. Does your autocomplete work?
 </div>
