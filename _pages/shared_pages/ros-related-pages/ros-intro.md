@@ -52,6 +52,7 @@ This section gives you an overview of the most used shortcuts, commands and defi
 * Open a new terminal: `Ctrl+Alt+T`
 * Copy Paste: `Ctrl+Shit+C` and `Ctrl+Shit+V` (regular Ctrl+C andCtrl+V does not work in terminals)
 * `Tab` for auto-complete
+* `Ctrl+C` terminate current program running in the terminal
 * Recursive search `Ctrl+R`
 
 {: .notice--info}
@@ -64,6 +65,14 @@ Here is a screenshot the generic Ubuntu terminal.
 On the other hand, an **IDE** is a simple text editor. VSCode, Notepad, Atom or even Microsoft Word (LibreOffice for Ubuntu) can be considered as IDE. We write code in IDE -- not in a terminal (99% of the time).
 Here is a screenshot of VScode.
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/vscode.png)
+
+### Basic Linux Terminal Commands
+* `ls`: Display folders and files at the current location
+* `cd DIRECTORY_NAME`: Move into to that directory. For example `cd ros2_ws` will move the terminal into the ros2_ws directory if that exists at the current location.
+* `cd ..`: Move up one level to the parent directory.
+* `mkdir DIRECTORY_NAME` Creates a directory with the specified name at the current location.
+* `gedit FILENAME` Open a file in the text editor.
+
 
 ### Commands
 
