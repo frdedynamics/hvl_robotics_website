@@ -1,6 +1,6 @@
 In this tutorial, you will learn how a robot is modeled in ROS environment and how to visualize it.
 
-Here is a simple dictionary of all the new terms/tools/programs you will be using in this tutorial.
+Here is a simple dictionary of all the new terms/tools/programs you will be using in this tutorial. (Jazzy)
 
 - **URDF**: The model file of a robot (description of a robot).
 - **XACRO**: It is also a model file like URDF but with some additional features. Think like that: XACRO = URDF + Macro
