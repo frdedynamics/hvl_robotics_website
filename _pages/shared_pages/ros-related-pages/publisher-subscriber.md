@@ -4,7 +4,7 @@ In this tutorial, you will learn ROS Nodes (as publisher and subscriber), and cr
 
 ## How does publisher/subscriber work?
 
-![image-center](https://docs.ros.org/en/humble/_images/Nodes-TopicandService.gif)
+![image-center](https://docs.ros.org/en/jazzy/_images/Topic-MultiplePublisherandMultipleSubscriber.gif)
 
 Nodes are the simplest executable files of a ROS package. They are either written in Python or C++.
 
