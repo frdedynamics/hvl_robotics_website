@@ -356,3 +356,67 @@ Can you write a publisher that makes the turtle draw a circle?
     2. Have you colcon build and source (if you created a new file)?
     3. Does your autocomplete work?
 </div>
+
+
+### Turtlesim subscriber exercise
+
+Can you add a subscriber to the `pose` topic to your cmd_vel publisher that prints out the x and y position as well as the current orientation of the turtle?
+
+Extra Challenge: Can you use the pose subscriber to make the turtle draw an 8?
+
+<button id="toggleButton">Click here to see the solution</button>
+<div id="hiddenText" style="display: none;">
+<pre><code class="python">
+#!/usr/bin/env python3
+import math
+import rclpy
+from rclpy.node import Node
+
+from geometry_msgs.msg import Twist
+from turtlesim.msg import Pose
+
+class DrawCircleNode(Node):
+    def __init__(self):
+        super().__init__("draw_circle")
+        self.get_logger().info("DrawCircleNode created")
+        self.current_pose = Pose()
+        self.turn_dir = 1.0
+        self.angles_traveled = 0.0
+
+        self.create_subscription(Pose, '/turtle1/pose', self.clbk_pose, 10)
+        self.cmd_vel_pub = self.create_publisher(Twist, "/turtle1/cmd_vel", 10)
+        self.timer = self.create_timer(0.01, self.set_cmd_vel)
+
+    def clbk_pose(self, msg):
+        self.get_logger().info(f"position = [{msg.x}, {msg.y}]")
+        self.get_logger().info(f"orientation = {msg.theta}")
+
+        delta = msg.theta - self.current_pose.theta
+        delta = (delta + math.pi) % (2 * math.pi) - math.pi
+        self.angles_traveled += abs(delta)
+
+        self.get_logger().info(f"angels traveled: {self.angles_traveled}")
+
+        if self.angles_traveled >= (2*math.pi):
+            self.angles_traveled  = 0.0
+            self.turn_dir *= -1
+
+        self.current_pose = msg
+
+
+    def set_cmd_vel(self):
+        msg = Twist()
+        msg.angular.z = self.turn_dir
+        msg.linear.x = 1.0
+        self.cmd_vel_pub.publish(msg)
+
+def main(args=None):
+    rclpy.init(args=args)
+    pub_node = DrawCircleNode()
+    rclpy.spin(pub_node)
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+</div>
