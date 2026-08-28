@@ -82,11 +82,10 @@ So, we have a new package for a new robot!
 1. Create a new folder to keep your robot models: `mkdir urdf`
 1. Create a new xacro file in this folder: `touch urdf/my_robotarm_simple.xacro`
 
-To fill the content go to #TODO-github-link update
+XACRO files are often quite long files. In order not to make the website too crowded with unnecessary code, we gathered relevant codes in a GitHub repository [here](https://github.com/frdedynamics/ros2_students_25). Follow this link and find `my_robotarm_pkg`, and follow the folders `urdf>my_robotarm_simple.xacro`. Copy and paste the content from there to your newly created file. You can access it quickly here.
 
-add warning: Github tutorials
-
-
+{: .notice--info}
+Note that this is not the most common way to use Github. You'd normally clone the whole repo into your PC and work through the files locally. So, alternatively you can clone the repo and copy `my_robotarm_simple.xacro` file in your urdf folder. If you don't know what I am talking about follow [this link](https://frdedynamics.github.io/hvl_robotics_website/ele208/github).
 
 ## Visualization
 Your robot is ready but you cannot "run" an XML file in the ROS system. You need a *launch* file to run the URDF/XACRO files.
@@ -94,70 +93,12 @@ Your robot is ready but you cannot "run" an XML file in the ROS system. You need
 1. Change directory in your package: `cd ~/ros2_ws/src/my_robotarm_pkg`
 1. Create a new folder to keep your launch files: `mkdir launch`
 1. Create a new xacro file in this folder: `touch launch/my_robotarm.launch.py`
-1. Copy-paste the content below:
-
-*~/ros2_ws/src/my_robotarm_pkg/launch/my_mobile_robot.launch.py*
-```python
-from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch_ros.actions import Node
-
-import os, time
-import xacro
-from ament_index_python.packages import get_package_share_directory
-
-def generate_launch_description():
-
-    package_name = 'my_robotarm_pkg'
-
-    package_path = os.path.join(
-        get_package_share_directory(package_name))
-    xacro_file = os.path.join(package_path,
-                              'urdf/',
-                              'my_robotarm_simple.xacro')
-    
-    doc = xacro.parse(open(xacro_file))
-    xacro.process_doc(doc)
-    my_robotarm_description = doc.toxml()
-    params = {'robot_description': my_robotarm_description, 'use_sim_time': True}
-
-    node_robot_state_publisher = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        output='screen',
-        parameters=[params]
-    )
-
-    node_joint_state_publisher_gui = Node(
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        name='joint_state_publisher_gui'
-    )
-
-    node_tf = Node(package = "tf2_ros", 
-                       executable = "static_transform_publisher",
-                       arguments = ["0", "0", "0", "0", "0", "0", "map", "base_link"])
-
-    node_rviz = Node(
-        package='rviz2',
-        namespace='',
-        executable='rviz2',
-        name='rviz2',
-        arguments=['-d' + os.path.join(get_package_share_directory(package_name), 'config', 'config.rviz')]
-    )
-
-    return LaunchDescription([
-        node_robot_state_publisher,
-        node_joint_state_publisher_gui,
-        node_tf,
-        node_rviz
-    ])
-```
+1. Copy-paste the content from the same Github repo from [here](https://github.com/frdedynamics/ros2_students_25/tree/master/my_robotarm_pkg/launch/my_robotarm.launch.py) to *~/ros2_ws/src/my_robotarm_pkg/launch/my_robotarm.launch.py*
 
 
 {: .notice--info}
 Don't forget to add the new folders in **setup.py**
+
 ```python
 import os ## Add-1
 from glob import glob  ## Add-2
@@ -178,7 +119,7 @@ We are ready to run. Run these in your ~/ros2_ws directory.
 ```
 colcon build
 source install/setup.bash
-ros2 launch  my_robotarm_pkg my_mobile_robot.launch.py
+ros2 launch my_robotarm_pkg my_robotarm.launch.py
 ```
 
 You will see Rviz started but you are not seeing any robots on the screen yet. There are 3 things we need to set on the left toolbox.
@@ -191,9 +132,12 @@ If you press Ctrl + S, it will save these settings. Currently, we used `my_robot
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/simple_robotarm_axes.png)
 
-If you want to see the full robot arm with the end effector and the colors, you should either modify the XACRO file, or we have another XACRO file available in the package. Just use this one instead in the launch file:
+If you want to see the full robot arm with the end effector and the colors, you should either modify the XACRO file, or create a new one. Since the main purpose of this lecture is not to teach how to create a URDF/XACRO file, we have made it available [another XACRO file in the package](https://github.com/frdedynamics/ros2_students_25/tree/master/my_robotarm_pkg/urdf/my_robotarm_with_ee.xacro). Just create a new XACRO file naming `my_robotarm_with_ee.xacro` under your URDF folder, copy the content from Github and modify the `launch/my_robotarm.launch.py` file:
 
 *~/ros2_ws/src/my_robotarm_pkg/launch/my_mobile_robot.launch.py* (Line 16-17)
+
+to this:
+
 ```
 xacro_file = os.path.join(package_path,
                               'urdf/',
