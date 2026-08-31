@@ -67,7 +67,7 @@ When first opening the virtual machine, the following window will pop-up. Select
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/vm/vm_installation_popup.PNG)
 
-Quick reminder, the admin password inside the virtual appliance is: **student**.
+Quick reminder, the admin password inside the virtual appliance is: **robotics**.
 
 ## Troubleshooting
 

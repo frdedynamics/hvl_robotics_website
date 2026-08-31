@@ -14,7 +14,7 @@ This section serves as a look-up page where you can find processes and commands 
 
 ### ROS versions
 
-Our version is **Foxy Fitzroy** which is a ROS2 distribution released on the 5th of June 2020.
+Our version is **Jazzy Jalisco** which is a ROS2 distribution released on the May 23, 2024.
 
 ![image-center](https://docs.ros.org/en/foxy/_static/foxy-small.png)
 
