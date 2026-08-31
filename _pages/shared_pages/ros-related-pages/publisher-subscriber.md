@@ -219,7 +219,7 @@ Now we have a publisher and a subscriber nodes. It is time to run them and obser
 1. Source the workspace: `source install/setup.bash`
 1. Run publisher: `ros2 run my_package my_publisher`
 1. Open a new terminal:**Ctrl+Alt+T**
-1. Run subscriber: `ros2 run my_package my_subsciber`
+1. Run subscriber: `ros2 run my_package my_subscriber`
 
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/ros_pkg_overview.png)
