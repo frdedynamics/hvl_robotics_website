@@ -13,11 +13,11 @@ taxonomy: markup
 ---
 
 
-- [ADA526](/courses/ada526)
-- [ADA527](/courses/ada527)
-- [ELE208](/courses/ele208)
-- [DAT160](/courses/dat160)
-- [ELE207](/courses/ele207)
-- [ROS Specific Content](/ros)
+- [ELE207]({{ "/courses/ele207" | relative_url }})
+- [ELE208]({{ "/courses/ele208" | relative_url }})
+- [DAT160]({{ "/courses/dat160" | relative_url }})
+- [ADA526]({{ "/courses/ada526" | relative_url }})
+- [ADA527]({{ "/courses/ada527" | relative_url }})
+
 
 

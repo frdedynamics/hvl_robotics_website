@@ -19,7 +19,9 @@ taxonomy: markup
 ---
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/home/ada527-logo-eng.png)
-Welcome to ADA527 page. Please refer to Canvas while using the content in this category. Here is the [course plan](https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/2023/ADA527). 
+Welcome to ADA527 page. All the content is moved to Canvas for a period of time. Please refer to Canvas for lecture notes.
+
+Here is the [course plan](https://www.hvl.no/en/studies-at-hvl/study-programmes/courses/2023/ADA527). 
 
 
 
