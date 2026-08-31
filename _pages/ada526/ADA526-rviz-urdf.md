@@ -12,4 +12,4 @@ my_variable: scripts.html
 ---
 
 
-{% include_absolute '_pages/shared_pages/ros-related-pages/visualization-urdf-rviz-foxy-mobile.md' %}
+{% include_absolute '_pages/shared_pages/jazzy/visualization-urdf-rviz-jazzy-arm.md' %}

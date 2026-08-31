@@ -12,4 +12,4 @@ my_variable: scripts.html
 ---
 
 
-{% include_absolute '_pages/shared_pages/ros-related-pages/simulation-gazebo.md' %}
+{% include_absolute '_pages/shared_pages/foxy/simulation-gazebo-foxy-mobile.md' %}

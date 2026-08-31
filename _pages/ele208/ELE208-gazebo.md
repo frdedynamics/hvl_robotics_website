@@ -12,5 +12,5 @@ my_variable: scripts.html
 ---
 
 
-{% include_absolute '_pages/shared_pages/ros-related-pages/simulation-gazebo.md' %}
+{% include_absolute '_pages/shared_pages/jazzy/simulation-gazebo-jazzy-arm.md' %}
 

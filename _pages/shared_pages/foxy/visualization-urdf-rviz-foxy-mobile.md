@@ -11,7 +11,7 @@ Here is a simple dictionary of all the new terms/tools/programs you will be usin
 ## Robot model using URDF
 What is a model? How can we define a *robot model*?
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/modelling.png) #TODO: Update picture
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/modelling.png)
 
 To tell this to the ROS system, we are using URDF files which are written in XML format.
 
@@ -20,7 +20,34 @@ URDF (Unified Robot Description Format) contains links, joints and basic materia
 A simple URDF file looks like this. Let’s first understand it line by line.
 
 ```xml
-  #TODO: Update manipulator XML
+<?xml version="1.0"?>
+<robot name="myrobot">
+  <link name="body">
+    <visual>
+    <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <geometry>
+        <box size="0.6 0.1 0.2"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel1">
+    <visual>
+    <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder length="0.6" radius="0.2"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="body_to_wheel1" type="revolute">
+    <axis xyz="0 0 1"/>
+    <origin xyz="0.1 0.15 0" rpy="0 0 0"/>
+    <parent link="body"/>
+    <child link="wheel1"/>
+  </joint>
+
+</robot>
 ```
 
 {: .notice--info}
@@ -36,29 +63,29 @@ You can use XACRO files in *almost* anywhere that you need a URDF file. Therefor
 
 ## Create your first robot
 
-In this part of the tutorial, you are supposed to create a 2 DOF robot arm in simulation. 
+In this part of the tutorial, you are supposed to create a mobile robot with 2 individually actuated wheels. 
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/mobile_robot.png)
 
 1. Open a terminal: **Ctrl + Alt + T**
 1. Change the directory to your workspace: `cd ~/ros2_ws/src`
-1. Create a new package: `ros2 pkg create --build-type ament_python my_robot_manipulator --dependencies rclpy sensor_msgs std_msgs`
+1. Create a new package: `ros2 pkg create --build-type ament_python --node-name my_robot_pkg my_robot_pkg`
 1. Go one directory up: `cd ..`
 1. Compile your workspace: `colcon build`
 1. Source the changes in your workspace: `source install/setup.bash`
 
 So, we have a new package for a new robot!
 
-1. Change directory in your new package: `cd src/my_robot_manipulator`
-1. Create a new folders to keep your robot models and executables: `mkdir launch urdf`
-1. Create a new xacro file in this folder: `touch urdf/my_robot_simple.xacro`
+1. Change directory in your new package: `cd src/my_robot_pkg`
+1. Create a new folder to keep your robot models: `mkdir urdf`
+1. Create a new xacro file in this folder: `touch urdf/my_mobile_robot_simple.xacro`
 1. Copy-paste the content below:
 
-*~/ros2_ws/src/my_robot_manipulator/urdf/manipulator.xacro*
+*~/ros2_ws/src/my_robot_pkg/urdf/my_mobile_robot_simple.xacro*
 ```xml
 <?xml version='1.0'?>
 
-<robot name="my_robot_manipulator" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="my_mobile_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <link name='base_link'>
     <pose>0 0 0.1 0 0 0</pose>
@@ -118,12 +145,12 @@ So, we have a new package for a new robot!
 ## Visualization
 Your robot is ready but you cannot "run" an XML file in the ROS system. You need a *launch* file to run the URDF/XACRO files.
 
-1. Change directory in your package: `cd ~/ros2_ws/src/my_robot_manipulator`
+1. Change directory in your package: `cd ~/ros2_ws/src/my_robot_pkg`
 1. Create a new folder to keep your launch files: `mkdir launch`
-1. Create a new xacro file in this folder: `touch launch/my_robot_manipulator.launch.py`
+1. Create a new xacro file in this folder: `touch launch/my_mobile_robot.launch.py`
 1. Copy-paste the content below:
 
-*~/ros2_ws/src/my_robot_manipulator/launch/my_robot_manipulator.launch.py*
+*~/ros2_ws/src/my_robot_pkg/launch/my_mobile_robot.launch.py*
 ```python
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
@@ -136,18 +163,18 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
 
-    package_name = 'my_robot_manipulator'
+    package_name = 'my_robot_pkg'
 
     package_path = os.path.join(
         get_package_share_directory(package_name))
     xacro_file = os.path.join(package_path,
                               'urdf/',
-                              'my_robot_manipulator_simple.xacro')
+                              'my_mobile_robot_simple.xacro')
     
     doc = xacro.parse(open(xacro_file))
     xacro.process_doc(doc)
-    my_robot_manipulator_description = doc.toxml()
-    params = {'robot_description': my_robot_manipulator_description, 'use_sim_time': True}
+    my_mobile_robot_description = doc.toxml()
+    params = {'robot_description': my_mobile_robot_description, 'use_sim_time': True}
 
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
@@ -205,7 +232,7 @@ We are ready to run. Run these in your ~/ros2_ws directory.
 ```
 colcon build
 source install/setup.bash
-ros2 launch  my_robot_manipulator my_robot_manipulator.launch.py
+ros2 launch  my_robot_pkg my_mobile_robot.launch.py
 ```
 
 You will see Rviz started but you are not seeing any robots on the screen yet. There are 3 things we need to set on the left toolbox.
