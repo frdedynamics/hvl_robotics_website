@@ -127,6 +127,24 @@ and now restart the VMware.
 {: .notice--info}
 You might still experience errors in copy-paste'ing folders. Then just click "Skip all". It will successfully copy-paste, nonetheless.
 
+#### Option-3
+
+This won't solve your issue if you can't copy a simple text between your host and guest, but it may solve if you can't copy FOLDERS. Try using shared folders. First create a folder on Windows (or whatever host you have). Easiest is to create a "VMtest" folder on Desktop. The rest of the steps are on the VM.
+
+1. Go to the top menu of VMware and click VM > Settings.
+1. Go to the Options tab and select Shared Folders.
+1. Select your share and click Properties. Select "Always enabled".
+1. Set the Host Path to exactly to the folder you created on Desktop/VMtest and COPY THE PATH AFTERWARDS.
+1. Name the share: VMtest
+1. Click OK to save and close the settings window.
+1. Open a new terminal `Ctrl+Alt+T`. Create a mount folder: `sudo mkdir -p /mnt/hgfs`
+1. Fuse to this folder `sudo vmhgfs-fuse .host:/YOUR-COPIED-PATH /mnt/hgfs -o allow_other`. Don't forget to modify the path to yours.
+1. Verify the files are visible: `ls -l /mnt/hgfs`
+1. Test if everything is fine: `vmware-hgfsclient`. If it returns nothing: VMware's host side is not sending the folder to the virtual machine. Shut down the VM, remove the shared folder from settings, re-add it, and make sure it points to right folders and that you modified the paths correctly. First `sudo umount /mnt/hgfs` and then `sudo mount /mnt/hgfs` again.
+1. If everything goes fine you should see the changes you do in the folder `/mnt/hgfs` in your Windows Desktop VMTest folder.
+1. To copy files/folders use this command on your Linux terminal: First go to `cd /mnt/hgfs` and then `cp -r PATH_TO-FOLDER-TOBE-COPIED .` (The dot in the end means "here" in Linux).
+
+
 ### Network is not working
 Despite all the settings being correct, your VM seams to simply not have a network adapter? Or you can't see anything in the wifi and network setting except proxy? 
 Then this command in the terminal of the VM might help you:
