@@ -68,20 +68,20 @@ ele208:
         url: /courses/ele208/control-custom-robot
   - title: "Lab Exercises"
     children:
-      - title: "UR Intro"
-        url: /courses/ele208/ur0
-      - title: "Lab-1: UR Basics"
-        url: /courses/ele208/ur1
-      - title: "Lab-2: UR Features and Safety Planes"
-        url: /courses/ele208/ur2
-      - title: "Lab-3a: UR Machine Tending"
-        url: /courses/ele208/ur3
-      - title: "Lab-3b: URCap External Control"
-        url: /courses/ele208/ur3-external
-      - title: "Lab-4: ROS2 intro"
+      - title: "Lab-1: ROS2 intro"
         url: /courses/ele208/ros2-intro-lab
-      - title: "Lab-5: ROS2 manipulator control"
+      - title: "Lab-2: ROS2 manipulator control"
         url: /courses/ele208/ros2-manip-control-lab
+      - title: "UR Intro - at home"
+        url: /courses/ele208/ur0
+      - title: "Lab-3: UR Basics"
+        url: /courses/ele208/ur1
+      - title: "Lab-4: UR Features and Safety Planes"
+        url: /courses/ele208/ur2
+      - title: "Lab-5a: UR Machine Tending"
+        url: /courses/ele208/ur3
+      - title: "Lab-5b: URCap External Control"
+        url: /courses/ele208/ur3-external
 
 
 dat160:
