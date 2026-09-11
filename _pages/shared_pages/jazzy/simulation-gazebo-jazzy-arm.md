@@ -214,7 +214,7 @@ camera can be attached to any link, at any pose, without copy-pasting.
 ```
 touch ~/ros2_ws/src/my_robotarm_pkg/urdf/camera.xacro
 ```
-Copy-paste the content from the [my_robot_arm_pkg]((https://github.com/frdedynamics/ros2_students_25/tree/master/my_robotarm_pkg/)).
+Copy-paste the content from the [my_robotarm_pkg](https://github.com/frdedynamics/ros2_students_25/tree/master/my_robotarm_pkg/).
 
 
 ### Step 2: Include the camera macro in your robot
@@ -284,6 +284,18 @@ then add this plugin next to the other four `<plugin>` tags:
 Keep the world name as `<world name="empty">`. The joint state topic in your XACRO and in the
 bridge arguments is `/world/empty/model/two_dof_robot/joint_state`.Renaming the world breaks both of them with this setup.
 
+Now we can modify our launch file to use this world file instead of the default empty one. Change the `gazebo_sim = IncludeLaunchDescription(...)` to the code block below.
+```
+world_file = os.path.join(package_path, 'worlds', 'my_world.sdf')
+
+    gazebo_sim = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('ros_gz_sim'), 'launch', 'gz_sim.launch.py')
+        ),
+        launch_arguments={'gz_args': '-r ' + world_file}.items()
+    )
+```
+
 ### Step 4: Point the launch file at your world
 Now we can update our `gazebo_sim` launcher with the new world. Replace it with the codeblock below:
 
@@ -345,4 +357,4 @@ Do not worry if `ros2 topic hz` reports something far below the 30 Hz we asked f
 
 
 {: .notice--info} 
-So now your `my_robotarm_gazebo.xacro` should be identical to `my_robotarm_gazebo_with_control_and_camera.xacro`, your `my_robotarm_gazebo.launch.py` should be identical to `my_robotarm_gazebo_final.launch.py` in Github page as [my_robot_arm_pkg]((https://github.com/frdedynamics/ros2_students_25/tree/master/my_robotarm_pkg/)). If you are seeing any errors or missed a step, you can use them to debug your package. Just be careful! You cannot just copy-paste the whole **my_robotarm_pkg** in your ros2_ws when your version of the same package exist - and simply renaming the folder is not enough.
+So now your `my_robotarm_gazebo.xacro` should be identical to `my_robotarm_gazebo_with_control_and_camera.xacro`, your `my_robotarm_gazebo.launch.py` should be identical to `my_robotarm_gazebo_final.launch.py` in Github page as [my_robotarm_pkg](https://github.com/frdedynamics/ros2_students_25/tree/master/my_robotarm_pkg/). If you are seeing any errors or missed a step, you can use them to debug your package. Just be careful! You cannot just copy-paste the whole **my_robotarm_pkg** in your ros2_ws when your version of the same package exist - and simply renaming the folder is not enough.
