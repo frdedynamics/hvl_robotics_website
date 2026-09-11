@@ -2,7 +2,7 @@ In this tutorial, you will learn about simulation in ROS using Gazebo. You will 
 
 
 {: .notice--info} 
-All the steps we are doing in this page are readily available in the Github page as[my_robotarm_pkg](https://github.com/frdedynamics/ros2_students_25/tree/master/my_robotarm_pkg/). However, in through the tutorials in this page, we will try to understand how such a full-robot-package can be created and learn about what each file and folder does. Following the steps with me will help you massively when you create your own robot in the semester project.
+All the steps we are doing in this page are readily available in the Github page as [my_robotarm_pkg](https://github.com/frdedynamics/ros2_students_25/tree/master/my_robotarm_pkg/). However, in through the tutorials in this page, we will try to understand how such a full-robot-package can be created and learn about what each file and folder does. Following the steps with me will help you massively when you create your own robot in the semester project.
 
 # Gazebo
 
