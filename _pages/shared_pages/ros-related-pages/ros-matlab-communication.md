@@ -10,7 +10,7 @@ The ROS-Matlab communication is way easier than many of you might think. What yo
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/shared/ros/matlab-toolbox.png)
 
-# Prepare Virtual Machine
+<!-- # Prepare Virtual Machine
 1. Select your virtual machine on the left bar
 2. Click Edit virtual machine settings
 3. Select Network Adapter
@@ -26,7 +26,7 @@ Next:
 1. Start your virtual machine and open a new terminal: ``Ctrl + Alt + T`
 2. Open the **.bashrc** using your favorite text editor: `gedit .bashrc`
 3. Find the line where **ROS_DOMAIN_ID** is set: (for me: line 121: ``export ROS_DOMAIN_ID=24``)
-4. Note the number somewhere. You will use this number in MATLAB.
+4. Note the number somewhere. You will use this number in MATLAB. -->
 
 # Publish a topic from MATLAB
 At this point, you are quite free to choose what you want to control. It can be `turtlesim`, your custom robot or Open Manipulator joints. For simplicity, we will only control the `turtlesim` here but the concept is the same for all.
