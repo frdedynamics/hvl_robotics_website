@@ -4,7 +4,7 @@ By the end of this tutorial, you will be able to send commands from **Matlab ins
 
 # Prepare Matlab
 
-You don't need to install Matlab on your VM. You will be using the Matlab on your host PC, which you have been using throughout the semester.
+You don't need to install Matlab on your VM. You will be using the Matlab on your host PC, which you have been using throughout the semester. **You must have a MATLAB version between R2025a and R2026a!**
 
 The ROS-Matlab communication is way easier than many of you might think. What you need is just [MATLAB ROS Toolbox](https://www.mathworks.com/products/ros.html). Please make sure that you have the toolbox installed: Home > Add-Ons > Manage Add-Ons:
 
