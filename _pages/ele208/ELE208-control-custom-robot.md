@@ -68,7 +68,7 @@ For each joint we then add a definition of the command and state interfaces avai
 
 ```xml
 <joint name="JOINT_NAME">
-    <command_interface name="position">
+    <command_interface name="position"/>
     <state_interface name="position"/>
     <state_interface name="velocity"/>
     <state_interface name="effort"/>
