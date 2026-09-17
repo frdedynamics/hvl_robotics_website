@@ -28,7 +28,7 @@ cd ~/ros2_ws/src
 ```bash
 ros2 pkg create --build-type ament_python PACKAGE_NAME 
 ```
-4. Copy the folders **launch**, **meshes** and **urdf** from the **[ros2_students_25](https://github.com/frdedynamics/ros2_students_25)/custom_robot_sim** git repository to your newly created package (ros2_ws/src/PACKAGE_NAME)
+4. Copy the folders **launch**, **meshes**, **worlds** and **urdf** from the **[ros2_students_25](https://github.com/frdedynamics/ros2_students_25)/custom_robot_sim** git repository to your newly created package (ros2_ws/src/PACKAGE_NAME)
 6. In the **setup.py** file of your package add the following lines:
 ```python
 # ADD AFTER: from setuptools import setup
@@ -39,6 +39,7 @@ from glob import glob
 (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*.launch.py'))),
 (os.path.join('share', package_name, 'urdf'), glob(os.path.join('urdf', '*.xacro'))),
 (os.path.join('share', package_name, 'meshes'), glob(os.path.join('meshes', '*.stl'))),
+(os.path.join('share', package_name, 'worlds'), glob(os.path.join('worlds', '*.sdf'))),
 ```
 6. Create a new file in the **urdf folder** of your package named `robot_description.urdf.xacro`
 <!-- 7. In the **launch/robot_spawn.launch.py** make sure that the **xacro_file_path** is correct. -->
