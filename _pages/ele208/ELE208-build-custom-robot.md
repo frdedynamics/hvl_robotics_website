@@ -258,8 +258,7 @@ Fixed joints are not really joints because all degrees of freedom are blocked.
 ```
 
 ### Mimic Joint
-link: https://docs.ros.org/en/jazzy/p/hardware_interface/doc/joints_userdoc.html#urdf
-Sometimes it can be convenient to just make one joint mimic the movement of another. An example of this would be a two-finger gripper where both finger joint should always move together. We can do this by adding a `mimic` parameter in the URDF definition of a joint. The mimic tag looks like this: 
+You can find the official ros2_control documentation about it [here](https://docs.ros.org/en/jazzy/p/hardware_interface/doc/joints_userdoc.html#urdf). Sometimes it can be convenient to just make one joint mimic the movement of another. An example of this would be a two-finger gripper where both finger joint should always move together. We can do this by adding a `mimic` parameter in the URDF definition of a joint. The mimic tag looks like this: 
 ```xml
 <mimic joint="JOINT_NAME" multiplier="1" offset="0"/> 
 ```
