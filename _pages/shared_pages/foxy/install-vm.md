@@ -23,6 +23,10 @@ with your HVL credentials. After downloading, Windows users must extract the fol
 Virtual appliances are usually big files, so we recommend you make space on your hard drive before downloading. 
 The virtual appliance is about max 20 GB in size.
 
+NB: if downloading from OneDrive and unzipping doesn't work, here are some back up links: 
+- [VM for Windows](https://filesender.sikt.no/?s=download&token=54b24aa5-0b0e-4b79-8376-185326ccce27)
+- [VM for Mac](https://filesender.sikt.no/?s=download&token=e300d0d0-3660-4c7e-8581-0ffe6636b594)
+
 ## Virtual Appliance Player
 
 A virtual appliance player is a piece of software on which you can run your
