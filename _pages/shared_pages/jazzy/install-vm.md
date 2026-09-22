@@ -18,10 +18,15 @@ The admin password inside the virtual appliance is: **robotics**
 A virtual appliance is a copy of a working operating system and its
 programs. We provide you ready-to-use virtual copy of what you need. To
 download it, use [this link](https://hvl365-my.sharepoint.com/:f:/g/personal/rati_hvl_no/IgCDuCaqrle3S5Vr87NhcWmiAWnsK55j2pogQVHuiU5ov9Y?e=XCU68H)
-with your HVL credentials. After downloading,  Windows users must extract the folder inside the .zip file.
+with your HVL credentials. In this link you will find the VM files for Windows and for Mac.
+After downloading,  Windows users must extract the folder inside the .zip file.
 
 Virtual appliances are usually big files, so we recommend you make space on your hard drive before downloading. 
 The virtual appliance is about max 20 GB in size.
+
+NB: if downloading from OneDrive and unzipping doesn't work, here are some back up links: 
+- [VM for Windows](https://filesender.sikt.no/?s=download&token=46dd7c75-f744-4134-b633-8bac833c9a05)
+- [VM for Mac](https://filesender.sikt.no/?s=download&token=27908bf8-40bf-4099-94cd-77d58bfd0ceb)
 
 ## Virtual Appliance Player
 
