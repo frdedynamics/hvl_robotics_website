@@ -36,8 +36,10 @@ ROS provides different patterns that can be used to communicate between ROS Node
 For this exercise you will be working in the file called `pose_publisher.py`
 To test your code use: `ros2 launch communication_patterns pose_exercise.launch.py`.
 
-<!-- ## Exercise - Create custom service messages
-1. Add a service type with the name CheckCollision which has the following request fields: object_position and object_radius
+## Exercise - Create custom service messages
+1. Add a service type with the name CheckCollision.srv which has the following request fields: object_position (Position) and object_radius (float64). The response should be bool value named in_collision.
+2. Add a service type with the name GetRobotFootprint.srv which has the following request field: robot_id (string). The response should contain the following variables: success (bool), robot_position (Position) and footprint_radius (float64).
+3. Don't forget to add the service type in the `CMakeLists.txt` file and to build your workspace!
 
 ## Exercise - Create a custom service client
 For this exercise you will be working in the file called `robot_footprint_client.py`
@@ -45,7 +47,7 @@ To test your code use: `ros2 launch communication_patterns robot_footprint_exerc
 
 ## Exercise - Create a custom service server
 For this exercise you will be working in the file called `collision_server.py`
-To test your code use: `ros2 launch communication_patterns collision_exercise.launch.py`. -->
+To test your code use: `ros2 launch communication_patterns collision_exercise.launch.py`.
 
 
 
