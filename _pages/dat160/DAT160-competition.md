@@ -135,3 +135,24 @@ bool accepted
 ### Final competition
 
 The final competition will run on a dedicated computer provided by the organizers. In the last week before the competition you will have the chance to try your project on the competition PC. For this we will require you to make an appointment and provide us with your git repository. Make sure that your repository also contains instruction on how to run your project. The environment is randomly chosen by the organizers from the given map pool. The score will be maintained by a dedicated score-counting node controlled by the organizers. The winner of the competition will be the group that has got the best score in the chosen environment. Note that we will also be watching during the competition, to ensure that the score is actually correct in case of bugs.
+
+
+## Troubleshooting
+In case you cannot successfully launch any of the competition maps here are a view steps that can help you fix the issue.
+
+### Gazebo models
+Ensure that you have the right models in the **.gazebo/models** folder. To be able to see the **.gazebo** folder you must show hidden files:
+![]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/competition/show_gazebo_folder.png)
+
+The following are the models that you should have. If you are missing any you can find them in **ros2_students_25/multi_robot_challenge_23/models**. Just copy them over.
+![]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/competition/gazebo_models.png)
+
+### Having the right packages
+You should have the following packages in your **ros2_ws/src** folder:
+![]({{ site.url }}{{ site.baseurl }}/assets/images/dat160/competition/required_packages.png)
+
+The **multi_robot_challenge_23** and **turtlebot3_manipulation** are available in the **ros2_students_25** repository. The **ros2_aruco** package can also be found there but that one might not work for you (for example if you have a MAC). If that's the case download (or clone) an updated version of that package from [here](https://github.com/LauEls/ros2_aruco).
+
+### Lighting
+If the semester project launches and runs fine but the ros2_aruco package doesn't recognize the markers you can try and change the lighting by either deleting or adding some of the lights above the markers.
+
